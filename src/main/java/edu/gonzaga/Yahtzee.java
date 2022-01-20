@@ -19,6 +19,7 @@ public class Yahtzee {
         System.out.println(die1);
         System.out.println("Cool, huh?");
 
+        System.out.println("This is a test");
         // misspelled this wrod
     }
 }

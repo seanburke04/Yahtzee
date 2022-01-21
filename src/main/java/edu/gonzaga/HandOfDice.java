@@ -16,6 +16,7 @@ public class HandOfDice {
     Die die4 = new Die();
     Die die5 = new Die();
     String userSelectionReRoll;
+    Integer[] fullHand = new Integer[5]; // Array for the hand of dice, primarily used in sorting
 
     /** rolls each hand */
     public void rollHand(){
@@ -24,6 +25,12 @@ public class HandOfDice {
         die3.roll();
         die4.roll();
         die5.roll();
+
+        fullHand[0] = die1.getSideUp();
+        fullHand[1] = die2.getSideUp();
+        fullHand[2] = die3.getSideUp();
+        fullHand[3] = die4.getSideUp();
+        fullHand[4] = die5.getSideUp();
     }
 
     /** outputs roll */
@@ -65,22 +72,27 @@ public class HandOfDice {
     public void reRollDice(){
         for (int i = 0; i < userSelectionReRoll.length(); i++){
             if (userSelectionReRoll.charAt(i) == 'n'){
-                if (i == 1){
+                if (i == 0){
                     die1.roll();
                 }
-                else if (i == 2){
+                else if (i == 1){
                     die2.roll();
                 }
-                else if (i == 3){
+                else if (i == 2){
                     die3.roll();
                 }
-                else if (i ==4){
+                else if (i == 3){
                     die4.roll();
                 }
-                else if (i == 5){
+                else if (i == 4){
                     die5.roll();
                 }
             }
         }
+        fullHand[0] = die1.getSideUp();
+        fullHand[1] = die2.getSideUp();
+        fullHand[2] = die3.getSideUp();
+        fullHand[3] = die4.getSideUp();
+        fullHand[4] = die5.getSideUp();
     }
 }

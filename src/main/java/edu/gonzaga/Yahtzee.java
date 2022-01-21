@@ -24,9 +24,12 @@ public class Yahtzee {
         hand.outputRoll();
 
         // re roll number 2
+        // maybe add a way to check if they didn't re roll and not make the user do it again
         hand.getWhichToReRoll();
         hand.reRollDice();
         hand.outputRoll();
+
+        //put the hand into and array you can do this in the roll method and update during the re roll
 
         /*
         Die die1 = new Die(6);

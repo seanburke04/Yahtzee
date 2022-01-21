@@ -14,5 +14,9 @@ public class HandOfDice {
     // Function to roll each hand
     public Die rollHand(){
         die1.roll();
+        die2.roll();
+        die3.roll();
+        die4.roll();
+        die5.roll();
     }
 }

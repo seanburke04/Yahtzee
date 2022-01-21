@@ -1,7 +1,7 @@
 package edu.gonzaga;
 
 /*
-* Class to roll a hand of dice
+* Class to handle each hand of dice
 */
 
 import java.util.Scanner;
@@ -15,8 +15,9 @@ public class HandOfDice {
     Die die3 = new Die();
     Die die4 = new Die();
     Die die5 = new Die();
+    String userSelectionReRoll;
 
-    // Function to roll each hand
+    /** rolls each hand */
     public void rollHand(){
         die1.roll();
         die2.roll();
@@ -25,40 +26,63 @@ public class HandOfDice {
         die5.roll();
     }
 
-    // Function to output roll
+    /** outputs roll */
     public void outputRoll(){
         System.out.print("Your roll was: " + die1 + " " + die2 + " " + die3);
         System.out.println(" " + die4 + " " + die5);
     }
 
-    // Function to get user re roll this function also checks if the input is valid
-    public String whichToReRoll(){
-        String userSelection;
-        Boolean isValid = false;
+    /** get user re roll this function also checks if the input is valid */
+    public void getWhichToReRoll(){
+        boolean isValid = false;
 
         System.out.println("Enter dice to keep (y or n) ");
-        userSelection = getInput.nextLine();
+        userSelectionReRoll = getInput.nextLine();
 
         while (!isValid){
-            for (int i = 0; i < userSelection.length(); i++){
-                if (userSelection.charAt(i) != 'y' && userSelection.charAt(i) != 'n'){
+            for (int i = 0; i < userSelectionReRoll.length(); i++){
+                if (userSelectionReRoll.charAt(i) != 'y' && userSelectionReRoll.charAt(i) != 'n'){
                     System.out.println("Input invalid please try again");
 
                     System.out.println("Enter dice to keep (y or n) ");
-                    userSelection = getInput.nextLine();
+                    userSelectionReRoll = getInput.nextLine();
                 }
             }
 
-            if (userSelection.length() != 5){
+            if (userSelectionReRoll.length() != 5){
                 System.out.println("Input invalid please try again");
 
                 System.out.println("Enter dice to keep (y or n) ");
-                userSelection = getInput.nextLine();
+                userSelectionReRoll = getInput.nextLine();
             }
             else{
                 isValid = true;
             }
         }
-        return userSelection;
+    }
+
+    /** Decides which dices need to be rolled and calls the roll function again */
+    public void reRollDice(){
+        for (int i = 0; i < userSelectionReRoll.length(); i++){
+            if (userSelectionReRoll.charAt(i) == 'y'){
+                switch (i){
+                    case 1:
+                        die1.roll();
+                        break;
+                    case 2:
+                        die2.roll();
+                        break;
+                    case 3:
+                        die3.roll();
+                        break;
+                    case 4:
+                        die4.roll();
+                        break;
+                    case 5:
+                        die5.roll();
+                        break;
+                }
+            }
+        }
     }
 }

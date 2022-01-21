@@ -16,6 +16,8 @@ public class Yahtzee {
         hand.rollHand();
         hand.outputRoll();
 
+        //hand.whichToReRoll(); fix this! function outputs string now
+
         /*
         Die die1 = new Die(6);
         System.out.println(die1);

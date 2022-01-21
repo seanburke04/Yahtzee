@@ -5,6 +5,7 @@ package edu.gonzaga;
 */
 
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class HandOfDice {
 
@@ -68,7 +69,7 @@ public class HandOfDice {
         }
     }
 
-    /** Decides which dices need to be rolled and calls the roll function again */
+    /** Decides which dice need to be rolled and calls the roll function again */
     public void reRollDice(){
         for (int i = 0; i < userSelectionReRoll.length(); i++){
             if (userSelectionReRoll.charAt(i) == 'n'){
@@ -94,5 +95,13 @@ public class HandOfDice {
         fullHand[2] = die3.getSideUp();
         fullHand[3] = die4.getSideUp();
         fullHand[4] = die5.getSideUp();
+    }
+
+    /** This sorts the hand of dice in ascending order */
+    public void sortDice(){
+        Arrays.sort(fullHand);
+        System.out.print("Your sorted hand is: " + fullHand[0] + " ");
+        System.out.print(fullHand[1] + " " + fullHand[2] + " " + fullHand[3]);
+        System.out.println(" " + fullHand[4]);
     }
 }

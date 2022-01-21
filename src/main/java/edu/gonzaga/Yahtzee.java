@@ -28,8 +28,8 @@ public class Yahtzee {
         hand.getWhichToReRoll();
         hand.reRollDice();
         hand.outputRoll();
-
-        //put the hand into and array you can do this in the roll method and update during the re roll
+        
+        hand.sortDice();
 
         /*
         Die die1 = new Die(6);

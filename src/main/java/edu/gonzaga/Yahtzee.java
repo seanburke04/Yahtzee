@@ -28,7 +28,7 @@ public class Yahtzee {
         hand.getWhichToReRoll();
         hand.reRollDice();
         hand.outputRoll();
-        
+
         hand.sortDice();
 
         /*

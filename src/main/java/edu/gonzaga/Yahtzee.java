@@ -10,12 +10,20 @@ package edu.gonzaga;
 /** Main program class for launching Yahtzee program. */
 public class Yahtzee {
     public static void main(String[] args) {
+        // Probably don't need this (maybe delete or change?)
         System.out.println("Hello Yahtzee");
 
+        // Initial roll
         HandOfDice hand = new HandOfDice();
         hand.rollHand();
         hand.outputRoll();
 
+        // re roll number 1
+        hand.getWhichToReRoll();
+        hand.reRollDice();
+        hand.outputRoll();
+
+        // re roll number 2
         hand.getWhichToReRoll();
         hand.reRollDice();
         hand.outputRoll();

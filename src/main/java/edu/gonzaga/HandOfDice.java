@@ -64,23 +64,21 @@ public class HandOfDice {
     /** Decides which dices need to be rolled and calls the roll function again */
     public void reRollDice(){
         for (int i = 0; i < userSelectionReRoll.length(); i++){
-            if (userSelectionReRoll.charAt(i) == 'y'){
-                switch (i){
-                    case 1:
-                        die1.roll();
-                        break;
-                    case 2:
-                        die2.roll();
-                        break;
-                    case 3:
-                        die3.roll();
-                        break;
-                    case 4:
-                        die4.roll();
-                        break;
-                    case 5:
-                        die5.roll();
-                        break;
+            if (userSelectionReRoll.charAt(i) == 'n'){
+                if (i == 1){
+                    die1.roll();
+                }
+                else if (i == 2){
+                    die2.roll();
+                }
+                else if (i == 3){
+                    die3.roll();
+                }
+                else if (i ==4){
+                    die4.roll();
+                }
+                else if (i == 5){
+                    die5.roll();
                 }
             }
         }

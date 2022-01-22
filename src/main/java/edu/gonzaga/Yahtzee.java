@@ -13,8 +13,10 @@ public class Yahtzee {
         // Probably don't need this (maybe delete or change?)
         System.out.println("Hello Yahtzee");
 
-        // Initial roll
         HandOfDice hand = new HandOfDice();
+        Scorecard score = new Scorecard();
+
+        // Initial roll
         hand.rollHand();
         hand.outputRoll();
 
@@ -30,6 +32,9 @@ public class Yahtzee {
         hand.outputRoll();
 
         hand.sortDice();
+
+        score.countAces();
+        score.outputScore();
 
         /*
         Die die1 = new Die(6);

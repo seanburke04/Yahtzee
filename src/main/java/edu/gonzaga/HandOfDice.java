@@ -36,8 +36,9 @@ public class HandOfDice {
 
     /** outputs roll */
     public void outputRoll(){
-        System.out.print("Your roll was: " + die1 + " " + die2 + " " + die3);
-        System.out.println(" " + die4 + " " + die5);
+        System.out.print("Your roll was: " + fullHand[0] + " ");
+        System.out.print(fullHand[1] + " " + fullHand[2] + " " + fullHand[3]);
+        System.out.println(" " + fullHand[4]);
     }
 
     /** get user re roll this function also checks if the input is valid */

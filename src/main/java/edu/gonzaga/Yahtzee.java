@@ -33,7 +33,7 @@ public class Yahtzee {
 
         hand.sortDice();
 
-        score.countAces();
+        score.countAces(hand);
         score.outputScore();
 
         /*

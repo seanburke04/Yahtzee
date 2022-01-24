@@ -6,12 +6,19 @@ package edu.gonzaga;
 
 public class Scorecard {
 
-    public int aces;
-    public int twos;
-    public int threes;
-    public int fours;
-    public int fives;
-    public int sixes;
+    private int aces;
+    private int twos;
+    private int threes;
+    private int fours;
+    private int fives;
+    private int sixes;
+    private int threeOfAKind;
+    private int fourOfAKind;
+    private int fullHouse;
+    private int smallStraight;
+    private int largeStraight;
+    private int yahtzee;
+    private int Chance;
 
     public void scoreUpper(HandOfDice hand){
         // Score aces

@@ -20,6 +20,7 @@ public class Scorecard {
     private int yahtzee;
     private int Chance;
 
+    // Score upper part of the scorecard
     public void scoreUpper(HandOfDice hand){
         // Score aces
         for (int i = 0; i < 5; i++){
@@ -64,6 +65,12 @@ public class Scorecard {
         }
     }
 
+    // Score lower part of the scorecard
+    public void scoreLower(HandOfDice hand){
+        // Score three of a kind
+        
+    }
+
     public void outputScore(){
         // Outputs the score for the upper portion of the scorecard
         System.out.println("Score " + aces + " on the 1 line");
@@ -72,5 +79,8 @@ public class Scorecard {
         System.out.println("Score " + fours + " on the 4 line");
         System.out.println("Score " + fives + " on the 5 line");
         System.out.println("Score " + sixes + " on the 6 line");
+
+        // Outputs the score for the lower portion of the scorecard
+
     }
 }

@@ -35,6 +35,7 @@ public class Scorecard {
                 twos++;
             }
         }
+        twos = twos * 2;
 
         // Score threes
         for (int i = 0; i < 5; i++){
@@ -42,6 +43,7 @@ public class Scorecard {
                 threes++;
             }
         }
+        threes = threes * 3;
 
         // Score fours
         for (int i = 0; i < 5; i++){
@@ -49,6 +51,7 @@ public class Scorecard {
                 fours++;
             }
         }
+        fours = fours * 4;
 
         // Score fives
         for (int i = 0; i < 5; i++){
@@ -56,6 +59,7 @@ public class Scorecard {
                 fives++;
             }
         }
+        fives = fives * 5;
 
         // Score sixes
         for (int i = 0; i < 5; i++){
@@ -63,6 +67,7 @@ public class Scorecard {
                 sixes++;
             }
         }
+        sixes = sixes * 6;
     }
 
     // Score lower part of the scorecard
@@ -112,6 +117,6 @@ public class Scorecard {
         System.out.println("Score " + sixes + " on the 6 line");
 
         // Outputs the score for the lower portion of the scorecard
-        System.out.println("Score " + threeOfAKind + " on the 3 of a kind line");
+        System.out.println("Score " + threeOfAKind + " on the 3 of a Kind line");
     }
 }

@@ -34,6 +34,7 @@ public class Yahtzee {
         hand.sortDice();
 
         score.scoreUpper(hand);
+        score.scoreLower(hand);
         score.outputScore();
 
         /*

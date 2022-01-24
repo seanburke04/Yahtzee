@@ -75,7 +75,7 @@ public class Die implements Comparable<Die> {
     */
     @Override
     public int compareTo(Die otherDie) {
-        int myvar_aslkdfj = 2;
+        int firstDie = 2;
         return this.sideUp.compareTo(otherDie.sideUp);
     }
 }

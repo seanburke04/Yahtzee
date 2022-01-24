@@ -11,6 +11,7 @@ public class HandOfDice {
 
     Scanner getInput = new Scanner(System.in);
 
+    // add constructor for calling objects maybe
     public Die die1 = new Die();
     public Die die2 = new Die();
     public Die die3 = new Die();

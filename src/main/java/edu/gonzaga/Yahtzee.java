@@ -13,6 +13,9 @@ public class Yahtzee {
         // Probably don't need this (maybe delete or change?)
         System.out.println("Hello Yahtzee");
 
+        // FIX DIE.JAVA also make sure private and public is used properly
+        // ADD CONSTRUCTORS IF NEEDED
+
         HandOfDice hand = new HandOfDice();
         Scorecard score = new Scorecard();
 
@@ -45,8 +48,5 @@ public class Yahtzee {
         System.out.println(die1);
         System.out.println("Cool, huh?");
         */
-
-
-        // misspelled this wrod
     }
 }

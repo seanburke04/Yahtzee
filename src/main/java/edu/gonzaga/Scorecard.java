@@ -18,7 +18,7 @@ public class Scorecard {
     private int smallStraight;
     private int largeStraight;
     private int yahtzee;
-    private int Chance;
+    private int chance;
 
     // Score upper part of the scorecard
     public void scoreUpper(HandOfDice hand){
@@ -134,8 +134,16 @@ public class Scorecard {
         System.out.println("Score " + sixes + " on the 6 line");
 
         // Outputs the score for the lower portion of the scorecard
-        System.out.println("Score " + threeOfAKind + " on the 3 of a Kind line");
-        System.out.println("Score " + fourOfAKind + " on the 4 of a Kind line");
+        System.out.println("Score " + threeOfAKind + " on the 3 of a Kind " +
+                "line");
+        System.out.println("Score " + fourOfAKind + " on the 4 of a Kind " +
+                "line");
         System.out.println("Score " + fullHouse + " on the Full House line");
+        System.out.println("Score " + smallStraight + " on the Small " +
+                "Straight line");
+        System.out.println("Score " + largeStraight + " on the Large" +
+                "Straight line");
+        System.out.println("Score " + yahtzee + " on the Yahtzee line");
+        System.out.println("Score " + chance + " on the Chance line");
     }
 }

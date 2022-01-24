@@ -72,18 +72,31 @@ public class Scorecard {
 
     // Score lower part of the scorecard
     public void scoreLower(HandOfDice hand){
-        // Score three of a kind
         int numMatchingDice = matching(hand);
-        int score = 0;
+        int tempScore = 0;
 
+        // Scores three of a kind
         if (numMatchingDice == 3){
             for (int i = 0; i < 5; i++){
-                score += hand.fullHand[i];
+                tempScore += hand.fullHand[i];
             }
-            threeOfAKind = score;
+            threeOfAKind = tempScore;
+            tempScore = 0;
         }
         else{
             threeOfAKind = 0;
+        }
+
+        // Scores 4 of a kind
+        if (numMatchingDice == 4){
+            for (int i = 0; i < 5; i++){
+                tempScore += hand.fullHand[i];
+            }
+            fourOfAKind = tempScore;
+            tempScore = 0;
+        }
+        else{
+            fourOfAKind = 0;
         }
     }
 
@@ -118,5 +131,6 @@ public class Scorecard {
 
         // Outputs the score for the lower portion of the scorecard
         System.out.println("Score " + threeOfAKind + " on the 3 of a Kind line");
+        System.out.println("Score " + fourOfAKind + " on the 4 of a Kind line");
     }
 }

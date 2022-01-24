@@ -73,6 +73,7 @@ public class Scorecard {
     // Score lower part of the scorecard
     public void scoreLower(HandOfDice hand){
         int numMatchingDice = matching(hand);
+        int numMatchingDiceSet2 = matching(hand);
         int tempScore = 0;
 
         // Scores three of a kind
@@ -98,6 +99,9 @@ public class Scorecard {
         else{
             fourOfAKind = 0;
         }
+
+        // Scores Full House
+
     }
 
     // Finds how many dice match
@@ -132,5 +136,6 @@ public class Scorecard {
         // Outputs the score for the lower portion of the scorecard
         System.out.println("Score " + threeOfAKind + " on the 3 of a Kind line");
         System.out.println("Score " + fourOfAKind + " on the 4 of a Kind line");
+        System.out.println("Score " + fullHouse + " on the Full House line");
     }
 }

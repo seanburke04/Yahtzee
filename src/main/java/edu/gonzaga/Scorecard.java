@@ -73,7 +73,6 @@ public class Scorecard {
     // Score lower part of the scorecard
     public void scoreLower(HandOfDice hand){
         int numMatchingDice = matching(hand);
-        int numMatchingDiceSet2 = matching(hand);
         int lengthOfStraight = sequentialDice(hand);
         int tempScore = 0;
 
@@ -103,6 +102,7 @@ public class Scorecard {
 
         // Scores Full House
 
+
         // Scores Small Straight
         if (lengthOfStraight == 4){
             smallStraight = 30;
@@ -110,6 +110,7 @@ public class Scorecard {
         else{
             smallStraight = 0;
         }
+
         // Scores Large Straight
         if (lengthOfStraight == 5){
             largeStraight = 40;

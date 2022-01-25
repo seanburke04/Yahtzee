@@ -102,9 +102,14 @@ public class Scorecard {
 
         // Scores Full House
 
+        // Scores Yahtzee
+        if (numMatchingDice == 5){
+            yahtzee = 50;
+        }
     }
 
     // Finds how many dice match
+    // The second call doesn't work it would likely output the same value as the first call
     private int matching(HandOfDice hand){
         int numMatchingDice = 0;
         int currentNumMatchingDice = 0;

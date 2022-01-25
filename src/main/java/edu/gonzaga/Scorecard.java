@@ -18,7 +18,7 @@ public class Scorecard {
     private int smallStraight;
     private int largeStraight;
     private int yahtzee;
-    private int chance;
+    private int chance = 0;
 
     // Score upper part of the scorecard
     public void scoreUpper(HandOfDice hand){
@@ -105,6 +105,11 @@ public class Scorecard {
         // Scores Yahtzee
         if (numMatchingDice == 5){
             yahtzee = 50;
+        }
+
+        // Scores Chance
+        for (int i = 0; i < 5; i++){
+            chance += hand.fullHand[i];
         }
     }
 

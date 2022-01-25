@@ -74,6 +74,7 @@ public class Scorecard {
     public void scoreLower(HandOfDice hand){
         int numMatchingDice = matching(hand);
         int numMatchingDiceSet2 = matching(hand);
+        int lengthOfStraight = sequentialDice(hand);
         int tempScore = 0;
 
         // Scores three of a kind
@@ -101,6 +102,21 @@ public class Scorecard {
         }
 
         // Scores Full House
+
+        // Scores Small Straight
+        if (lengthOfStraight == 4){
+            smallStraight = 30;
+        }
+        else{
+            smallStraight = 0;
+        }
+        // Scores Large Straight
+        if (lengthOfStraight == 5){
+            largeStraight = 40;
+        }
+        else{
+            largeStraight = 0;
+        }
 
         // Scores Yahtzee
         if (numMatchingDice == 5){
@@ -132,6 +148,21 @@ public class Scorecard {
             }
         }
         return numMatchingDice;
+    }
+
+    // Finds how many sequential dice there are
+    private int sequentialDice(HandOfDice hand){
+        int lengthOfSequence = 1;
+
+        for (int i = 0; i < 4; i++){
+            if (hand.fullHand[i] + 1 == hand.fullHand[i + 1]){
+                lengthOfSequence++;
+            }
+            else if (hand.fullHand[i] + 1 < hand.fullHand[i + 1]){
+                lengthOfSequence = 1;
+            }
+        }
+        return lengthOfSequence;
     }
 
     public void outputScore(){

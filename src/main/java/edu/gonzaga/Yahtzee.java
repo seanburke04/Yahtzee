@@ -12,6 +12,7 @@ public class Yahtzee {
     public static void main(String[] args) {
         // FIX DIE.JAVA also make sure private and public is used properly
         // ADD CONSTRUCTORS IF NEEDED
+        // FIX COMMENTS ABOVE EACH METHOD
 
         HandOfDice hand = new HandOfDice();
         Scorecard score = new Scorecard();
@@ -26,7 +27,7 @@ public class Yahtzee {
         hand.outputRoll();
 
         // re roll number 2
-        // maybe add a way to check if they didn't re roll and not make the user do it again
+        // maybe add a way to check if they didn't re roll and not make theyn user do it again
         hand.getWhichToReRoll();
         hand.reRollDice();
         hand.outputRoll();

@@ -20,7 +20,7 @@ public class Scorecard {
     private int yahtzee;
     private int chance = 0;
 
-    // Score upper part of the scorecard
+    /** Score upper part of the scorecard */
     public void scoreUpper(HandOfDice hand){
         // Score aces
         for (int i = 0; i < 5; i++){
@@ -70,7 +70,7 @@ public class Scorecard {
         sixes = sixes * 6;
     }
 
-    // Score lower part of the scorecard
+    /** Score lower part of the scorecard */
     public void scoreLower(HandOfDice hand){
         int numMatchingDice = matching(hand);
         int lengthOfStraight = sequentialDice(hand);
@@ -135,7 +135,7 @@ public class Scorecard {
         }
     }
 
-    // Finds how many dice match
+    /** Finds how many dice match */
     private int matching(HandOfDice hand){
         int numMatchingDice = 0;
         int currentNumMatchingDice = 0;
@@ -155,7 +155,7 @@ public class Scorecard {
         return numMatchingDice;
     }
 
-    // Finds how many sequential dice there are
+    /** Finds how many sequential dice there are */
     // This function is broken it needs fixing
     private int sequentialDice(HandOfDice hand){
         int lengthOfSequence = 1;
@@ -171,7 +171,7 @@ public class Scorecard {
         return lengthOfSequence;
     }
 
-    //Checks for a full house
+    /** Checks for a full house */
     public Boolean fullHouseCheck(HandOfDice hand){
         if ((hand.fullHand[0] == hand.fullHand[1]) && (hand.fullHand[0] ==
                 hand.fullHand[2])){
@@ -196,6 +196,7 @@ public class Scorecard {
         }
     }
 
+    /** Prints all scores to the console */
     public void outputScore(){
         // Outputs the score for the upper portion of the scorecard
         System.out.println("Score " + aces + " on the 1 line");

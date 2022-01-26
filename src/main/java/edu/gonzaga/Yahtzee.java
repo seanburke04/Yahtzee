@@ -31,11 +31,13 @@ public class Yahtzee {
         hand.outputRoll();
 
         //For testing purposes make sure to remove
+        /*
         hand.fullHand[0] = 1;
         hand.fullHand[1] = 2;
         hand.fullHand[2] = 3;
         hand.fullHand[3] = 4;
         hand.fullHand[4] = 5;
+        */
 
         hand.sortDice();
 

@@ -171,7 +171,7 @@ public class Scorecard {
     }
 
     /** Checks for a full house */
-    public Boolean fullHouseCheck(HandOfDice hand){
+    private Boolean fullHouseCheck(HandOfDice hand){
         if ((hand.fullHand[0] == hand.fullHand[1]) && (hand.fullHand[0] ==
                 hand.fullHand[2])){
             if (hand.fullHand[3] == hand.fullHand[4]){

@@ -11,14 +11,13 @@ public class HandOfDice {
 
     Scanner getInput = new Scanner(System.in);
 
-    //constructor
     private Die die1 = new Die();
     private Die die2 = new Die();
     private Die die3 = new Die();
     private Die die4 = new Die();
     private Die die5 = new Die();
     private String userSelectionReRoll;
-    public Integer[] fullHand = new Integer[5]; // Array for the hand of dice, primarily used in sorting
+    public Integer[] fullHand = new Integer[5]; // Array for the hand of dice
 
     /** rolls each hand */
     public void rollHand(){

@@ -7,19 +7,26 @@ package edu.gonzaga;
 *   a method of that other class.
 */
 
+import java.util.Scanner;
+
 /** Main program class for launching Yahtzee program. */
 public class Yahtzee {
     public static void main(String[] args) {
-        // FIX DIE.JAVA also make sure private and public is used properly
-        // ADD CONSTRUCTORS IF NEEDED maybe have constructors call the functions?
+        Scanner getInput = new Scanner(System.in);
+        String playAgain = "y";
 
-        HandOfDice hand = new HandOfDice();
-        Scorecard score = new Scorecard();
+        while (playAgain.equals("y")){
+            HandOfDice hand = new HandOfDice();
+            Scorecard score = new Scorecard();
 
-        hand.callDiceRollingMethods();
+            hand.callDiceRollingMethods();
 
-        score.scoreUpper(hand);
-        score.scoreLower(hand);
-        score.outputScore();
+            score.scoreUpper(hand);
+            score.scoreLower(hand);
+            score.outputScore();
+
+            System.out.println("Enter 'y' to play again");
+            playAgain = getInput.nextLine();
+        }
     }
 }

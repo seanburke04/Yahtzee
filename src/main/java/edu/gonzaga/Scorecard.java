@@ -156,16 +156,15 @@ public class Scorecard {
     }
 
     /** Finds how many sequential dice there are */
-    // This function is broken it needs fixing
     private int sequentialDice(HandOfDice hand){
         int lengthOfSequence = 1;
 
-        for (int i = 0; i < 4; i++){
-            if (hand.fullHand[i] + 1 == hand.fullHand[i + 1]){
-                lengthOfSequence++;
-            }
-            else if (hand.fullHand[i] + 1 < hand.fullHand[i + 1]){
+        for (int i = 0; i < 5; i++){
+            if (i == 0){
                 lengthOfSequence = 1;
+            }
+            else if (hand.fullHand[i] == hand.fullHand[i - 1] + 1){
+                lengthOfSequence++;
             }
         }
         return lengthOfSequence;

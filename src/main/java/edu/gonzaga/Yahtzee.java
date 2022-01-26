@@ -16,30 +16,7 @@ public class Yahtzee {
         HandOfDice hand = new HandOfDice();
         Scorecard score = new Scorecard();
 
-        // Initial roll
-        hand.rollHand();
-        hand.outputRoll();
-
-        // re roll number 1
-        hand.getWhichToReRoll();
-        hand.reRollDice();
-        hand.outputRoll();
-
-        // re roll number 2
-        hand.getWhichToReRoll();
-        hand.reRollDice();
-        hand.outputRoll();
-
-        //For testing purposes make sure to remove
-        /*
-        hand.fullHand[0] = 1;
-        hand.fullHand[1] = 2;
-        hand.fullHand[2] = 3;
-        hand.fullHand[3] = 4;
-        hand.fullHand[4] = 5;
-        */
-
-        hand.sortDice();
+        hand.callDiceRollingMethods();
 
         score.scoreUpper(hand);
         score.scoreLower(hand);

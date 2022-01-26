@@ -11,7 +11,7 @@ public class HandOfDice {
 
     Scanner getInput = new Scanner(System.in);
 
-    // add constructor for calling objects maybe
+    //constructor
     private Die die1 = new Die();
     private Die die2 = new Die();
     private Die die3 = new Die();
@@ -105,5 +105,24 @@ public class HandOfDice {
         System.out.print("Your sorted hand is: " + fullHand[0] + " ");
         System.out.print(fullHand[1] + " " + fullHand[2] + " " + fullHand[3]);
         System.out.println(" " + fullHand[4]);
+    }
+
+    /** Calls all necessary functions for rolling dice */
+    public void callDiceRollingMethods(){
+        // Initial roll
+        rollHand();
+        outputRoll();
+
+        // re roll number 1
+        getWhichToReRoll();
+        reRollDice();
+        outputRoll();
+
+        // re roll number 2
+        getWhichToReRoll();
+        reRollDice();
+        outputRoll();
+
+        sortDice();
     }
 }

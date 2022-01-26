@@ -9,7 +9,7 @@
  */
 package edu.gonzaga;
 
-/*
+/**
 * Class to handle scoring
 */
 
@@ -33,7 +33,6 @@ public class Scorecard {
      * Computes the scores for the upper part of the scorecard
      *
      * @param hand dice values values in a hand
-     * @return void
      */
     public void scoreUpper(HandOfDice hand){
         // Score aces
@@ -89,7 +88,6 @@ public class Scorecard {
      * Computes the scores for the lower part of the scorecard
      *
      * @param hand dice values values in a hand
-     * @return void
      */
     public void scoreLower(HandOfDice hand){
         int numMatchingDice = matching(hand);
@@ -237,8 +235,6 @@ public class Scorecard {
 
     /**
      * Outputs the calculated scores to the console
-     *
-     * @return void
      */
     public void outputScore(){
         // Outputs the score for the upper portion of the scorecard

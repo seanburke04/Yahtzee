@@ -37,8 +37,6 @@ public class HandOfDice {
 
     /**
      * Rolls a set of dice for a full hand
-     *
-     * @return void
      */
     public void rollHand(){
         die1.roll();
@@ -56,8 +54,6 @@ public class HandOfDice {
 
     /**
      * Outputs the roll of a full hand to the console
-     *
-     * @return void
      */
     public void outputRoll(){
         System.out.print("Your roll was: " + fullHand[0] + " ");
@@ -67,8 +63,6 @@ public class HandOfDice {
 
     /**
      * Gets which dice to re roll from the user and verifies valid input
-     *
-     * @return void
      */
     public void getWhichToReRoll(){
         boolean isValid = false;
@@ -100,8 +94,6 @@ public class HandOfDice {
 
     /**
      * Re rolls all the dice according to the user's specifications
-     *
-     * @return void
      */
     public void reRollDice(){
         for (int i = 0; i < userSelectionReRoll.length(); i++){
@@ -132,8 +124,6 @@ public class HandOfDice {
 
     /**
      * Sorts the dice in ascending order and prints it to the console
-     *
-     * @return void
      */
     public void sortDice(){
         Arrays.sort(fullHand);
@@ -144,8 +134,6 @@ public class HandOfDice {
 
     /**
      * Calls all functions for the dice roll to shorten main
-     *
-     * @return void
      */
     public void callDiceRollingMethods(){
         // Initial roll

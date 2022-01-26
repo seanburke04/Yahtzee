@@ -23,15 +23,16 @@ public class Scorecard {
     /** Score upper part of the scorecard */
     public void scoreUpper(HandOfDice hand){
         // Score aces
+        Integer[] allDiceInHand = hand.getFullHand();
         for (int i = 0; i < 5; i++){
-            if (hand.fullHand[i] == 1){
+            if (allDiceInHand[i] == 1){
                 aces++;
             }
         }
 
         // Score twos
         for (int i = 0; i < 5; i++){
-            if (hand.fullHand[i] == 2){
+            if (allDiceInHand[i] == 2){
                 twos++;
             }
         }
@@ -39,7 +40,7 @@ public class Scorecard {
 
         // Score threes
         for (int i = 0; i < 5; i++){
-            if (hand.fullHand[i] == 3){
+            if (allDiceInHand[i] == 3){
                 threes++;
             }
         }
@@ -47,7 +48,7 @@ public class Scorecard {
 
         // Score fours
         for (int i = 0; i < 5; i++){
-            if (hand.fullHand[i] == 4){
+            if (allDiceInHand[i] == 4){
                 fours++;
             }
         }
@@ -55,7 +56,7 @@ public class Scorecard {
 
         // Score fives
         for (int i = 0; i < 5; i++){
-            if (hand.fullHand[i] == 5){
+            if (allDiceInHand[i] == 5){
                 fives++;
             }
         }
@@ -63,7 +64,7 @@ public class Scorecard {
 
         // Score sixes
         for (int i = 0; i < 5; i++){
-            if (hand.fullHand[i] == 6){
+            if (allDiceInHand[i] == 6){
                 sixes++;
             }
         }
@@ -75,11 +76,12 @@ public class Scorecard {
         int numMatchingDice = matching(hand);
         int lengthOfStraight = sequentialDice(hand);
         int tempScore = 0;
+        Integer[] allDiceInHand = hand.getFullHand();
 
         // Scores three of a kind
         if (numMatchingDice == 3){
             for (int i = 0; i < 5; i++){
-                tempScore += hand.fullHand[i];
+                tempScore += allDiceInHand[i];
             }
             threeOfAKind = tempScore;
             tempScore = 0;
@@ -91,7 +93,7 @@ public class Scorecard {
         // Scores 4 of a kind
         if (numMatchingDice == 4){
             for (int i = 0; i < 5; i++){
-                tempScore += hand.fullHand[i];
+                tempScore += allDiceInHand[i];
             }
             fourOfAKind = tempScore;
             tempScore = 0;
@@ -131,7 +133,7 @@ public class Scorecard {
 
         // Scores Chance
         for (int i = 0; i < 5; i++){
-            chance += hand.fullHand[i];
+            chance += allDiceInHand[i];
         }
     }
 
@@ -139,12 +141,13 @@ public class Scorecard {
     private int matching(HandOfDice hand){
         int numMatchingDice = 0;
         int currentNumMatchingDice = 0;
+        Integer[] allDiceInHand = hand.getFullHand();
 
         for (int i = 0; i < 7; i++){
             currentNumMatchingDice = 0;
 
             for (int j = 0; j < 5; j++){
-                if (hand.fullHand[j] == i){
+                if (allDiceInHand[j] == i){
                     currentNumMatchingDice++;
                 }
             }
@@ -158,12 +161,13 @@ public class Scorecard {
     /** Finds how many sequential dice there are */
     private int sequentialDice(HandOfDice hand){
         int lengthOfSequence = 1;
+        Integer[] allDiceInHand = hand.getFullHand();
 
         for (int i = 0; i < 5; i++){
             if (i == 0){
                 lengthOfSequence = 1;
             }
-            else if (hand.fullHand[i] == hand.fullHand[i - 1] + 1){
+            else if (allDiceInHand[i] == allDiceInHand[i - 1] + 1){
                 lengthOfSequence++;
             }
         }
@@ -172,18 +176,20 @@ public class Scorecard {
 
     /** Checks for a full house */
     private Boolean fullHouseCheck(HandOfDice hand){
-        if ((hand.fullHand[0] == hand.fullHand[1]) && (hand.fullHand[0] ==
-                hand.fullHand[2])){
-            if (hand.fullHand[3] == hand.fullHand[4]){
+        Integer[] allDiceInHand = hand.getFullHand();
+
+        if ((allDiceInHand[0] == allDiceInHand[1]) && (allDiceInHand[0] ==
+                allDiceInHand[2])){
+            if (allDiceInHand[3] == allDiceInHand[4]){
                 return true;
             }
             else{
                 return false;
             }
         }
-        else if (hand.fullHand[0] == hand.fullHand[1]){
-            if ((hand.fullHand[2] == hand.fullHand[3]) && hand.fullHand[2] ==
-                    hand.fullHand[4]){
+        else if (allDiceInHand[0] == allDiceInHand[1]){
+            if ((allDiceInHand[2] == allDiceInHand[3]) && allDiceInHand[2] ==
+                    allDiceInHand[4]){
                 return true;
             }
             else{

@@ -17,7 +17,10 @@ public class HandOfDice {
     private Die die4 = new Die();
     private Die die5 = new Die();
     private String userSelectionReRoll;
-    public Integer[] fullHand = new Integer[5]; // Array for the hand of dice
+    private Integer[] fullHand = new Integer[5]; // Array for the hand of dice
+
+    /** Outputs the fullHand array */
+    public Integer[] getFullHand(){return fullHand;}
 
     /** rolls each hand */
     public void rollHand(){

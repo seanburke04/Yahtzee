@@ -10,9 +10,6 @@ package edu.gonzaga;
 /** Main program class for launching Yahtzee program. */
 public class Yahtzee {
     public static void main(String[] args) {
-        // Probably don't need this (maybe delete or change?)
-        System.out.println("Hello Yahtzee");
-
         // FIX DIE.JAVA also make sure private and public is used properly
         // ADD CONSTRUCTORS IF NEEDED
 
@@ -34,19 +31,17 @@ public class Yahtzee {
         hand.reRollDice();
         hand.outputRoll();
 
+        //For testing purposes make sure to remove
+        hand.fullHand[0] = 1;
+        hand.fullHand[1] = 2;
+        hand.fullHand[2] = 3;
+        hand.fullHand[3] = 4;
+        hand.fullHand[4] = 6;
+
         hand.sortDice();
 
         score.scoreUpper(hand);
         score.scoreLower(hand);
         score.outputScore();
-
-        /*
-        Die die1 = new Die(6);
-        System.out.println(die1);
-        System.out.println("Now rolling our die!");
-        die1.roll();
-        System.out.println(die1);
-        System.out.println("Cool, huh?");
-        */
     }
 }

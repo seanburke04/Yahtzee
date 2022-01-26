@@ -101,7 +101,12 @@ public class Scorecard {
         }
 
         // Scores Full House
-
+        if (fullHouseCheck(hand)){
+            fullHouse = 25;
+        }
+        else{
+            fullHouse = 0;
+        }
 
         // Scores Small Straight
         if (lengthOfStraight == 4){
@@ -131,7 +136,6 @@ public class Scorecard {
     }
 
     // Finds how many dice match
-    // The second call doesn't work it would likely output the same value as the first call
     private int matching(HandOfDice hand){
         int numMatchingDice = 0;
         int currentNumMatchingDice = 0;
@@ -152,6 +156,7 @@ public class Scorecard {
     }
 
     // Finds how many sequential dice there are
+    // This function is broken it needs fixing
     private int sequentialDice(HandOfDice hand){
         int lengthOfSequence = 1;
 
@@ -164,6 +169,31 @@ public class Scorecard {
             }
         }
         return lengthOfSequence;
+    }
+
+    //Checks for a full house
+    public Boolean fullHouseCheck(HandOfDice hand){
+        if ((hand.fullHand[0] == hand.fullHand[1]) && (hand.fullHand[0] ==
+                hand.fullHand[2])){
+            if (hand.fullHand[3] == hand.fullHand[4]){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        else if (hand.fullHand[0] == hand.fullHand[1]){
+            if ((hand.fullHand[2] == hand.fullHand[3]) && hand.fullHand[2] ==
+                    hand.fullHand[4]){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        else{
+            return false;
+        }
     }
 
     public void outputScore(){

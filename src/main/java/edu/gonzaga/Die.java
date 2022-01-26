@@ -22,22 +22,37 @@ public class Die implements Comparable<Die> {
     private static final Integer DEFAULT_NUM_SIDES = 6;
     private static final Integer DEFAULT_SIDE_UP = 1;
 
+    /**
+     * Default constructor
+     */
     public Die() {
         this.numSides = DEFAULT_NUM_SIDES;
         this.sideUp = DEFAULT_SIDE_UP;
     }
 
+    /**
+     * Overridden constructor
+     *
+     * @param numSides number of sides on the dice
+     */
     public Die(Integer numSides) {
         this.numSides = numSides;
         this.sideUp = DEFAULT_SIDE_UP;
     }
 
+    /**
+     * Overridden constructor
+     *
+     * @param numSides,startingSide number of sides on the dice, side starts up
+     */
     public Die(Integer numSides, Integer startingSide) {
         this.numSides = numSides;
         this.sideUp = startingSide;
     }
 
-    /** Rolls the die once, getting new random value. */
+    /**
+     * Rolls the die once, getting new random value.
+     */
     public void roll() {
         Random rand = new Random();
         this.sideUp = rand.nextInt(this.numSides) + 1;

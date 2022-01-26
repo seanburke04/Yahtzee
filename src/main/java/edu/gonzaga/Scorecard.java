@@ -29,7 +29,12 @@ public class Scorecard {
     private int yahtzee;
     private int chance = 0;
 
-    /** Score upper part of the scorecard */
+    /**
+     * Computes the scores for the upper part of the scorecard
+     *
+     * @param hand dice values values in a hand
+     * @return void
+     */
     public void scoreUpper(HandOfDice hand){
         // Score aces
         Integer[] allDiceInHand = hand.getFullHand();
@@ -80,7 +85,12 @@ public class Scorecard {
         sixes = sixes * 6;
     }
 
-    /** Score lower part of the scorecard */
+    /**
+     * Computes the scores for the lower part of the scorecard
+     *
+     * @param hand dice values values in a hand
+     * @return void
+     */
     public void scoreLower(HandOfDice hand){
         int numMatchingDice = matching(hand);
         int lengthOfStraight = sequentialDice(hand);
@@ -146,7 +156,12 @@ public class Scorecard {
         }
     }
 
-    /** Finds how many dice match */
+    /**
+     * Finds the number of dice that match in a hand
+     *
+     * @param hand dice values values in a hand
+     * @return number of matching dice
+     */
     private int matching(HandOfDice hand){
         int numMatchingDice = 0;
         int currentNumMatchingDice = 0;
@@ -167,7 +182,12 @@ public class Scorecard {
         return numMatchingDice;
     }
 
-    /** Finds how many sequential dice there are */
+    /**
+     * Finds how many sequential dice there are in a hand (length of straight)
+     *
+     * @param hand dice values values in a hand
+     * @return length of the sequence (straight)
+     */
     private int sequentialDice(HandOfDice hand){
         int lengthOfSequence = 1;
         Integer[] allDiceInHand = hand.getFullHand();
@@ -183,7 +203,12 @@ public class Scorecard {
         return lengthOfSequence;
     }
 
-    /** Checks for a full house */
+    /**
+     * Checks if the hand of dice contains a Full House
+     *
+     * @param hand dice values in a hand
+     * @return truth value for if there is a Full House
+     */
     private Boolean fullHouseCheck(HandOfDice hand){
         Integer[] allDiceInHand = hand.getFullHand();
 
@@ -210,7 +235,11 @@ public class Scorecard {
         }
     }
 
-    /** Prints all scores to the console */
+    /**
+     * Outputs the calculated scores to the console
+     *
+     * @return void
+     */
     public void outputScore(){
         // Outputs the score for the upper portion of the scorecard
         System.out.println("Score " + aces + " on the 1 line");

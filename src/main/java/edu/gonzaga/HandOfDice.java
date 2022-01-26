@@ -28,10 +28,18 @@ public class HandOfDice {
     private String userSelectionReRoll;
     private Integer[] fullHand = new Integer[5]; // Array for the hand of dice
 
-    /** Outputs the fullHand array */
+    /**
+     * Getter for the full hand array
+     *
+     * @return full hand array
+     */
     public Integer[] getFullHand(){return fullHand;}
 
-    /** rolls each hand */
+    /**
+     * Rolls a set of dice for a full hand
+     *
+     * @return void
+     */
     public void rollHand(){
         die1.roll();
         die2.roll();
@@ -46,14 +54,22 @@ public class HandOfDice {
         fullHand[4] = die5.getSideUp();
     }
 
-    /** outputs roll */
+    /**
+     * Outputs the roll of a full hand to the console
+     *
+     * @return void
+     */
     public void outputRoll(){
         System.out.print("Your roll was: " + fullHand[0] + " ");
         System.out.print(fullHand[1] + " " + fullHand[2] + " " + fullHand[3]);
         System.out.println(" " + fullHand[4]);
     }
 
-    /** get user re roll this function also checks if the input is valid */
+    /**
+     * Gets which dice to re roll from the user and verifies valid input
+     *
+     * @return void
+     */
     public void getWhichToReRoll(){
         boolean isValid = false;
 
@@ -82,7 +98,11 @@ public class HandOfDice {
         }
     }
 
-    /** Decides which dice need to be rolled and calls the roll function again */
+    /**
+     * Re rolls all the dice according to the user's specifications
+     *
+     * @return void
+     */
     public void reRollDice(){
         for (int i = 0; i < userSelectionReRoll.length(); i++){
             if (userSelectionReRoll.charAt(i) == 'n'){
@@ -110,7 +130,11 @@ public class HandOfDice {
         fullHand[4] = die5.getSideUp();
     }
 
-    /** This sorts the hand of dice in ascending order */
+    /**
+     * Sorts the dice in ascending order and prints it to the console
+     *
+     * @return void
+     */
     public void sortDice(){
         Arrays.sort(fullHand);
         System.out.print("Your sorted hand is: " + fullHand[0] + " ");
@@ -118,7 +142,11 @@ public class HandOfDice {
         System.out.println(" " + fullHand[4]);
     }
 
-    /** Calls all necessary functions for rolling dice */
+    /**
+     * Calls all functions for the dice roll to shorten main
+     *
+     * @return void
+     */
     public void callDiceRollingMethods(){
         // Initial roll
         rollHand();

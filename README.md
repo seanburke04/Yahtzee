@@ -2,5 +2,5 @@
 
 Individual Yahtzee assignment repository for CPSC 224 course
 
-- Student:  
-- Semester: Fall 2021
+- Student:  Sean Burke
+- Semester: Spring 2022

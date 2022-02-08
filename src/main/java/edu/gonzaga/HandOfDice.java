@@ -23,7 +23,56 @@ public class HandOfDice {
 
     private Die singleDie = new Die();
     private String userSelectionReRoll;
+    private ArrayList<Integer> userSettings = new ArrayList<Integer>();
     private ArrayList<Integer> fullHand = new ArrayList<Integer>(); // Array for the hand of dice
+    private ArrayList<Integer> readInFromFile = new ArrayList<Integer>();
+
+    /**
+     * Reads in values from the file and puts the values in an array
+     */
+    public void readInConfig(){
+        // Default Values
+        readInFromFile.add(6);
+        readInFromFile.add(5);
+        readInFromFile.add(3);
+    }
+
+    /**
+     * Lets user decide how many dice to play with, how many sides each dice
+     * has and the number of rolls they get
+     *
+     * @param readInSettings
+     */
+    public void userSelectedSettings(ArrayList<Integer> readInSettings){
+        String changeConfig;
+
+        // Report read in settings to the user
+        System.out.print("You are playing with " + readInSettings.get(1));
+        System.out.println(" " + readInSettings.get(0) + "-sided dice");
+        System.out.print("You get " + readInSettings.get(2));
+        System.out.println(" rolls per hand");
+
+        // Asks the user if they want to change the configuration
+        System.out.print("\nEnter 'y' if you would like to change ");
+        System.out.print("the configuration ");
+        changeConfig = getInput.nextLine();
+
+        // Changes the configuration if the user wants
+        if(changeConfig.charAt(0) == 'y'){
+            System.out.print("Enter the number of sides on each die ");
+            userSettings.add(getInput.nextInt());
+            System.out.print("\nEnter the number of dice in play ");
+            userSettings.add(getInput.nextInt());
+            System.out.print("\nEnter the number of rolls per hand ");
+            userSettings.add(getInput.nextInt());
+            System.out.print("\n");
+        }
+        else{
+            userSettings.add(6);
+            userSettings.add(5);
+            userSettings.add(3);
+        }
+    }
 
     /**
      * Getter for the full hand array
@@ -117,8 +166,10 @@ public class HandOfDice {
      * Calls all functions for the dice roll to shorten main
      */
     public void callDiceRollingMethods(){
+        readInConfig();
+        userSelectedSettings(readInFromFile);
         // Initial roll
-        rollHand(5);
+        rollHand(userSettings.get(1));
         outputRoll();
 
         // re roll number 1

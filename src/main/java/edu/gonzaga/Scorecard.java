@@ -35,52 +35,43 @@ public class Scorecard {
      * @param hand dice values values in a hand
      */
     public void scoreUpper(HandOfDice hand){
-        // Score aces
         Integer[] allDiceInHand = hand.getFullHand();
         for (int i = 0; i < 5; i++){
+            // Score Aces
             if (allDiceInHand[i] == 1){
                 aces++;
             }
-        }
 
-        // Score twos
-        for (int i = 0; i < 5; i++){
-            if (allDiceInHand[i] == 2){
+            //Score Twos
+            else if (allDiceInHand[i] == 2){
                 twos++;
             }
-        }
-        twos = twos * 2;
 
-        // Score threes
-        for (int i = 0; i < 5; i++){
-            if (allDiceInHand[i] == 3){
+            // Score threes
+            else if (allDiceInHand[i] == 3){
                 threes++;
             }
-        }
-        threes = threes * 3;
 
-        // Score fours
-        for (int i = 0; i < 5; i++){
-            if (allDiceInHand[i] == 4){
+            // Score fours
+            else if (allDiceInHand[i] == 4){
                 fours++;
             }
-        }
-        fours = fours * 4;
 
-        // Score fives
-        for (int i = 0; i < 5; i++){
-            if (allDiceInHand[i] == 5){
+            // Score Fives
+            else if (allDiceInHand[i] == 5){
                 fives++;
             }
-        }
-        fives = fives * 5;
 
-        // Score sixes
-        for (int i = 0; i < 5; i++){
-            if (allDiceInHand[i] == 6){
+            // Score Sixes
+            else if (allDiceInHand[i] == 6){
                 sixes++;
             }
         }
+        // Multipliers for each number score
+        twos = twos * 2;
+        threes = threes * 3;
+        fours = fours * 4;
+        fives = fives * 5;
         sixes = sixes * 6;
     }
 

@@ -96,7 +96,7 @@ public class Scorecard {
         Integer[] allDiceInHand = hand.getFullHand();
 
         // Scores three of a kind
-        if (numMatchingDice == 3){
+        if (numMatchingDice == 3 || numMatchingDice == 4){
             for (int i = 0; i < 5; i++){
                 tempScore += allDiceInHand[i];
             }

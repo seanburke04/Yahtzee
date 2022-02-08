@@ -85,7 +85,7 @@ public class HandOfDice {
     /**
      * Getter for the userSettings array
      *
-     * @return full hand array
+     * @return userSettings array
      */
     public ArrayList<Integer> getUserSettings(){return userSettings;}
 

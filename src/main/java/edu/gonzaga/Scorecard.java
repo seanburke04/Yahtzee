@@ -12,6 +12,7 @@ package edu.gonzaga;
 /**
 * Class to handle scoring
 */
+import java.util.ArrayList;
 
 public class Scorecard {
 
@@ -35,35 +36,35 @@ public class Scorecard {
      * @param hand dice values values in a hand
      */
     public void scoreUpper(HandOfDice hand){
-        Integer[] allDiceInHand = hand.getFullHand();
+        ArrayList<Integer> allDiceInHand = hand.getFullHand();
         for (int i = 0; i < 5; i++){
             // Score Aces
-            if (allDiceInHand[i] == 1){
+            if (allDiceInHand.get(i) == 1){
                 aces++;
             }
 
             //Score Twos
-            else if (allDiceInHand[i] == 2){
+            else if (allDiceInHand.get(i) == 2){
                 twos++;
             }
 
             // Score threes
-            else if (allDiceInHand[i] == 3){
+            else if (allDiceInHand.get(i) == 3){
                 threes++;
             }
 
             // Score fours
-            else if (allDiceInHand[i] == 4){
+            else if (allDiceInHand.get(i) == 4){
                 fours++;
             }
 
             // Score Fives
-            else if (allDiceInHand[i] == 5){
+            else if (allDiceInHand.get(i) == 5){
                 fives++;
             }
 
             // Score Sixes
-            else if (allDiceInHand[i] == 6){
+            else if (allDiceInHand.get(i) == 6){
                 sixes++;
             }
         }
@@ -84,12 +85,12 @@ public class Scorecard {
         int numMatchingDice = matching(hand);
         int lengthOfStraight = sequentialDice(hand);
         int tempScore = 0;
-        Integer[] allDiceInHand = hand.getFullHand();
+        ArrayList<Integer> allDiceInHand = hand.getFullHand();
 
         // Scores three of a kind
         if (numMatchingDice == 3 || numMatchingDice == 4){
             for (int i = 0; i < 5; i++){
-                tempScore += allDiceInHand[i];
+                tempScore += allDiceInHand.get(i);
             }
             threeOfAKind = tempScore;
             tempScore = 0;
@@ -101,7 +102,7 @@ public class Scorecard {
         // Scores 4 of a kind
         if (numMatchingDice == 4){
             for (int i = 0; i < 5; i++){
-                tempScore += allDiceInHand[i];
+                tempScore += allDiceInHand.get(i);
             }
             fourOfAKind = tempScore;
             tempScore = 0;
@@ -141,7 +142,7 @@ public class Scorecard {
 
         // Scores Chance
         for (int i = 0; i < 5; i++){
-            chance += allDiceInHand[i];
+            chance += allDiceInHand.get(i);
         }
     }
 
@@ -154,13 +155,13 @@ public class Scorecard {
     private int matching(HandOfDice hand){
         int numMatchingDice = 0;
         int currentNumMatchingDice = 0;
-        Integer[] allDiceInHand = hand.getFullHand();
+        ArrayList<Integer> allDiceInHand = hand.getFullHand();
 
         for (int i = 0; i < 7; i++){
             currentNumMatchingDice = 0;
 
             for (int j = 0; j < 5; j++){
-                if (allDiceInHand[j] == i){
+                if (allDiceInHand.get(j) == i){
                     currentNumMatchingDice++;
                 }
             }
@@ -179,13 +180,13 @@ public class Scorecard {
      */
     private int sequentialDice(HandOfDice hand){
         int lengthOfSequence = 1;
-        Integer[] allDiceInHand = hand.getFullHand();
+        ArrayList<Integer> allDiceInHand = hand.getFullHand();
 
         for (int i = 0; i < 5; i++){
             if (i == 0){
                 lengthOfSequence = 1;
             }
-            else if (allDiceInHand[i] == allDiceInHand[i - 1] + 1){
+            else if (allDiceInHand.get(i) == allDiceInHand.get(i - 1) + 1){
                 lengthOfSequence++;
             }
         }
@@ -199,20 +200,20 @@ public class Scorecard {
      * @return truth value for if there is a Full House
      */
     private Boolean fullHouseCheck(HandOfDice hand){
-        Integer[] allDiceInHand = hand.getFullHand();
+        ArrayList<Integer> allDiceInHand = hand.getFullHand();
 
-        if ((allDiceInHand[0] == allDiceInHand[1]) && (allDiceInHand[0] ==
-                allDiceInHand[2])){
-            if (allDiceInHand[3] == allDiceInHand[4]){
+        if ((allDiceInHand.get(0) == allDiceInHand.get(1)) && (allDiceInHand.get(0) ==
+                allDiceInHand.get(2))){
+            if (allDiceInHand.get(3) == allDiceInHand.get(4)){
                 return true;
             }
             else{
                 return false;
             }
         }
-        else if (allDiceInHand[0] == allDiceInHand[1]){
-            if ((allDiceInHand[2] == allDiceInHand[3]) && allDiceInHand[2] ==
-                    allDiceInHand[4]){
+        else if (allDiceInHand.get(0) == allDiceInHand.get(1)){
+            if ((allDiceInHand.get(2) == allDiceInHand.get(3)) && allDiceInHand.get(2) ==
+                    allDiceInHand.get(4)){
                 return true;
             }
             else{

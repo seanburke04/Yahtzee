@@ -14,51 +14,45 @@ package edu.gonzaga;
 */
 
 import java.util.Scanner;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.*;
 
 public class HandOfDice {
 
     Scanner getInput = new Scanner(System.in);
 
-    private Die die1 = new Die();
-    private Die die2 = new Die();
-    private Die die3 = new Die();
-    private Die die4 = new Die();
-    private Die die5 = new Die();
+    private Die singleDie = new Die();
     private String userSelectionReRoll;
-    private Integer[] fullHand = new Integer[5]; // Array for the hand of dice
+    private ArrayList<Integer> fullHand = new ArrayList<Integer>(); // Array for the hand of dice
 
     /**
      * Getter for the full hand array
      *
      * @return full hand array
      */
-    public Integer[] getFullHand(){return fullHand;}
+    public ArrayList<Integer> getFullHand(){return fullHand;}
 
     /**
      * Rolls a set of dice for a full hand
      */
-    public void rollHand(){
-        die1.roll();
-        die2.roll();
-        die3.roll();
-        die4.roll();
-        die5.roll();
-
-        fullHand[0] = die1.getSideUp();
-        fullHand[1] = die2.getSideUp();
-        fullHand[2] = die3.getSideUp();
-        fullHand[3] = die4.getSideUp();
-        fullHand[4] = die5.getSideUp();
+    public void rollHand(Integer numDice){
+        for (Integer i = 0; i < numDice; i++){
+            fullHand.add(singleDie.getSideUp());
+            singleDie.roll();
+            fullHand.set(i, singleDie.getSideUp());
+        }
     }
 
     /**
      * Outputs the roll of a full hand to the console
      */
     public void outputRoll(){
-        System.out.print("Your roll was: " + fullHand[0] + " ");
-        System.out.print(fullHand[1] + " " + fullHand[2] + " " + fullHand[3]);
-        System.out.println(" " + fullHand[4]);
+        System.out.print("Your roll was:");
+
+        for (Integer i = 0; i < fullHand.size(); i++){
+            System.out.print(" " + fullHand.get(i));
+        }
+        System.out.print("\n");
     }
 
     /**
@@ -96,40 +90,27 @@ public class HandOfDice {
      * Re rolls all the dice according to the user's specifications
      */
     public void reRollDice(){
+        Integer sideUp = singleDie.getSideUp();
+
         for (int i = 0; i < userSelectionReRoll.length(); i++){
             if (userSelectionReRoll.charAt(i) == 'n'){
-                if (i == 0){
-                    die1.roll();
-                }
-                else if (i == 1){
-                    die2.roll();
-                }
-                else if (i == 2){
-                    die3.roll();
-                }
-                else if (i == 3){
-                    die4.roll();
-                }
-                else if (i == 4){
-                    die5.roll();
-                }
+                singleDie.roll();
+                fullHand.set(i, sideUp);
             }
         }
-        fullHand[0] = die1.getSideUp();
-        fullHand[1] = die2.getSideUp();
-        fullHand[2] = die3.getSideUp();
-        fullHand[3] = die4.getSideUp();
-        fullHand[4] = die5.getSideUp();
     }
 
     /**
      * Sorts the dice in ascending order and prints it to the console
      */
     public void sortDice(){
-        Arrays.sort(fullHand);
-        System.out.print("Your sorted hand is: " + fullHand[0] + " ");
-        System.out.print(fullHand[1] + " " + fullHand[2] + " " + fullHand[3]);
-        System.out.println(" " + fullHand[4]);
+        Collections.sort(fullHand);
+
+        System.out.print("Your sorted hand is:");
+        for (Integer i = 0; i < fullHand.size(); i++){
+            System.out.print(" " + fullHand.get(i));
+        }
+        System.out.print("\n");
     }
 
     /**
@@ -137,7 +118,7 @@ public class HandOfDice {
      */
     public void callDiceRollingMethods(){
         // Initial roll
-        rollHand();
+        rollHand(5);
         outputRoll();
 
         // re roll number 1

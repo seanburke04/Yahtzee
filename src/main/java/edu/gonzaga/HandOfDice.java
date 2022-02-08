@@ -67,6 +67,7 @@ public class HandOfDice {
             userSettings.add(getInput.nextInt());
             System.out.print("\n");
         }
+        // Else set default game values
         else{
             userSettings.add(6);
             userSettings.add(5);
@@ -80,6 +81,13 @@ public class HandOfDice {
      * @return full hand array
      */
     public ArrayList<Integer> getFullHand(){return fullHand;}
+
+    /**
+     * Getter for the userSettings array
+     *
+     * @return full hand array
+     */
+    public ArrayList<Integer> getUserSettings(){return userSettings;}
 
     /**
      * Rolls a set of dice for a full hand

@@ -20,6 +20,7 @@ import java.util.*;
 public class HandOfDice {
 
     Scanner getInput = new Scanner(System.in);
+    Scanner configInput = new Scanner(System.in);
 
     private Die singleDie = new Die();
     private String userSelectionReRoll;
@@ -55,16 +56,16 @@ public class HandOfDice {
         // Asks the user if they want to change the configuration
         System.out.print("\nEnter 'y' if you would like to change ");
         System.out.print("the configuration ");
-        changeConfig = getInput.nextLine();
+        changeConfig = configInput.nextLine();
 
         // Changes the configuration if the user wants
         if(changeConfig.charAt(0) == 'y'){
             System.out.print("Enter the number of sides on each die ");
-            userSettings.add(getInput.nextInt());
+            userSettings.add(configInput.nextInt());
             System.out.print("\nEnter the number of dice in play ");
-            userSettings.add(getInput.nextInt());
+            userSettings.add(configInput.nextInt());
             System.out.print("\nEnter the number of rolls per hand ");
-            userSettings.add(getInput.nextInt());
+            userSettings.add(configInput.nextInt());
             System.out.print("\n");
         }
         // Else set default game values

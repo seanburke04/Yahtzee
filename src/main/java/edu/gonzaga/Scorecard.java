@@ -216,15 +216,6 @@ public class Scorecard {
         for (Integer i = 0; i < upperScores.size(); i++){
             System.out.println("Score " + upperScores.get(i) + " on the " + (i + 1) + " line");
         }
-        /*
-        System.out.println("Score " + aces + " on the 1 line");
-        System.out.println("Score " + twos + " on the 2 line");
-        System.out.println("Score " + threes + " on the 3 line");
-        System.out.println("Score " + fours + " on the 4 line");
-        System.out.println("Score " + fives + " on the 5 line");
-        System.out.println("Score " + sixes + " on the 6 line");
-
-         */
 
         // Outputs the score for the lower portion of the scorecard
         System.out.println("Score " + threeOfAKind + " on the 3 of a Kind " +

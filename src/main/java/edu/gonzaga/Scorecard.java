@@ -72,7 +72,7 @@ public class Scorecard {
 
         // Scores three of a kind
         if (numMatchingDice == 3 || numMatchingDice == 4){
-            for (int i = 0; i < 5; i++){
+            for (int i = 0; i < allDiceInHand.size(); i++){
                 tempScore += allDiceInHand.get(i);
             }
             threeOfAKind = tempScore;
@@ -84,7 +84,7 @@ public class Scorecard {
 
         // Scores 4 of a kind
         if (numMatchingDice == 4){
-            for (int i = 0; i < 5; i++){
+            for (int i = 0; i < allDiceInHand.size(); i++){
                 tempScore += allDiceInHand.get(i);
             }
             fourOfAKind = tempScore;
@@ -143,7 +143,7 @@ public class Scorecard {
         for (int i = 0; i < 7; i++){
             currentNumMatchingDice = 0;
 
-            for (int j = 0; j < 5; j++){
+            for (int j = 0; j < allDiceInHand.size(); j++){
                 if (allDiceInHand.get(j) == i){
                     currentNumMatchingDice++;
                 }
@@ -165,7 +165,7 @@ public class Scorecard {
         int lengthOfSequence = 1;
         ArrayList<Integer> allDiceInHand = hand.getFullHand();
 
-        for (int i = 0; i < 5; i++){
+        for (int i = 0; i < allDiceInHand.size(); i++){
             if (i == 0){
                 lengthOfSequence = 1;
             }

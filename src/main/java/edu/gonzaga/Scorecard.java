@@ -16,12 +16,9 @@ import java.util.ArrayList;
 
 public class Scorecard {
 
-    private int aces = 0;
-    private int twos = 0;
-    private int threes = 0;
-    private int fours = 0;
-    private int fives = 0;
-    private int sixes = 0;
+    private ArrayList<Integer> userSettings = new ArrayList<Integer>();
+    private ArrayList<Integer> upperScores = new ArrayList<Integer>();
+
     private int threeOfAKind;
     private int fourOfAKind;
     private int fullHouse;
@@ -37,43 +34,29 @@ public class Scorecard {
      */
     public void scoreUpper(HandOfDice hand){
         ArrayList<Integer> allDiceInHand = hand.getFullHand();
-        for (int i = 0; i < 5; i++){
-            // Score Aces
-            if (allDiceInHand.get(i) == 1){
-                aces++;
-            }
+        userSettings = hand.getUserSettings();
+        Integer numSides = userSettings.get(0);
+        Integer count = 0;
 
-            //Score Twos
-            else if (allDiceInHand.get(i) == 2){
-                twos++;
-            }
-
-            // Score threes
-            else if (allDiceInHand.get(i) == 3){
-                threes++;
-            }
-
-            // Score fours
-            else if (allDiceInHand.get(i) == 4){
-                fours++;
-            }
-
-            // Score Fives
-            else if (allDiceInHand.get(i) == 5){
-                fives++;
-            }
-
-            // Score Sixes
-            else if (allDiceInHand.get(i) == 6){
-                sixes++;
-            }
+        for (Integer i = 0; i < numSides; i++) {
+            upperScores.add(0);
         }
-        // Multipliers for each number score
-        twos = twos * 2;
-        threes = threes * 3;
-        fours = fours * 4;
-        fives = fives * 5;
-        sixes = sixes * 6;
+
+       for (Integer j = 0; j < allDiceInHand.size(); j++){
+           for (Integer k = 0; k < allDiceInHand.size(); k++){
+               if (allDiceInHand.get(j) == allDiceInHand.get(k)){
+                   count++;
+               }
+           }
+
+           if (j == 0){
+               upperScores.set(0, count * allDiceInHand.get(j));
+           }
+           else{
+               upperScores.set(allDiceInHand.get(j) - 1, count * allDiceInHand.get(j));
+           }
+            count = 0;
+       }
     }
 
     /**
@@ -230,12 +213,18 @@ public class Scorecard {
      */
     public void outputScore(){
         // Outputs the score for the upper portion of the scorecard
+        for (Integer i = 0; i < upperScores.size(); i++){
+            System.out.println("Score " + upperScores.get(i) + " on the " + (i + 1) + " line");
+        }
+        /*
         System.out.println("Score " + aces + " on the 1 line");
         System.out.println("Score " + twos + " on the 2 line");
         System.out.println("Score " + threes + " on the 3 line");
         System.out.println("Score " + fours + " on the 4 line");
         System.out.println("Score " + fives + " on the 5 line");
         System.out.println("Score " + sixes + " on the 6 line");
+
+         */
 
         // Outputs the score for the lower portion of the scorecard
         System.out.println("Score " + threeOfAKind + " on the 3 of a Kind " +

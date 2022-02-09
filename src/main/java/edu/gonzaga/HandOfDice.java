@@ -22,7 +22,6 @@ public class HandOfDice {
     Scanner getInput = new Scanner(System.in);
     Scanner configInput = new Scanner(System.in);
 
-    private Die singleDie = new Die();
     private String userSelectionReRoll;
     private ArrayList<Integer> userSettings = new ArrayList<Integer>();
     private ArrayList<Integer> fullHand = new ArrayList<Integer>(); // Array for the hand of dice
@@ -94,6 +93,8 @@ public class HandOfDice {
      * Rolls a set of dice for a full hand
      */
     public void rollHand(Integer numDice){
+        Die singleDie = new Die(userSettings.get(0));
+
         for (Integer i = 0; i < numDice; i++){
             fullHand.add(singleDie.getSideUp());
             singleDie.roll();
@@ -117,42 +118,21 @@ public class HandOfDice {
      * Gets which dice to re roll from the user and verifies valid input
      */
     public void getWhichToReRoll(){
-        boolean isValid = false;
-
         System.out.println("Enter dice to keep (y or n) ");
         userSelectionReRoll = getInput.nextLine();
-
-        while (!isValid){
-            for (int i = 0; i < userSelectionReRoll.length(); i++){
-                if (userSelectionReRoll.charAt(i) != 'y' && userSelectionReRoll.charAt(i) != 'n'){
-                    System.out.println("Input invalid please try again");
-
-                    System.out.println("Enter dice to keep (y or n) ");
-                    userSelectionReRoll = getInput.nextLine();
-                }
-            }
-
-            if (userSelectionReRoll.length() != 5){
-                System.out.println("Input invalid please try again");
-
-                System.out.println("Enter dice to keep (y or n) ");
-                userSelectionReRoll = getInput.nextLine();
-            }
-            else{
-                isValid = true;
-            }
-        }
     }
 
     /**
      * Re rolls all the dice according to the user's specifications
      */
     public void reRollDice(){
-        Integer sideUp = singleDie.getSideUp();
+        Die singleDie = new Die(userSettings.get(0));
+        Integer sideUp;
 
         for (int i = 0; i < userSelectionReRoll.length(); i++){
             if (userSelectionReRoll.charAt(i) == 'n'){
                 singleDie.roll();
+                sideUp = singleDie.getSideUp();
                 fullHand.set(i, sideUp);
             }
         }

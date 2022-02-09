@@ -161,6 +161,16 @@ public class HandOfDice {
         rollHand(userSettings.get(1));
         outputRoll();
 
+        // Handle all re rolls
+        if (userSettings.get(2) > 1){
+            for (Integer i = 1; i < userSettings.get(2); i++){
+                getWhichToReRoll();
+                reRollDice();
+                outputRoll();
+            }
+        }
+
+        /*
         // re roll number 1
         getWhichToReRoll();
         reRollDice();
@@ -170,6 +180,8 @@ public class HandOfDice {
         getWhichToReRoll();
         reRollDice();
         outputRoll();
+
+         */
 
         sortDice();
     }

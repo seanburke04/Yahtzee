@@ -140,7 +140,7 @@ public class Scorecard {
         int currentNumMatchingDice = 0;
         ArrayList<Integer> allDiceInHand = hand.getFullHand();
 
-        for (int i = 0; i < 7; i++){
+        for (int i = 0; i < allDiceInHand.size(); i++){
             currentNumMatchingDice = 0;
 
             for (int j = 0; j < allDiceInHand.size(); j++){

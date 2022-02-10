@@ -49,12 +49,8 @@ public class Scorecard {
                }
            }
 
-           if (j == 0){
-               upperScores.set(0, count * allDiceInHand.get(j));
-           }
-           else{
-               upperScores.set(allDiceInHand.get(j) - 1, count * allDiceInHand.get(j));
-           }
+           upperScores.set(allDiceInHand.get(j) - 1, count * allDiceInHand.get(j));
+
             count = 0;
        }
     }

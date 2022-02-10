@@ -170,19 +170,6 @@ public class HandOfDice {
             }
         }
 
-        /*
-        // re roll number 1
-        getWhichToReRoll();
-        reRollDice();
-        outputRoll();
-
-        // re roll number 2
-        getWhichToReRoll();
-        reRollDice();
-        outputRoll();
-
-         */
-
         sortDice();
     }
 }

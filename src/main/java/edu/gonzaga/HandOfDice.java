@@ -14,6 +14,8 @@ package edu.gonzaga;
 */
 
 import java.io.FileNotFoundException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.*;
@@ -33,9 +35,8 @@ public class HandOfDice {
      * Reads in values from the file and puts the values in an array
      */
     public void readInConfig(){
-        String home = System.getProperty("user.home");
-        java.nio.file.Path filePath = java.nio.file.Paths.get(home, "IdeaProjects", "yahtzee-seanburke04", "yahtzeeConfig.txt");
-        boolean directoryExists = java.nio.file.Files.exists(filePath);
+        String currentDirectory = System.getProperty("user.dir");
+        java.nio.file.Path filePath = java.nio.file.Paths.get(currentDirectory, "yahtzeeConfig.txt");
 
         try{
             Scanner readFile = new Scanner(new File(filePath.toString()));

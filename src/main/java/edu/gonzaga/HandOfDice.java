@@ -13,9 +13,11 @@ package edu.gonzaga;
 * Class to handle each hand of dice
 */
 
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.*;
+import java.io.File;
 
 public class HandOfDice {
 
@@ -31,10 +33,20 @@ public class HandOfDice {
      * Reads in values from the file and puts the values in an array
      */
     public void readInConfig(){
-        // Default Values
-        readInFromFile.add(6);
-        readInFromFile.add(5);
-        readInFromFile.add(3);
+        String home = System.getProperty("user.home");
+        java.nio.file.Path filePath = java.nio.file.Paths.get(home, "IdeaProjects", "yahtzee-seanburke04", "yahtzeeConfig.txt");
+        boolean directoryExists = java.nio.file.Files.exists(filePath);
+
+        try{
+            Scanner readFile = new Scanner(new File(filePath.toString()));
+
+            while (readFile.hasNextLine()){
+                readInFromFile.add(readFile.nextInt());
+            }
+        }
+        catch(FileNotFoundException ex){
+            ex.printStackTrace();
+        }
     }
 
     /**

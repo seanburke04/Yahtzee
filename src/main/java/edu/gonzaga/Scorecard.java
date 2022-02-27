@@ -14,7 +14,7 @@ package edu.gonzaga;
 */
 import java.util.ArrayList;
 
-public class Scorecard {
+public abstract class Scorecard {
     /**
      * Finds the number of dice that match in a hand
      *

@@ -2,8 +2,7 @@ package edu.gonzaga;
 
 import java.util.ArrayList;
 
-/** Class to score ThreeOfAKind. */
-public class ThreeOfAKind extends Scorecard{
+public class FourOfAKind extends Scorecard {
     private Integer score;
     private Boolean isUsed;
     private static final Integer DEFAULT_SCORE = 0;
@@ -12,7 +11,7 @@ public class ThreeOfAKind extends Scorecard{
     /**
      * Default constructor
      */
-    public void ThreeOfAKind(){
+    public void FourOfAKind(){
         score = DEFAULT_SCORE;
         isUsed = DEFAULT_USE;
     }
@@ -21,13 +20,13 @@ public class ThreeOfAKind extends Scorecard{
      * Constructor that calculates the score
      * @param allDiceInHand dice values in a hand
      */
-    public void ThreeOfAKind(ArrayList<Integer> allDiceInHand){
+    public void FourOfAKind(ArrayList<Integer> allDiceInHand){
         isUsed = DEFAULT_USE;
 
         Integer numMatchingDice = matching(allDiceInHand);
 
-        if (numMatchingDice >= 3){
-            for (int i = 0; i < allDiceInHand.size(); i++){
+        if(numMatchingDice >= 4){
+            for(int i = 0; i < allDiceInHand.size(); i++){
                 score += allDiceInHand.get(i);
             }
         }
@@ -59,6 +58,6 @@ public class ThreeOfAKind extends Scorecard{
      */
     @Override
     public void outputScore() {
-        System.out.println("Score " + score + " on the three of a Kind line");
+        System.out.println("Score " + score + " on the four of a Kind line");
     }
 }

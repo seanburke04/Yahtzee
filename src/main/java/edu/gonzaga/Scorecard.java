@@ -100,5 +100,6 @@ public class Scorecard {
     public void outputScore(){
         // Outputs the score for the upper portion of the scorecard
 
+        //FIX maybe make abstract?
     }
 }

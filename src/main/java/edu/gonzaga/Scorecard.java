@@ -24,7 +24,7 @@ public abstract class Scorecard {
      * @param allDiceInHand dice values in a hand
      * @return number of matching dice
      */
-    public int matching(ArrayList<Integer> allDiceInHand){
+    public Integer matching(ArrayList<Integer> allDiceInHand){
         int numMatchingDice = 0;
         int currentNumMatchingDice = 0;
 
@@ -49,7 +49,7 @@ public abstract class Scorecard {
      * @param allDiceInHand dice values in a hand
      * @return length of the sequence (straight)
      */
-    private int sequentialDice(ArrayList<Integer> allDiceInHand){
+    public Integer sequentialDice(ArrayList<Integer> allDiceInHand){
         int lengthOfSequence = 1;
 
         for (int i = 0; i < allDiceInHand.size(); i++){

@@ -15,116 +15,6 @@ package edu.gonzaga;
 import java.util.ArrayList;
 
 public class Scorecard {
-
-    private ArrayList<Integer> userSettings = new ArrayList<Integer>();
-    private ArrayList<Integer> upperScores = new ArrayList<Integer>();
-
-    private int threeOfAKind;
-    private int fourOfAKind;
-    private int fullHouse;
-    private int smallStraight;
-    private int largeStraight;
-    private int yahtzee;
-    private int chance = 0;
-
-    /**
-     * Computes the scores for the upper part of the scorecard
-     *
-     * @param hand dice values values in a hand
-     */
-    public void scoreUpper(HandOfDice hand){
-        ArrayList<Integer> allDiceInHand = hand.getFullHand();
-        userSettings = hand.getUserSettings();
-        Integer numSides = userSettings.get(0);
-        Integer count = 0;
-
-        for (Integer i = 0; i < numSides; i++) {
-            upperScores.add(0);
-        }
-
-       for (Integer j = 0; j < allDiceInHand.size(); j++){
-           for (Integer k = 0; k < allDiceInHand.size(); k++){
-               if (allDiceInHand.get(j) == allDiceInHand.get(k)){
-                   count++;
-               }
-           }
-
-           upperScores.set(allDiceInHand.get(j) - 1, count * allDiceInHand.get(j));
-
-            count = 0;
-       }
-    }
-
-    /**
-     * Computes the scores for the lower part of the scorecard
-     *
-     * @param hand dice values values in a hand
-     */
-    public void scoreLower(HandOfDice hand){
-        int numMatchingDice = matching(hand);
-        int lengthOfStraight = sequentialDice(hand);
-        int tempScore = 0;
-        ArrayList<Integer> allDiceInHand = hand.getFullHand();
-
-        // Scores three of a kind
-        if (numMatchingDice == 3 || numMatchingDice == 4){
-            for (int i = 0; i < allDiceInHand.size(); i++){
-                tempScore += allDiceInHand.get(i);
-            }
-            threeOfAKind = tempScore;
-            tempScore = 0;
-        }
-        else{
-            threeOfAKind = 0;
-        }
-
-        // Scores 4 of a kind
-        if (numMatchingDice == 4){
-            for (int i = 0; i < allDiceInHand.size(); i++){
-                tempScore += allDiceInHand.get(i);
-            }
-            fourOfAKind = tempScore;
-            tempScore = 0;
-        }
-        else{
-            fourOfAKind = 0;
-        }
-
-        // Scores Full House
-        if (fullHouseCheck(hand)){
-            fullHouse = 25;
-        }
-        else{
-            fullHouse = 0;
-        }
-
-        // Scores Small Straight
-        if (lengthOfStraight == 4){
-            smallStraight = 30;
-        }
-        else{
-            smallStraight = 0;
-        }
-
-        // Scores Large Straight
-        if (lengthOfStraight == 5){
-            largeStraight = 40;
-        }
-        else{
-            largeStraight = 0;
-        }
-
-        // Scores Yahtzee
-        if (numMatchingDice == 5){
-            yahtzee = 50;
-        }
-
-        // Scores Chance
-        for (int i = 0; i < 5; i++){
-            chance += allDiceInHand.get(i);
-        }
-    }
-
     /**
      * Finds the number of dice that match in a hand
      *
@@ -209,21 +99,6 @@ public class Scorecard {
      */
     public void outputScore(){
         // Outputs the score for the upper portion of the scorecard
-        for (Integer i = 0; i < upperScores.size(); i++){
-            System.out.println("Score " + upperScores.get(i) + " on the " + (i + 1) + " line");
-        }
 
-        // Outputs the score for the lower portion of the scorecard
-        System.out.println("Score " + threeOfAKind + " on the 3 of a Kind " +
-                "line");
-        System.out.println("Score " + fourOfAKind + " on the 4 of a Kind " +
-                "line");
-        System.out.println("Score " + fullHouse + " on the Full House line");
-        System.out.println("Score " + smallStraight + " on the Small " +
-                "Straight line");
-        System.out.println("Score " + largeStraight + " on the Large" +
-                "Straight line");
-        System.out.println("Score " + yahtzee + " on the Yahtzee line");
-        System.out.println("Score " + chance + " on the Chance line");
     }
 }

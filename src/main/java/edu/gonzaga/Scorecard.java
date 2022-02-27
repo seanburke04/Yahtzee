@@ -15,16 +15,18 @@ package edu.gonzaga;
 import java.util.ArrayList;
 
 public abstract class Scorecard {
+    HandOfDice hand = new HandOfDice();
+    ArrayList<Integer> allDiceInHand = hand.getFullHand();
+
     /**
      * Finds the number of dice that match in a hand
      *
-     * @param hand dice values values in a hand
+     * @param allDiceInHand dice values in a hand
      * @return number of matching dice
      */
-    private int matching(HandOfDice hand){
+    public int matching(ArrayList<Integer> allDiceInHand){
         int numMatchingDice = 0;
         int currentNumMatchingDice = 0;
-        ArrayList<Integer> allDiceInHand = hand.getFullHand();
 
         for (int i = 0; i < allDiceInHand.size(); i++){
             currentNumMatchingDice = 0;
@@ -44,12 +46,11 @@ public abstract class Scorecard {
     /**
      * Finds how many sequential dice there are in a hand (length of straight)
      *
-     * @param hand dice values values in a hand
+     * @param allDiceInHand dice values in a hand
      * @return length of the sequence (straight)
      */
-    private int sequentialDice(HandOfDice hand){
+    private int sequentialDice(ArrayList<Integer> allDiceInHand){
         int lengthOfSequence = 1;
-        ArrayList<Integer> allDiceInHand = hand.getFullHand();
 
         for (int i = 0; i < allDiceInHand.size(); i++){
             if (i == 0){
@@ -65,11 +66,10 @@ public abstract class Scorecard {
     /**
      * Checks if the hand of dice contains a Full House
      *
-     * @param hand dice values in a hand
+     * @param allDiceInHand dice values in a hand
      * @return truth value for if there is a Full House
      */
-    private Boolean fullHouseCheck(HandOfDice hand){
-        ArrayList<Integer> allDiceInHand = hand.getFullHand();
+    private Boolean fullHouseCheck(ArrayList<Integer> allDiceInHand){
 
         if ((allDiceInHand.get(0) == allDiceInHand.get(1)) && (allDiceInHand.get(0) ==
                 allDiceInHand.get(2))){
@@ -97,9 +97,5 @@ public abstract class Scorecard {
     /**
      * Outputs the calculated scores to the console
      */
-    public void outputScore(){
-        // Outputs the score for the upper portion of the scorecard
-
-        //FIX maybe make abstract?
-    }
+    public abstract void outputScore();
 }

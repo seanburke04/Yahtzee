@@ -69,7 +69,7 @@ public abstract class Scorecard {
      * @param allDiceInHand dice values in a hand
      * @return truth value for if there is a Full House
      */
-    private Boolean fullHouseCheck(ArrayList<Integer> allDiceInHand){
+    public Boolean fullHouseCheck(ArrayList<Integer> allDiceInHand){
 
         if ((allDiceInHand.get(0) == allDiceInHand.get(1)) && (allDiceInHand.get(0) ==
                 allDiceInHand.get(2))){

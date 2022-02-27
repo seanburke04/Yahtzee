@@ -2,7 +2,7 @@ package edu.gonzaga;
 
 import java.util.ArrayList;
 
-public class FourOfAKind extends Scorecard {
+public class FullHouse extends Scorecard{
     private Integer score;
     private Boolean isUsed;
     private static final Integer DEFAULT_SCORE = 0;
@@ -11,7 +11,7 @@ public class FourOfAKind extends Scorecard {
     /**
      * Default constructor
      */
-    public void FourOfAKind(){
+    public void FullHouse(){
         score = DEFAULT_SCORE;
         isUsed = DEFAULT_USE;
     }
@@ -20,15 +20,11 @@ public class FourOfAKind extends Scorecard {
      * Constructor that calculates the score
      * @param allDiceInHand dice values in a hand
      */
-    public void FourOfAKind(ArrayList<Integer> allDiceInHand){
+    public void FullHouse(ArrayList<Integer> allDiceInHand){
         isUsed = DEFAULT_USE;
 
-        Integer numMatchingDice = matching(allDiceInHand);
-
-        if(numMatchingDice >= 4){
-            for(int i = 0; i < allDiceInHand.size(); i++){
-                score += allDiceInHand.get(i);
-            }
+        if(fullHouseCheck(allDiceInHand)){
+            score = 25;
         }
         else{
             score = DEFAULT_SCORE;
@@ -58,6 +54,6 @@ public class FourOfAKind extends Scorecard {
      */
     @Override
     public void outputScore() {
-        System.out.println("Score " + score + " on the Four of a Kind line");
+        System.out.println("Score " + score + " on the Full House line");
     }
 }

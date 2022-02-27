@@ -59,6 +59,6 @@ public class ThreeOfAKind extends Scorecard{
      */
     @Override
     public void outputScore() {
-        System.out.println("Score " + score + " on the three of a Kind line");
+        System.out.println("Score " + score + " on the Three of a Kind line");
     }
 }

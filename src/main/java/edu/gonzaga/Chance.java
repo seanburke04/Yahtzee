@@ -11,7 +11,8 @@ public class Chance extends Scorecard{
     /**
      * Default constructor
      */
-    public void Chance(){
+    public Chance() {
+        super();
         score = DEFAULT_SCORE;
         isUsed = DEFAULT_USE;
     }
@@ -20,7 +21,9 @@ public class Chance extends Scorecard{
      * Constructor that calculates the score
      * @param allDiceInHand dice values in a hand
      */
-    public void Chance(ArrayList<Integer> allDiceInHand){
+    public Chance(ArrayList<Integer> allDiceInHand){
+        super();
+        score = DEFAULT_SCORE;
         isUsed = DEFAULT_USE;
 
         for(int i = 0; i < allDiceInHand.size(); i++){

@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.UpperCase;
+
 import java.util.ArrayList;
 
 
@@ -11,6 +13,24 @@ public class GeneralTest {
     @Test
     void alwaysTrue() {
         Assertions.assertTrue(true);
+    }
+
+    @Test
+    void scoreUpperTest1(){
+        ArrayList<Integer> actualScore;
+        Integer expectedScore = 3;
+        ArrayList<Integer> testHand = new ArrayList<>();
+        ArrayList<Integer> fakeUserSettings = new ArrayList<>();
+        fakeUserSettings.add(6);
+        testHand.add(1);
+        testHand.add(1);
+        testHand.add(1);
+        testHand.add(4);
+        testHand.add(5);
+
+        ScoreUpper scoreUpper1 = new ScoreUpper(testHand, fakeUserSettings);
+        actualScore = scoreUpper1.getScore();
+        assertEquals(expectedScore, actualScore.get(0));
     }
 
     @Test

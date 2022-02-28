@@ -39,6 +39,8 @@ public class ScoreUpper extends Scorecard{
                 }
             }
             scores.set(allDiceInHand.get(j) - 1, count * allDiceInHand.get(j));
+
+            count = 0;
         }
     }
 

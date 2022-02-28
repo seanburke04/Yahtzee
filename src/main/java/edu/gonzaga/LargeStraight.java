@@ -29,7 +29,7 @@ public class LargeStraight extends Scorecard{
         Integer lengthOfStraight = sequentialDice(allDiceInHand);
 
         if (lengthOfStraight == 5){
-            score = 30;
+            score = 40;
         }
         else{
             score = DEFAULT_SCORE;

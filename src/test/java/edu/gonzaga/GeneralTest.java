@@ -28,4 +28,55 @@ public class GeneralTest {
         actualScore = chanceScore.getScore();
         assertEquals(expectedScore, actualScore);
     }
+
+    /* Issue with this
+    @Test
+    void fourOfAKindTest(){
+        Integer actualScore;
+        Integer expectedScore = 21;
+        ArrayList<Integer> testHand = new ArrayList<>();
+        testHand.add(5);
+        testHand.add(5);
+        testHand.add(5);
+        testHand.add(5);
+        testHand.add(1);
+
+        FourOfAKind fourOfAKindScore = new FourOfAKind(testHand);
+        actualScore = fourOfAKindScore.getScore();
+        assertEquals(expectedScore, actualScore);
+    }
+    */
+
+    @Test
+    void smallStraightTest(){
+        Integer actualScore;
+        Integer expectedScore = 30;
+        ArrayList<Integer> testHand = new ArrayList<>();
+        testHand.add(1);
+        testHand.add(1);
+        testHand.add(2);
+        testHand.add(3);
+        testHand.add(4);
+
+        SmallStraight smallStraightTest = new SmallStraight(testHand);
+        actualScore = smallStraightTest.getScore();
+        assertEquals(expectedScore, actualScore);
+    }
+
+    @Test
+    void largeStraightTest(){
+        Integer actualScore;
+        Integer expectedScore = 40;
+        ArrayList<Integer> testHand = new ArrayList<>();
+        testHand.add(1);
+        testHand.add(2);
+        testHand.add(3);
+        testHand.add(4);
+        testHand.add(5);
+
+        LargeStraight largeStraightTest = new LargeStraight(testHand);
+        actualScore = largeStraightTest.getScore();
+        assertEquals(expectedScore, actualScore);
+    }
+
 }

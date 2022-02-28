@@ -46,6 +46,22 @@ public class GeneralTest {
     }
 
     @Test
+    void fullHouseTest(){
+        Integer actualScore;
+        Integer expectedScore = 25;
+        ArrayList<Integer> testHand = new ArrayList<>();
+        testHand.add(1);
+        testHand.add(1);
+        testHand.add(1);
+        testHand.add(2);
+        testHand.add(2);
+
+        FullHouse fullHouseTest = new FullHouse(testHand);
+        actualScore = fullHouseTest.getScore();
+        assertEquals(expectedScore, actualScore);
+    }
+
+    @Test
     void fourOfAKindTest(){
         Integer actualScore;
         Integer expectedScore = 9;
@@ -90,6 +106,22 @@ public class GeneralTest {
 
         LargeStraight largeStraightTest = new LargeStraight(testHand);
         actualScore = largeStraightTest.getScore();
+        assertEquals(expectedScore, actualScore);
+    }
+
+    @Test
+    void yahtzeeScoreTest(){
+        Integer actualScore;
+        Integer expectedScore = 50;
+        ArrayList<Integer> testHand = new ArrayList<>();
+        testHand.add(1);
+        testHand.add(1);
+        testHand.add(1);
+        testHand.add(1);
+        testHand.add(1);
+
+        YahtzeeScore yahtzeeScoreTest = new YahtzeeScore(testHand);
+        actualScore = yahtzeeScoreTest.getScore();
         assertEquals(expectedScore, actualScore);
     }
 

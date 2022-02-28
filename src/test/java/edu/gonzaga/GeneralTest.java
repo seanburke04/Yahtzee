@@ -29,23 +29,37 @@ public class GeneralTest {
         assertEquals(expectedScore, actualScore);
     }
 
-    /* Issue with this
+    @Test
+    void threeOfAKindTest(){
+        Integer actualScore;
+        Integer expectedScore = 12;
+        ArrayList<Integer> testHand = new ArrayList<>();
+        testHand.add(1);
+        testHand.add(1);
+        testHand.add(1);
+        testHand.add(4);
+        testHand.add(5);
+
+        ThreeOfAKind threeOfAKindScore = new ThreeOfAKind(testHand);
+        actualScore = threeOfAKindScore.getScore();
+        assertEquals(expectedScore, actualScore);
+    }
+
     @Test
     void fourOfAKindTest(){
         Integer actualScore;
-        Integer expectedScore = 21;
+        Integer expectedScore = 9;
         ArrayList<Integer> testHand = new ArrayList<>();
-        testHand.add(5);
-        testHand.add(5);
-        testHand.add(5);
-        testHand.add(5);
         testHand.add(1);
+        testHand.add(1);
+        testHand.add(1);
+        testHand.add(1);
+        testHand.add(5);
 
         FourOfAKind fourOfAKindScore = new FourOfAKind(testHand);
         actualScore = fourOfAKindScore.getScore();
         assertEquals(expectedScore, actualScore);
     }
-    */
 
     @Test
     void smallStraightTest(){

@@ -11,7 +11,8 @@ public class ScoreUpper extends Scorecard{
     /**
      * Default constructor
      */
-    public void ScoreUpper(){
+    public ScoreUpper(){
+        super();
         scores.add(DEFAULT_SCORE);
         isUsed.add(DEFAULT_USE);
     }
@@ -20,7 +21,8 @@ public class ScoreUpper extends Scorecard{
      * Constructor that calculates the score
      * @param allDiceInHand, userSettings dice values in a hand
      */
-    public void ScoreUpper(ArrayList<Integer> allDiceInHand, ArrayList<Integer> userSettings){
+    public ScoreUpper(ArrayList<Integer> allDiceInHand, ArrayList<Integer> userSettings){
+        super();
         Integer numSides = userSettings.get(0);
         Integer count = 0;
 

@@ -11,7 +11,8 @@ public class YahtzeeScore extends Scorecard{
     /**
      * Default constructor
      */
-    public void YahtzeeScore(){
+    public YahtzeeScore(){
+        super();
         score = DEFAULT_SCORE;
         isUsed = DEFAULT_USE;
     }
@@ -20,16 +21,15 @@ public class YahtzeeScore extends Scorecard{
      * Constructor that calculates the score
      * @param allDiceInHand dice values in a hand
      */
-    public void YahtzeeScore(ArrayList<Integer> allDiceInHand){
+    public YahtzeeScore(ArrayList<Integer> allDiceInHand){
+        super();
+        score = DEFAULT_SCORE;
         isUsed = DEFAULT_USE;
 
         Integer numMatchingDice = matching(allDiceInHand);
 
         if (numMatchingDice == allDiceInHand.size()){
             score = 50;
-        }
-        else{
-            score = DEFAULT_SCORE;
         }
     }
 

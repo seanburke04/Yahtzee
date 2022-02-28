@@ -12,7 +12,8 @@ public class ThreeOfAKind extends Scorecard{
     /**
      * Default constructor
      */
-    public void ThreeOfAKind(){
+    public ThreeOfAKind(){
+        super();
         score = DEFAULT_SCORE;
         isUsed = DEFAULT_USE;
     }
@@ -21,7 +22,9 @@ public class ThreeOfAKind extends Scorecard{
      * Constructor that calculates the score
      * @param allDiceInHand dice values in a hand
      */
-    public void ThreeOfAKind(ArrayList<Integer> allDiceInHand){
+    public ThreeOfAKind(ArrayList<Integer> allDiceInHand){
+        super();
+        score = DEFAULT_SCORE;
         isUsed = DEFAULT_USE;
 
         Integer numMatchingDice = matching(allDiceInHand);

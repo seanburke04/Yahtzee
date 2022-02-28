@@ -11,7 +11,8 @@ public class LargeStraight extends Scorecard{
     /**
      * Default constructor
      */
-    public void LargeStraight(){
+    public LargeStraight(){
+        super();
         score = DEFAULT_SCORE;
         isUsed = DEFAULT_USE;
     }
@@ -20,7 +21,9 @@ public class LargeStraight extends Scorecard{
      * Constructor that calculates the score
      * @param allDiceInHand dice values in a hand
      */
-    public void LargeStraight(ArrayList<Integer> allDiceInHand){
+    public LargeStraight(ArrayList<Integer> allDiceInHand){
+        super();
+        score = DEFAULT_SCORE;
         isUsed = DEFAULT_USE;
 
         Integer lengthOfStraight = sequentialDice(allDiceInHand);

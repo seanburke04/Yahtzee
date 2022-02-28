@@ -11,7 +11,8 @@ public class SmallStraight extends Scorecard{
     /**
      * Default constructor
      */
-    public void SmallStraight(){
+    public SmallStraight(){
+        super();
         score = DEFAULT_SCORE;
         isUsed = DEFAULT_USE;
     }
@@ -20,16 +21,15 @@ public class SmallStraight extends Scorecard{
      * Constructor that calculates the score
      * @param allDiceInHand dice values in a hand
      */
-    public void SmallStraight(ArrayList<Integer> allDiceInHand){
+    public SmallStraight(ArrayList<Integer> allDiceInHand){
+        super();
+        score = DEFAULT_SCORE;
         isUsed = DEFAULT_USE;
 
         Integer lengthOfStraight = sequentialDice(allDiceInHand);
 
         if (lengthOfStraight == 4){
             score = 30;
-        }
-        else{
-            score = DEFAULT_SCORE;
         }
     }
 

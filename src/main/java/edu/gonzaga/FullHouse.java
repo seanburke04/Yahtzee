@@ -11,7 +11,8 @@ public class FullHouse extends Scorecard{
     /**
      * Default constructor
      */
-    public void FullHouse(){
+    public FullHouse(){
+        super();
         score = DEFAULT_SCORE;
         isUsed = DEFAULT_USE;
     }
@@ -20,7 +21,9 @@ public class FullHouse extends Scorecard{
      * Constructor that calculates the score
      * @param allDiceInHand dice values in a hand
      */
-    public void FullHouse(ArrayList<Integer> allDiceInHand){
+    public FullHouse(ArrayList<Integer> allDiceInHand){
+        super();
+        score = DEFAULT_SCORE;
         isUsed = DEFAULT_USE;
 
         if(fullHouseCheck(allDiceInHand)){

@@ -11,7 +11,8 @@ public class FourOfAKind extends Scorecard {
     /**
      * Default constructor
      */
-    public void FourOfAKind(){
+    public FourOfAKind(){
+        super();
         score = DEFAULT_SCORE;
         isUsed = DEFAULT_USE;
     }
@@ -20,7 +21,9 @@ public class FourOfAKind extends Scorecard {
      * Constructor that calculates the score
      * @param allDiceInHand dice values in a hand
      */
-    public void FourOfAKind(ArrayList<Integer> allDiceInHand){
+    public FourOfAKind(ArrayList<Integer> allDiceInHand){
+        super();
+        score = DEFAULT_SCORE;
         isUsed = DEFAULT_USE;
 
         Integer numMatchingDice = matching(allDiceInHand);
@@ -29,9 +32,6 @@ public class FourOfAKind extends Scorecard {
             for(int i = 0; i < allDiceInHand.size(); i++){
                 score += allDiceInHand.get(i);
             }
-        }
-        else{
-            score = DEFAULT_SCORE;
         }
     }
 

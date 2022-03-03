@@ -35,6 +35,10 @@ public class ScoreUpper extends Scorecard{
         }
     }
 
+    /**
+     * Calculates the scores for the upper scorecard
+     * @param allDiceInHand hand of dice
+     */
     @Override
     public void calcScore(ArrayList<Integer> allDiceInHand){
         Integer count = 0;
@@ -59,36 +63,50 @@ public class ScoreUpper extends Scorecard{
 
     /**
      * Getter for isUsed
-     * @return isUsed
+     * @return isUsed keeps the scores from being used multiple times
      */
     public ArrayList<Boolean> getIsUsed(){return locked;}
 
     /**
-     * Getter for score
-     * @return score
+     * Getter for possible scores
+     * @return possibleScores
      */
     public ArrayList<Integer> getPossibleScores(){return possibleScores;}
 
+    /**
+     * Gette for actual scores
+     * @return actualScores
+     */
     public ArrayList<Integer> getActualScores(){return actualScores;}
 
+    /**
+     * Outputs the possible scores
+     */
     @Override
     public void outputPossibleScore(){
         System.out.println("Possible score" + possibleScores);
     }
 
+    /**
+     * Outputs the actual scores
+     */
     @Override
     public void outputActualScore(){
         System.out.println("Score " + actualScores);
     }
 
     /**
-     * Outputs the calculated score
-     * @param whichToPrint
+     * Outputs a particular possible score
+     * @param whichToPrint selection for which score to output
      */
     public void outputPossibleScore(Integer whichToPrint) {
         System.out.println("Possible score " + possibleScores.get(whichToPrint) + " on the " + (whichToPrint + 1) + " line");
     }
 
+    /**
+     * Outputs a particular actual score
+     * @param whichToPrint selection for which score to output
+     */
     public void outputActualScore(Integer whichToPrint){
         System.out.println("Score " + actualScores.get(whichToPrint) + " on the " + (whichToPrint + 1) + " line");
     }

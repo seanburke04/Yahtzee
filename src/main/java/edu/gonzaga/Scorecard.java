@@ -97,20 +97,26 @@ public abstract class Scorecard {
         }
     }
 
+    /**
+     * If the score is chosen set actual score
+     */
     public void isChosen(){
         actualScore = possibleScore;
-        outputActualScore();
     }
 
+    /**
+     * Abstract function to calculate scores
+     * @param allDiceInHand hand of dice
+     */
     public abstract void calcScore(ArrayList<Integer> allDiceInHand);
 
     /**
-     * Outputs the calculated scores to the console
+     * Outputs the calculated possible scores to the console
      */
     public abstract void outputPossibleScore();
 
     /**
-     * Outputs the calculated scores to the console
+     * Outputs the calculated actual scores to the console
      */
     public abstract void outputActualScore();
 }

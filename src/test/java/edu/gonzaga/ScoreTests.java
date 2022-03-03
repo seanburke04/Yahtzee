@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ScoreTests {
+    /**
+     * Tests calculated score for ones
+     */
     @Test
     void scoreUpperTest1(){
         ArrayList<Integer> actualScore;
@@ -24,6 +27,9 @@ public class ScoreTests {
         assertEquals(expectedScore, actualScore.get(0));
     }
 
+    /**
+     * Tests calculated scores for twos
+     */
     @Test
     void scoreUpperTest2(){
         ArrayList<Integer> actualScore;
@@ -43,6 +49,9 @@ public class ScoreTests {
         assertEquals(expectedScore, actualScore.get(1));
     }
 
+    /**
+     * Tests calculated scores for threes
+     */
     @Test
     void scoreUpperTest3(){
         ArrayList<Integer> actualScore;
@@ -62,6 +71,9 @@ public class ScoreTests {
         assertEquals(expectedScore, actualScore.get(2));
     }
 
+    /**
+     * Tests calculated scores for fours
+     */
     @Test
     void scoreUpperTest4(){
         ArrayList<Integer> actualScore;
@@ -81,6 +93,9 @@ public class ScoreTests {
         assertEquals(expectedScore, actualScore.get(3));
     }
 
+    /**
+     * Tests calculated scores for fives
+     */
     @Test
     void scoreUpperTest5(){
         ArrayList<Integer> actualScore;
@@ -100,6 +115,9 @@ public class ScoreTests {
         assertEquals(expectedScore, actualScore.get(4));
     }
 
+    /**
+     * Tests calculated scores for sixes
+     */
     @Test
     void scoreUpperTest6(){
         ArrayList<Integer> actualScore;
@@ -119,6 +137,9 @@ public class ScoreTests {
         assertEquals(expectedScore, actualScore.get(5));
     }
 
+    /**
+     * Tests calculated chance score
+     */
     @Test
     void ChanceTest(){
         Integer actualScore;
@@ -136,6 +157,9 @@ public class ScoreTests {
         assertEquals(expectedScore, actualScore);
     }
 
+    /**
+     * Tests calculated three of a kind score
+     */
     @Test
     void threeOfAKindTest(){
         Integer actualScore;
@@ -153,6 +177,9 @@ public class ScoreTests {
         assertEquals(expectedScore, actualScore);
     }
 
+    /**
+     * Tests calculated full house score
+     */
     @Test
     void fullHouseTest(){
         Integer actualScore;
@@ -170,6 +197,9 @@ public class ScoreTests {
         assertEquals(expectedScore, actualScore);
     }
 
+    /**
+     * Tests calculated four of a kind score
+     */
     @Test
     void fourOfAKindTest(){
         Integer actualScore;
@@ -187,6 +217,9 @@ public class ScoreTests {
         assertEquals(expectedScore, actualScore);
     }
 
+    /**
+     * Tests calculated small straight score
+     */
     @Test
     void smallStraightTest(){
         Integer actualScore;
@@ -204,6 +237,9 @@ public class ScoreTests {
         assertEquals(expectedScore, actualScore);
     }
 
+    /**
+     * Tests calculated large straight score
+     */
     @Test
     void largeStraightTest(){
         Integer actualScore;
@@ -221,6 +257,9 @@ public class ScoreTests {
         assertEquals(expectedScore, actualScore);
     }
 
+    /**
+     * Tests calculated yahtzee score
+     */
     @Test
     void yahtzeeScoreTest(){
         Integer actualScore;

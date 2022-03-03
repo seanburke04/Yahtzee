@@ -18,8 +18,9 @@ public class ScoreTests {
         testHand.add(4);
         testHand.add(5);
 
-        ScoreUpper scoreUpper1 = new ScoreUpper(testHand, fakeUserSettings);
-        actualScore = scoreUpper1.getScore();
+        ScoreUpper scoreUpper6 = new ScoreUpper(fakeUserSettings);
+        scoreUpper6.calcScore(testHand);
+        actualScore = scoreUpper6.getPossibleScores();
         assertEquals(expectedScore, actualScore.get(0));
     }
 
@@ -36,8 +37,9 @@ public class ScoreTests {
         testHand.add(4);
         testHand.add(5);
 
-        ScoreUpper scoreUpper2 = new ScoreUpper(testHand, fakeUserSettings);
-        actualScore = scoreUpper2.getScore();
+        ScoreUpper scoreUpper6 = new ScoreUpper(fakeUserSettings);
+        scoreUpper6.calcScore(testHand);
+        actualScore = scoreUpper6.getPossibleScores();
         assertEquals(expectedScore, actualScore.get(1));
     }
 
@@ -54,8 +56,9 @@ public class ScoreTests {
         testHand.add(3);
         testHand.add(3);
 
-        ScoreUpper scoreUpper3 = new ScoreUpper(testHand, fakeUserSettings);
-        actualScore = scoreUpper3.getScore();
+        ScoreUpper scoreUpper6 = new ScoreUpper(fakeUserSettings);
+        scoreUpper6.calcScore(testHand);
+        actualScore = scoreUpper6.getPossibleScores();
         assertEquals(expectedScore, actualScore.get(2));
     }
 
@@ -72,8 +75,9 @@ public class ScoreTests {
         testHand.add(4);
         testHand.add(5);
 
-        ScoreUpper scoreUpper4 = new ScoreUpper(testHand, fakeUserSettings);
-        actualScore = scoreUpper4.getScore();
+        ScoreUpper scoreUpper6 = new ScoreUpper(fakeUserSettings);
+        scoreUpper6.calcScore(testHand);
+        actualScore = scoreUpper6.getPossibleScores();
         assertEquals(expectedScore, actualScore.get(3));
     }
 
@@ -90,8 +94,9 @@ public class ScoreTests {
         testHand.add(4);
         testHand.add(3);
 
-        ScoreUpper scoreUpper5 = new ScoreUpper(testHand, fakeUserSettings);
-        actualScore = scoreUpper5.getScore();
+        ScoreUpper scoreUpper6 = new ScoreUpper(fakeUserSettings);
+        scoreUpper6.calcScore(testHand);
+        actualScore = scoreUpper6.getPossibleScores();
         assertEquals(expectedScore, actualScore.get(4));
     }
 
@@ -108,8 +113,9 @@ public class ScoreTests {
         testHand.add(6);
         testHand.add(6);
 
-        ScoreUpper scoreUpper6 = new ScoreUpper(testHand, fakeUserSettings);
-        actualScore = scoreUpper6.getScore();
+        ScoreUpper scoreUpper6 = new ScoreUpper(fakeUserSettings);
+        scoreUpper6.calcScore(testHand);
+        actualScore = scoreUpper6.getPossibleScores();
         assertEquals(expectedScore, actualScore.get(5));
     }
 
@@ -124,8 +130,9 @@ public class ScoreTests {
         testHand.add(4);
         testHand.add(5);
 
-        Chance chanceScore = new Chance(testHand);
-        actualScore = chanceScore.getScore();
+        Chance chanceScore = new Chance();
+        chanceScore.calcScore(testHand);
+        actualScore = chanceScore.getPossibleScore();
         assertEquals(expectedScore, actualScore);
     }
 
@@ -140,8 +147,9 @@ public class ScoreTests {
         testHand.add(4);
         testHand.add(5);
 
-        ThreeOfAKind threeOfAKindScore = new ThreeOfAKind(testHand);
-        actualScore = threeOfAKindScore.getScore();
+        ThreeOfAKind threeOfAKindScore = new ThreeOfAKind();
+        threeOfAKindScore.calcScore(testHand);
+        actualScore = threeOfAKindScore.getPossibleScore();
         assertEquals(expectedScore, actualScore);
     }
 
@@ -156,8 +164,9 @@ public class ScoreTests {
         testHand.add(2);
         testHand.add(2);
 
-        FullHouse fullHouseTest = new FullHouse(testHand);
-        actualScore = fullHouseTest.getScore();
+        FullHouse fullHouseTest = new FullHouse();
+        fullHouseTest.calcScore(testHand);
+        actualScore = fullHouseTest.getPossibleScore();
         assertEquals(expectedScore, actualScore);
     }
 
@@ -172,8 +181,9 @@ public class ScoreTests {
         testHand.add(1);
         testHand.add(5);
 
-        FourOfAKind fourOfAKindScore = new FourOfAKind(testHand);
-        actualScore = fourOfAKindScore.getScore();
+        FourOfAKind fourOfAKindScore = new FourOfAKind();
+        fourOfAKindScore.calcScore(testHand);
+        actualScore = fourOfAKindScore.getPossibleScore();
         assertEquals(expectedScore, actualScore);
     }
 
@@ -188,8 +198,9 @@ public class ScoreTests {
         testHand.add(3);
         testHand.add(4);
 
-        SmallStraight smallStraightTest = new SmallStraight(testHand);
-        actualScore = smallStraightTest.getScore();
+        SmallStraight smallStraightTest = new SmallStraight();
+        smallStraightTest.calcScore(testHand);
+        actualScore = smallStraightTest.getPossibleScore();
         assertEquals(expectedScore, actualScore);
     }
 
@@ -204,8 +215,9 @@ public class ScoreTests {
         testHand.add(4);
         testHand.add(5);
 
-        LargeStraight largeStraightTest = new LargeStraight(testHand);
-        actualScore = largeStraightTest.getScore();
+        LargeStraight largeStraightTest = new LargeStraight();
+        largeStraightTest.calcScore(testHand);
+        actualScore = largeStraightTest.getPossibleScore();
         assertEquals(expectedScore, actualScore);
     }
 
@@ -220,8 +232,9 @@ public class ScoreTests {
         testHand.add(1);
         testHand.add(1);
 
-        YahtzeeScore yahtzeeScoreTest = new YahtzeeScore(testHand);
-        actualScore = yahtzeeScoreTest.getScore();
+        YahtzeeScore yahtzeeScoreTest = new YahtzeeScore();
+        yahtzeeScoreTest.calcScore(testHand);
+        actualScore = yahtzeeScoreTest.getPossibleScore();
         assertEquals(expectedScore, actualScore);
     }
 }

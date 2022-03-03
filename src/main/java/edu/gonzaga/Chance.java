@@ -3,31 +3,22 @@ package edu.gonzaga;
 import java.util.ArrayList;
 
 public class Chance extends Scorecard{
-    private Integer score;
-    private Boolean isUsed;
-    private static final Integer DEFAULT_SCORE = 0;
-    private static final Boolean DEFAULT_USE = false;
-
     /**
      * Default constructor
      */
     public Chance() {
-        super();
-        score = DEFAULT_SCORE;
-        isUsed = DEFAULT_USE;
+        this.name = "Chance";
+        this.possibleScore = 0;
+        this.actualScore = 0;
+        this.isUsed = false;
+        // this.menuOption =  WHAT SHOULD THIS BE?
+        //ADD MENU OPTION CHECK?
     }
 
-    /**
-     * Constructor that calculates the score
-     * @param allDiceInHand dice values in a hand
-     */
-    public Chance(ArrayList<Integer> allDiceInHand){
-        super();
-        score = DEFAULT_SCORE;
-        isUsed = DEFAULT_USE;
-
-        for(int i = 0; i < allDiceInHand.size(); i++){
-            score += allDiceInHand.get(i);
+    @Override
+    public void calcScore(ArrayList<Integer> allDiceInHand){
+        for (Integer i = 0; i < allDiceInHand.size(); i++){
+            this.possibleScore += allDiceInHand.get(i);
         }
     }
 
@@ -35,25 +26,32 @@ public class Chance extends Scorecard{
      * How to know if the user has already chosen this for a score value
      * @param used always be true as it is only called if it is true
      */
-    public void setIsUsed(Boolean used){isUsed = used;}
+    public void setIsUsed(Boolean used){this.isUsed = used;}
 
     /**
      * Getter for isUsed
      * @return isUsed
      */
-    public Boolean getIsUsed(){return isUsed;}
+    public Boolean getIsUsed(){return this.isUsed;}
 
     /**
      * Getter for score
      * @return score
      */
-    public Integer getScore(){return score;}
+    public Integer getPossibleScore(){return this.possibleScore;}
+
+    public Integer getActualScore(){return this.actualScore;}
 
     /**
      * Outputs the calculated score
      */
     @Override
-    public void outputScore() {
-        System.out.println("Score " + score + " on the Chance line");
+    public void outputPossibleScore(){
+        System.out.println("Possible score " + this.possibleScore + " on the Chance line");
+    }
+
+    @Override
+    public void outputActualScore(){
+        System.out.println("Score " + this.actualScore + " on the Chance line");
     }
 }

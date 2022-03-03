@@ -15,8 +15,11 @@ package edu.gonzaga;
 import java.util.ArrayList;
 
 public abstract class Scorecard {
-    HandOfDice hand = new HandOfDice();
-    ArrayList<Integer> allDiceInHand = hand.getFullHand();
+    String name;
+    Integer possibleScore;
+    Integer actualScore;
+    Boolean isUsed;
+    String menuOption;
 
     /**
      * Finds the number of dice that match in a hand
@@ -94,8 +97,20 @@ public abstract class Scorecard {
         }
     }
 
+    public void isChosen(){
+        actualScore = possibleScore;
+        outputActualScore();
+    }
+
+    public abstract void calcScore(ArrayList<Integer> allDiceInHand);
+
     /**
      * Outputs the calculated scores to the console
      */
-    public abstract void outputScore();
+    public abstract void outputPossibleScore();
+
+    /**
+     * Outputs the calculated scores to the console
+     */
+    public abstract void outputActualScore();
 }

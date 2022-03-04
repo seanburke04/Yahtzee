@@ -13,6 +13,14 @@ public class Player {
         while (playAgain.equals("y")){
             HandOfDice hand = new HandOfDice();
             //add score classes
+            ScoreUpper upperScorecard = new ScoreUpper(settings);
+            ThreeOfAKind threeOfAKindScore = new ThreeOfAKind();
+            FourOfAKind fourOfAKindScore = new FourOfAKind();
+            FullHouse fullHouseScore = new FullHouse();
+            SmallStraight smallStraightScore = new SmallStraight();
+            LargeStraight largeStraightScore = new LargeStraight();
+            YahtzeeScore yahtzeeScorecard = new YahtzeeScore();
+            Chance chanceScore = new Chance();
 
             hand.readInConfig();
             hand.userSelectedSettings();

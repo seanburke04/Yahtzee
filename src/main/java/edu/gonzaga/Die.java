@@ -5,7 +5,7 @@
  * Source: Most of the Die.java file written by Dr. Crandall
  *
  * @author Sean Burke
- * @version v1.1 2/9/22
+ * @version v1.1 3/3/22
  */
 package edu.gonzaga;
 

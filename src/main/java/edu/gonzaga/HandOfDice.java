@@ -29,6 +29,16 @@ public class HandOfDice {
     private ArrayList<Integer> fullHand = new ArrayList<Integer>(); // Array for the hand of dice
     private ArrayList<Integer> readInFromFile = new ArrayList<Integer>();
 
+    private static final Integer NUM_SIDES_INDEX = 0;
+    private static final Integer NUM_DICE_INDEX = 1;
+    private static final Integer NUM_ROLLS_INDEX = 2;
+
+    public void HandOfDice(){
+        userSettings.add(0);
+        userSettings.add(0);
+        userSettings.add(0);
+    }
+
     /**
      * Getter for the full hand array
      *
@@ -65,16 +75,14 @@ public class HandOfDice {
     /**
      * Lets user decide how many dice to play with, how many sides each dice
      * has and the number of rolls they get
-     *
-     * @param readInSettings
      */
-    public void userSelectedSettings(ArrayList<Integer> readInSettings){
+    public void userSelectedSettings(){
         String changeConfig;
 
         // Report read in settings to the user
-        System.out.print("You are playing with " + readInSettings.get(1));
-        System.out.println(" " + readInSettings.get(0) + "-sided dice");
-        System.out.print("You get " + readInSettings.get(2));
+        System.out.print("You are playing with " + readInFromFile.get(1));
+        System.out.println(" " + readInFromFile.get(0) + "-sided dice");
+        System.out.print("You get " + readInFromFile.get(2));
         System.out.println(" rolls per hand");
 
         // Asks the user if they want to change the configuration
@@ -85,28 +93,26 @@ public class HandOfDice {
         // Changes the configuration if the user wants
         if(changeConfig.charAt(0) == 'y'){
             System.out.print("Enter the number of sides on each die ");
-            userSettings.add(configInput.nextInt());
+            userSettings.set(NUM_SIDES_INDEX, configInput.nextInt());
             System.out.print("\nEnter the number of dice in play ");
-            userSettings.add(configInput.nextInt());
+            userSettings.set(NUM_DICE_INDEX, configInput.nextInt());
             System.out.print("\nEnter the number of rolls per hand ");
-            userSettings.add(configInput.nextInt());
+            userSettings.set(NUM_ROLLS_INDEX, configInput.nextInt());
             System.out.print("\n");
         }
         // Else set default game values
         else{
-            userSettings.add(6);
-            userSettings.add(5);
-            userSettings.add(3);
+            userSettings.set(NUM_SIDES_INDEX, 6);
+            userSettings.set(NUM_DICE_INDEX, 5);
+            userSettings.set(NUM_ROLLS_INDEX, 3);
         }
     }
 
     /**
      * Rolls a set of dice for a full hand
      */
-    public void rollHand(Integer numDice){
-        Die singleDie = new Die(userSettings.get(0));
-
-        for (Integer i = 0; i < numDice; i++){
+    public void rollHand(Die singleDie){
+        for (Integer i = 0; i < userSettings.get(1); i++){
             fullHand.add(singleDie.getSideUp());
             singleDie.roll();
             fullHand.set(i, singleDie.getSideUp());
@@ -136,8 +142,7 @@ public class HandOfDice {
     /**
      * Re rolls all the dice according to the user's specifications
      */
-    public void reRollDice(){
-        Die singleDie = new Die(userSettings.get(0));
+    public void reRollDice(Die singleDie){
         Integer sideUp;
 
         for (int i = 0; i < userSelectionReRoll.length(); i++){

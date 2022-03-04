@@ -39,6 +39,14 @@ public class HandOfDice {
         userSettings.add(0);
     }
 
+    void setFullHand(Integer one, Integer two, Integer three, Integer four, Integer five){
+        fullHand.add(one);
+        fullHand.add(two);
+        fullHand.add(three);
+        fullHand.add(four);
+        fullHand.add(five);
+    }
+
     /**
      * Getter for the full hand array
      *

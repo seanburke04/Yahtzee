@@ -110,9 +110,16 @@ public class HandOfDice {
         }
         // Else set default game values
         else{
-            userSettings.set(NUM_SIDES_INDEX, 6);
-            userSettings.set(NUM_DICE_INDEX, 5);
-            userSettings.set(NUM_ROLLS_INDEX, 3);
+            if (userSettings.size() == 3){
+                userSettings.set(NUM_SIDES_INDEX, 6);
+                userSettings.set(NUM_DICE_INDEX, 5);
+                userSettings.set(NUM_ROLLS_INDEX, 3);
+            }
+            else{
+                userSettings.add(6);
+                userSettings.add(5);
+                userSettings.add(3);
+            }
         }
     }
 

@@ -40,6 +40,29 @@ public class Player {
             hand.sortDice();
 
             //Score methods go here
+            upperScorecard.calcScore(hand.getFullHand());
+            upperScorecard.outputActualScore();
+
+            threeOfAKindScore.calcScore(hand.getFullHand());
+            threeOfAKindScore.outputActualScore();
+
+            fourOfAKindScore.calcScore((hand.getFullHand()));
+            fourOfAKindScore.outputActualScore();
+
+            fullHouseScore.calcScore(hand.getFullHand());
+            fullHouseScore.outputActualScore();
+
+            smallStraightScore.calcScore(hand.getFullHand());
+            smallStraightScore.outputActualScore();
+
+            largeStraightScore.calcScore(hand.getFullHand());
+            largeStraightScore.outputActualScore();
+
+            yahtzeeScorecard.calcScore(hand.getFullHand());
+            yahtzeeScorecard.outputActualScore();
+
+            chanceScore.calcScore(hand.getFullHand());
+            chanceScore.outputActualScore();
 
             System.out.println("Enter 'y' to play again");
             playAgain = getInput.nextLine();

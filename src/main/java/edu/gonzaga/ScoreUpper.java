@@ -29,6 +29,10 @@ public class ScoreUpper extends Scorecard {
         locked.add(DEFAULT_USE);
     }
 
+    public void setActualScores(Integer index){
+        actualScores.set(index, possibleScores.get(index));
+    }
+
     /**
      * Constructor that initializes the size of the Array Lists
      *

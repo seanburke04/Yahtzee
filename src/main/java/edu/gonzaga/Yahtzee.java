@@ -20,9 +20,5 @@ public class Yahtzee {
     public static void main(String[] args) {
         Player player1 = new Player();
         player1.playGame();
-
-        //Add game class
-        //separate scorecard class
-        //Write tests
     }
 }

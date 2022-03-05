@@ -41,7 +41,13 @@ public class Player {
 
             //Problem with output it seems or calculations?
             upperScorecard.calcScore(hand.getFullHand());
-            // upperScorecard.isChosen(); FIX THIS, THIS CLASS NEEDS A SPECIAL CASE
+            upperScorecard.setActualScores(0);
+            upperScorecard.setActualScores(1);
+            upperScorecard.setActualScores(2);
+            upperScorecard.setActualScores(3);
+            upperScorecard.setActualScores(4);
+            upperScorecard.setActualScores(5);
+            //THIS NEEDS TO CHANGE FOR NEW VERSION
             upperScorecard.outputActualScore();
 
             threeOfAKindScore.calcScore(hand.getFullHand());

@@ -15,14 +15,14 @@ package edu.gonzaga;
 *   a method of that other class.
 */
 
-import java.util.Scanner;
-
 /** Main program class for launching Yahtzee program. */
 public class Yahtzee {
     public static void main(String[] args) {
+        Player player1 = new Player();
+        player1.playGame();
 
         //Add game class
-        //seperate scorecard class
+        //separate scorecard class
         //Write tests
     }
 }

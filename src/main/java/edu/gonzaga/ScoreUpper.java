@@ -35,7 +35,12 @@ public class ScoreUpper extends Scorecard {
      * @param userSettingsPassedIn number of dice and how many sides each dice has
      */
     public ScoreUpper(ArrayList<Integer> userSettingsPassedIn) {
-        numSides = userSettingsPassedIn.get(0);
+        if (userSettingsPassedIn.size() > 1){
+            numSides = userSettingsPassedIn.get(0);
+        }
+        else{
+            numSides = 6;
+        }
 
         //Initializes both array lists
         for (Integer i = 0; i < numSides; i++) {

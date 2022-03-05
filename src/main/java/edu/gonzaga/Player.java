@@ -39,29 +39,37 @@ public class Player {
             }
             hand.sortDice();
 
-            //Score methods go here
+            //Problem with output it seems or calculations?
             upperScorecard.calcScore(hand.getFullHand());
+            // upperScorecard.isChosen(); FIX THIS, THIS CLASS NEEDS A SPECIAL CASE
             upperScorecard.outputActualScore();
 
             threeOfAKindScore.calcScore(hand.getFullHand());
+            threeOfAKindScore.isChosen();
             threeOfAKindScore.outputActualScore();
 
             fourOfAKindScore.calcScore((hand.getFullHand()));
+            fourOfAKindScore.isChosen();
             fourOfAKindScore.outputActualScore();
 
             fullHouseScore.calcScore(hand.getFullHand());
+            fullHouseScore.isChosen();
             fullHouseScore.outputActualScore();
 
             smallStraightScore.calcScore(hand.getFullHand());
+            smallStraightScore.isChosen();
             smallStraightScore.outputActualScore();
 
             largeStraightScore.calcScore(hand.getFullHand());
+            largeStraightScore.isChosen();
             largeStraightScore.outputActualScore();
 
             yahtzeeScorecard.calcScore(hand.getFullHand());
+            yahtzeeScorecard.isChosen();
             yahtzeeScorecard.outputActualScore();
 
             chanceScore.calcScore(hand.getFullHand());
+            chanceScore.isChosen();
             chanceScore.outputActualScore();
 
             System.out.println("Enter 'y' to play again");

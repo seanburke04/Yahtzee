@@ -127,19 +127,59 @@ public class Player {
 
     private String getWhichScoreToKeep(){
         System.out.println("\nWhich score would you like to keep?");
-        System.out.println("Enter the number for the upper scores or the first three letters for any value in the lower scorecard");
+        System.out.println("Enter the number for the upper scores or one of the following codes");
+        System.out.println("Three of a kind = TOK\nFour of a kind = FOK\nFull House = FH\nSmall Straight = SS");
+        System.out.println("Large Straight = LS\nYahtzee = YTZ\nChance = CH");
         return getInput.nextLine();
     }
 
-    private void verifyInput(String chosenScoreToKeep){
+    private void verifyInput(String chosenScoreToKeep) throws Exception {
+        Integer convertedString;
+
         // Upper scorecard is a special case that needs to be handled in a particular way
         // Check to see is selection is isUsed else throw exception (in else case all inputs invalid)
-        Integer convertedString;
         convertedString = Integer.valueOf(chosenScoreToKeep);
 
         if (convertedString > 0 && convertedString < upperScorecard.getPossibleScores().size()){
             // check if it isUsed
         }
-        //else if (codes for lower scorecard go here)
+        else if (isLowerSelection(chosenScoreToKeep)){
+            //check if it isUsed
+        }
+        else{
+            throw new Exception("Invalid input");
+        }
+        // call methods to assign actual score and mark isUsed as true
+    }
+
+    private Boolean isLowerSelection(String chosenLowerScore){
+        Boolean selected = false;
+
+        switch(chosenLowerScore){
+            case "TOK":
+                selected = true;
+                break;
+            case "FOK":
+                selected = true;
+                break;
+            case "FH":
+                selected = true;
+                break;
+            case "SS":
+                selected = true;
+                break;
+            case "LS":
+                selected = true;
+                break;
+            case "YTZ":
+                selected = true;
+                break;
+            case "CH":
+                selected = true;
+                break;
+            default:
+                selected = false;
+        }
+        return selected;
     }
 }

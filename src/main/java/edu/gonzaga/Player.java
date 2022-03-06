@@ -64,6 +64,8 @@ public class Player {
     }
 
     private void singleTurn(){
+        String scoreToKeep;
+
         initialRoll();
 
         allReRolls();
@@ -74,7 +76,7 @@ public class Player {
 
         printPossibleScores();
 
-        getWhichScoreToKeep();
+        scoreToKeep = getWhichScoreToKeep();
 
     }
 
@@ -127,5 +129,17 @@ public class Player {
         System.out.println("\nWhich score would you like to keep?");
         System.out.println("Enter the number for the upper scores or the first three letters for any value in the lower scorecard");
         return getInput.nextLine();
+    }
+
+    private void verifyInput(String chosenScoreToKeep){
+        // Upper scorecard is a special case that needs to be handled in a particular way
+        // Check to see is selection is isUsed else throw exception (in else case all inputs invalid)
+        Integer convertedString;
+        convertedString = Integer.valueOf(chosenScoreToKeep);
+
+        if (convertedString > 0 && convertedString < upperScorecard.getPossibleScores().size()){
+            // check if it isUsed
+        }
+        //else if (codes for lower scorecard go here)
     }
 }

@@ -48,7 +48,7 @@ public class Player {
             upperScorecard.setActualScores(4);
             upperScorecard.setActualScores(5);
             //THIS NEEDS TO CHANGE FOR NEW VERSION
-            upperScorecard.outputActualScore();
+            upperScorecard.outputAllActualScores();
 
             threeOfAKindScore.calcScore(hand.getFullHand());
             threeOfAKindScore.isChosen();

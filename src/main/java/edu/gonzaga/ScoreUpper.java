@@ -11,9 +11,9 @@ package edu.gonzaga;
 
 import java.util.ArrayList;
 
-public class ScoreUpper extends Scorecard {
+public class ScoreUpper {
     private ArrayList<Integer> actualScores = new ArrayList<>();
-    private ArrayList<Boolean> locked = new ArrayList<>();
+    private ArrayList<Boolean> isUsed = new ArrayList<>();
     private ArrayList<Integer> possibleScores = new ArrayList<>();
     private ArrayList<Integer> userSettings = new ArrayList<>();
     private Integer numSides;
@@ -26,7 +26,7 @@ public class ScoreUpper extends Scorecard {
     public ScoreUpper() {
         actualScores.add(DEFAULT_SCORE);
         possibleScores.add(DEFAULT_SCORE);
-        locked.add(DEFAULT_USE);
+        isUsed.add(DEFAULT_USE);
     }
 
     public void setActualScores(Integer index){
@@ -50,7 +50,7 @@ public class ScoreUpper extends Scorecard {
         for (Integer i = 0; i < numSides; i++) {
             actualScores.add(DEFAULT_SCORE);
             possibleScores.add(DEFAULT_SCORE);
-            locked.add(DEFAULT_USE);
+            isUsed.add(DEFAULT_USE);
         }
     }
 
@@ -59,7 +59,6 @@ public class ScoreUpper extends Scorecard {
      *
      * @param allDiceInHand hand of dice
      */
-    @Override
     public void calcScore(ArrayList<Integer> allDiceInHand) {
         Integer count = 0;
 
@@ -81,7 +80,7 @@ public class ScoreUpper extends Scorecard {
      * @param whichIsUsed always be true as it is only called if it is true
      */
     public void setIsUsed(Integer whichIsUsed) {
-        locked.set(whichIsUsed, true);
+        isUsed.set(whichIsUsed, true);
     }
 
     /**
@@ -90,7 +89,7 @@ public class ScoreUpper extends Scorecard {
      * @return isUsed keeps the scores from being used multiple times
      */
     public ArrayList<Boolean> getIsUsed() {
-        return locked;
+        return isUsed;
     }
 
     /**
@@ -112,36 +111,17 @@ public class ScoreUpper extends Scorecard {
     }
 
     /**
-     * Outputs the possible scores
-     */
-    @Override
-    public void outputPossibleScore() {
-        System.out.println("Possible score" + possibleScores);
-    }
-
-    /**
-     * Outputs the actual scores
-     */
-    @Override
-    public void outputActualScore() {
-        System.out.println("Score " + actualScores);
-    }
-
-    /**
-     * Outputs a particular possible score
-     *
-     * @param whichToPrint selection for which score to output
-     */
-    public void outputPossibleScore(Integer whichToPrint) {
-        System.out.println("Possible score " + possibleScores.get(whichToPrint) + " on the " + (whichToPrint + 1) + " line");
-    }
-
-    /**
      * Outputs a particular actual score
      *
      * @param whichToPrint selection for which score to output
      */
-    public void outputActualScore(Integer whichToPrint) {
+    public void outputActualScoreParticular(Integer whichToPrint) {
         System.out.println("Score " + actualScores.get(whichToPrint) + " on the " + (whichToPrint + 1) + " line");
+    }
+
+    public void outputAllActualScores(){
+        for (Integer i = 0; i < actualScores.size(); i++){
+            System.out.println("Score " + actualScores.get(i) + " on the " + (i + 1) + " line");
+        }
     }
 }

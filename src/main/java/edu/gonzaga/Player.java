@@ -65,6 +65,10 @@ public class Player {
 
     private void singleTurn(){
         String scoreToKeep;
+        
+        if(seeScorecard()){
+            outputEntireScorecard();
+        }
 
         initialRoll();
 
@@ -171,6 +175,17 @@ public class Player {
         }
     }
 
+    private void outputEntireScorecard(){
+        upperScorecard.outputAllActualScores();
+        threeOfAKindScore.outputActualScore();
+        fourOfAKindScore.outputActualScore();
+        fullHouseScore.outputActualScore();
+        smallStraightScore.outputActualScore();
+        largeStraightScore.outputActualScore();
+        yahtzeeScorecard.outputActualScore();
+        chanceScore.outputActualScore();
+    }
+
     /*
     private void verifyInput(String chosenScoreToKeep) throws Exception {
         Integer convertedString; //this throws an exception when it is actually a string
@@ -193,6 +208,7 @@ public class Player {
 
      */
 
+    // NOT DONE
     //This is only for a string maybe ask if they are choosing from upper or lower scorecard?
     private Boolean isLowerSelection(String chosenLowerScore){
         Boolean selected = false;

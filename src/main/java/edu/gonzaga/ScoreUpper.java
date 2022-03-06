@@ -83,6 +83,10 @@ public class ScoreUpper {
         isUsed.set(whichIsUsed, true);
     }
 
+    public void isChosen(Integer whichIsChosen){
+        actualScores.set(whichIsChosen, possibleScores.get(whichIsChosen));
+    }
+
     /**
      * Getter for isUsed
      *

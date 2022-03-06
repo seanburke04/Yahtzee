@@ -65,7 +65,7 @@ public class Player {
 
     private void singleTurn(){
         String scoreToKeep;
-        
+
         if(seeScorecard()){
             outputEntireScorecard();
         }
@@ -208,9 +208,46 @@ public class Player {
 
      */
 
+    private Boolean whichCard() throws Exception {
+        String choice;
+
+        System.out.println("Enter \"U\" to choose an upper score or \"L\" for a lower score");
+        choice = getInput.nextLine();
+
+        // Returns true if the user wants to use the upper scorecard
+        if(choice == "U"){
+            return true;
+        }
+        // Returns false if the user wants to use the lower scorecard
+        else if(choice == "L"){
+            return false;
+        }
+        // Throws exception for invalid input
+        else{
+            throw new Exception("Invalid input");
+        }
+    }
+
+    // Do I need to return anything
+    private Boolean verifyUpperScorecard(String chosenUpperScore){
+        ArrayList<Boolean> used = new ArrayList<>();
+        used = upperScorecard.getIsUsed();
+        Integer whichScore = Integer.parseInt(chosenUpperScore);
+
+        if(!used.get(whichScore - 1)){
+            upperScorecard.setIsUsed(whichScore - 1);
+            upperScorecard.isChosen(whichScore - 1);
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    // Do I need to return anything
     // NOT DONE
     //This is only for a string maybe ask if they are choosing from upper or lower scorecard?
-    private Boolean isLowerSelection(String chosenLowerScore){
+    private Boolean verifyLowerScorecard(String chosenLowerScore){
         Boolean selected = false;
 
         //NEED TO CHECK IF ISUSED  IS ALREADY SET

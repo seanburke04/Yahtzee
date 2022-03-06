@@ -68,7 +68,7 @@ public class FourOfAKind extends Scorecard {
      */
     @Override
     public void outputPossibleScore() {
-        System.out.println("Possible score " + this.possibleScore + " on the Four of a Kind line");
+        System.out.println("Score " + this.possibleScore + " on the Four of a Kind line");
     }
 
     /**

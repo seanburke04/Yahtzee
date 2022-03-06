@@ -71,6 +71,8 @@ public class Player {
         hand.sortDice();
 
         calculateScores();
+
+        printPossibleScores();
     }
 
     private void gameConfig(){
@@ -103,5 +105,16 @@ public class Player {
         largeStraightScore.calcScore(hand.getFullHand());
         yahtzeeScorecard.calcScore(hand.getFullHand());
         chanceScore.calcScore(hand.getFullHand());
+    }
+
+    private void printPossibleScores(){
+        upperScorecard.outputAllPossibleScores();
+        threeOfAKindScore.outputPossibleScore();
+        fourOfAKindScore.outputPossibleScore();
+        fullHouseScore.outputPossibleScore();
+        smallStraightScore.outputPossibleScore();
+        largeStraightScore.outputPossibleScore();
+        yahtzeeScorecard.outputPossibleScore();
+        chanceScore.outputPossibleScore();
     }
 }

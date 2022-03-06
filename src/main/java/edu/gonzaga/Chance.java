@@ -64,7 +64,7 @@ public class Chance extends Scorecard{
      */
     @Override
     public void outputPossibleScore(){
-        System.out.println("Possible score " + this.possibleScore + " on the Chance line");
+        System.out.println("Score " + this.possibleScore + " on the Chance line");
     }
 
     /**

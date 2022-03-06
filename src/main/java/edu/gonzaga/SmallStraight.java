@@ -69,7 +69,7 @@ public class SmallStraight extends Scorecard{
      */
     @Override
     public void outputPossibleScore() {
-        System.out.println("Possible score " + this.possibleScore + " on the Small Straight line");
+        System.out.println("Score " + this.possibleScore + " on the Small Straight line");
     }
 
     /**

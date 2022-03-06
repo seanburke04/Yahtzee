@@ -124,4 +124,14 @@ public class ScoreUpper {
             System.out.println("Score " + actualScores.get(i) + " on the " + (i + 1) + " line");
         }
     }
+
+    public void outputPossibleScoreParticular(Integer whichToPrint) {
+        System.out.println("Score " + possibleScores.get(whichToPrint) + " on the " + (whichToPrint + 1) + " line");
+    }
+
+    public void outputAllPossibleScores(){
+        for (Integer i = 0; i < possibleScores.size(); i++){
+            System.out.println("Score " + possibleScores.get(i) + " on the " + (i + 1) + " line");
+        }
+    }
 }

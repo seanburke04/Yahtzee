@@ -73,6 +73,9 @@ public class Player {
         calculateScores();
 
         printPossibleScores();
+
+        getWhichScoreToKeep();
+
     }
 
     private void gameConfig(){
@@ -108,6 +111,8 @@ public class Player {
     }
 
     private void printPossibleScores(){
+        System.out.println("Your possible scores are:");
+
         upperScorecard.outputAllPossibleScores();
         threeOfAKindScore.outputPossibleScore();
         fourOfAKindScore.outputPossibleScore();
@@ -116,5 +121,11 @@ public class Player {
         largeStraightScore.outputPossibleScore();
         yahtzeeScorecard.outputPossibleScore();
         chanceScore.outputPossibleScore();
+    }
+
+    private String getWhichScoreToKeep(){
+        System.out.println("\nWhich score would you like to keep?");
+        System.out.println("Enter the number for the upper scores or the first three letters for any value in the lower scorecard");
+        return getInput.nextLine();
     }
 }

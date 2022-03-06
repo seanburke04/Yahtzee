@@ -113,16 +113,41 @@ public class Player {
     }
 
     private void printPossibleScores(){
+        ArrayList<Boolean> used = new ArrayList<>();
+
+        used = upperScorecard.getIsUsed();
+
         System.out.println("Your possible scores are:");
 
-        upperScorecard.outputAllPossibleScores();
-        threeOfAKindScore.outputPossibleScore();
-        fourOfAKindScore.outputPossibleScore();
-        fullHouseScore.outputPossibleScore();
-        smallStraightScore.outputPossibleScore();
-        largeStraightScore.outputPossibleScore();
-        yahtzeeScorecard.outputPossibleScore();
-        chanceScore.outputPossibleScore();
+        // Outputs all available possible scores in the upper scorecard
+        for(Integer i = 0; i < used.size(); i++){
+            if(!used.get(i)){
+                upperScorecard.outputPossibleScoreParticular(i);
+            }
+        }
+
+        // Outputs all available possible scores in the lower scorecard
+        if(!threeOfAKindScore.getIsUsed()){
+            threeOfAKindScore.outputPossibleScore();
+        }
+        if(!fourOfAKindScore.getIsUsed()){
+            fourOfAKindScore.outputPossibleScore();
+        }
+        if(!fullHouseScore.getIsUsed()){
+            fullHouseScore.outputPossibleScore();
+        }
+        if(!smallStraightScore.getIsUsed()){
+            smallStraightScore.outputPossibleScore();
+        }
+        if(!largeStraightScore.getIsUsed()){
+            largeStraightScore.outputPossibleScore();
+        }
+        if(!yahtzeeScorecard.getIsUsed()){
+            yahtzeeScorecard.outputPossibleScore();
+        }
+        if(chanceScore.getIsUsed()){
+            chanceScore.outputPossibleScore();
+        }
     }
 
     private String getWhichScoreToKeep(){

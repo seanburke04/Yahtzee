@@ -158,6 +158,19 @@ public class Player {
         return getInput.nextLine();
     }
 
+    private Boolean seeScorecard(){
+        String seeScore;
+        System.out.println("Enter \"S\" to see Scorecard or press any button to continue");
+        seeScore = getInput.nextLine();
+
+        if(seeScore == "S"){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
     /*
     private void verifyInput(String chosenScoreToKeep) throws Exception {
         Integer convertedString; //this throws an exception when it is actually a string

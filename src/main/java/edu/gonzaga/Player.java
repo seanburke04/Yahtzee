@@ -9,37 +9,25 @@ public class Player {
     ArrayList<Integer> settings = new ArrayList<>();
     String playAgain = "y";
 
+    // Dice control class
+    HandOfDice hand = new HandOfDice();
+    // Score classes
+    ScoreUpper upperScorecard = new ScoreUpper(settings);
+    ThreeOfAKind threeOfAKindScore = new ThreeOfAKind();
+    FourOfAKind fourOfAKindScore = new FourOfAKind();
+    FullHouse fullHouseScore = new FullHouse();
+    SmallStraight smallStraightScore = new SmallStraight();
+    LargeStraight largeStraightScore = new LargeStraight();
+    YahtzeeScore yahtzeeScorecard = new YahtzeeScore();
+    Chance chanceScore = new Chance();
+
     public void playGame(){
+        gameConfig();
+
         while (playAgain.equals("y")){
-            HandOfDice hand = new HandOfDice();
-            //add score classes
-            ScoreUpper upperScorecard = new ScoreUpper(settings);
-            ThreeOfAKind threeOfAKindScore = new ThreeOfAKind();
-            FourOfAKind fourOfAKindScore = new FourOfAKind();
-            FullHouse fullHouseScore = new FullHouse();
-            SmallStraight smallStraightScore = new SmallStraight();
-            LargeStraight largeStraightScore = new LargeStraight();
-            YahtzeeScore yahtzeeScorecard = new YahtzeeScore();
-            Chance chanceScore = new Chance();
 
-            hand.readInConfig();
-            hand.userSelectedSettings();
-            // Initial roll
-            hand.rollHand(oneDice);
-            hand.outputRoll();
 
-            //Handle all re rolls
-            settings = hand.getReadInFromFile();
-            if (settings.get(2) > 1){
-                for (Integer i = 1; i < settings.get(2); i++){
-                    hand.getWhichToReRoll();
-                    hand.reRollDice(oneDice);
-                    hand.outputRoll();
-                }
-            }
-            hand.sortDice();
-
-            upperScorecard.calcScore(hand.getFullHand());
+            // This needs to be fixed this only works for the ones being called, let user choose
             upperScorecard.setActualScores(0);
             upperScorecard.setActualScores(1);
             upperScorecard.setActualScores(2);
@@ -48,36 +36,72 @@ public class Player {
             upperScorecard.setActualScores(5);
             upperScorecard.outputAllActualScores();
 
-            threeOfAKindScore.calcScore(hand.getFullHand());
             threeOfAKindScore.isChosen();
             threeOfAKindScore.outputActualScore();
 
-            fourOfAKindScore.calcScore((hand.getFullHand()));
+
             fourOfAKindScore.isChosen();
             fourOfAKindScore.outputActualScore();
 
-            fullHouseScore.calcScore(hand.getFullHand());
             fullHouseScore.isChosen();
             fullHouseScore.outputActualScore();
 
-            smallStraightScore.calcScore(hand.getFullHand());
             smallStraightScore.isChosen();
             smallStraightScore.outputActualScore();
 
-            largeStraightScore.calcScore(hand.getFullHand());
             largeStraightScore.isChosen();
             largeStraightScore.outputActualScore();
 
-            yahtzeeScorecard.calcScore(hand.getFullHand());
             yahtzeeScorecard.isChosen();
             yahtzeeScorecard.outputActualScore();
 
-            chanceScore.calcScore(hand.getFullHand());
             chanceScore.isChosen();
             chanceScore.outputActualScore();
 
             System.out.println("Enter 'y' to play again");
             playAgain = getInput.nextLine();
         }
+    }
+
+    private void singleTurn(){
+        initialRoll();
+
+        allReRolls();
+
+        hand.sortDice();
+
+        calculateScores();
+    }
+
+    private void gameConfig(){
+        hand.readInConfig();
+        hand.userSelectedSettings();
+    }
+
+    private void initialRoll(){
+        hand.rollHand(oneDice);
+        hand.outputRoll();
+    }
+
+    private void allReRolls(){
+        settings = hand.getReadInFromFile();
+        if (settings.get(2) > 1){
+            for (Integer i = 1; i < settings.get(2); i++){
+                hand.getWhichToReRoll();
+                hand.reRollDice(oneDice);
+                hand.outputRoll();
+            }
+        }
+    }
+
+    private void calculateScores(){
+        upperScorecard.calcScore(hand.getFullHand());
+        threeOfAKindScore.calcScore(hand.getFullHand());
+        fourOfAKindScore.calcScore((hand.getFullHand()));
+        fullHouseScore.calcScore(hand.getFullHand());
+        smallStraightScore.calcScore(hand.getFullHand());
+        largeStraightScore.calcScore(hand.getFullHand());
+        yahtzeeScorecard.calcScore(hand.getFullHand());
+        chanceScore.calcScore(hand.getFullHand());
     }
 }

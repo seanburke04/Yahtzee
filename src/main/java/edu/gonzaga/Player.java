@@ -133,8 +133,9 @@ public class Player {
         return getInput.nextLine();
     }
 
+    /*
     private void verifyInput(String chosenScoreToKeep) throws Exception {
-        Integer convertedString;
+        Integer convertedString; //this throws an exception when it is actually a string
 
         // Upper scorecard is a special case that needs to be handled in a particular way
         // Check to see is selection is isUsed else throw exception (in else case all inputs invalid)
@@ -152,30 +153,83 @@ public class Player {
         // call methods to assign actual score and mark isUsed as true
     }
 
+     */
+
+    //This is only for a string maybe ask if they are choosing from upper or lower scorecard?
     private Boolean isLowerSelection(String chosenLowerScore){
         Boolean selected = false;
 
+        //NEED TO CHECK IF ISUSED  IS ALREADY SET
         switch(chosenLowerScore){
             case "TOK":
-                selected = true;
+                if (!threeOfAKindScore.getIsUsed()){
+                    selected = true;
+                    threeOfAKindScore.setIsUsed(true);
+                    threeOfAKindScore.isChosen();
+                }
+                else{
+                    selected = false;
+                }
                 break;
             case "FOK":
-                selected = true;
+                if (!fourOfAKindScore.getIsUsed()){
+                    selected = true;
+                    fourOfAKindScore.setIsUsed(true);
+                    threeOfAKindScore.isChosen();
+                }
+                else{
+                    selected = false;
+                }
                 break;
             case "FH":
-                selected = true;
+                if (!fullHouseScore.getIsUsed()){
+                    selected = true;
+                    fullHouseScore.setIsUsed(true);
+                    fullHouseScore.isChosen();
+                }
+                else{
+                    selected = false;
+                }
                 break;
             case "SS":
-                selected = true;
+                if (!smallStraightScore.getIsUsed()){
+                    selected = true;
+                    smallStraightScore.setIsUsed(true);
+                    smallStraightScore.isChosen();
+                }
+                else{
+                    selected = false;
+                }
                 break;
             case "LS":
-                selected = true;
+                if (!largeStraightScore.getIsUsed()){
+                    selected = true;
+                    largeStraightScore.setIsUsed(true);
+                    largeStraightScore.isChosen();
+                }
+                else{
+                    selected = false;
+                }
                 break;
             case "YTZ":
-                selected = true;
+                if (!yahtzeeScorecard.getIsUsed()){
+                    selected = true;
+                    yahtzeeScorecard.setIsUsed(true);
+                    yahtzeeScorecard.isChosen();
+                }
+                else{
+                    selected = false;
+                }
                 break;
             case "CH":
-                selected = true;
+                if (!chanceScore.getIsUsed()){
+                    selected = true;
+                    chanceScore.setIsUsed(true);
+                    chanceScore.isChosen();
+                }
+                else{
+                    selected = false;
+                }
                 break;
             default:
                 selected = false;

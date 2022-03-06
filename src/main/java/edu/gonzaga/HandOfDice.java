@@ -101,19 +101,6 @@ public class HandOfDice {
             readInFromFile.set(NUM_ROLLS_INDEX, configInput.nextInt());
             System.out.print("\n");
         }
-        // Else set default game values do i need this?
-        else{
-            if (readInFromFile.size() == 3){
-                readInFromFile.set(NUM_SIDES_INDEX, 6);
-                readInFromFile.set(NUM_DICE_INDEX, 5);
-                readInFromFile.set(NUM_ROLLS_INDEX, 3);
-            }
-            else{
-                readInFromFile.add(6);
-                readInFromFile.add(5);
-                readInFromFile.add(3);
-            }
-        }
     }
 
     /**

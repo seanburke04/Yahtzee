@@ -29,7 +29,7 @@ public class Player {
             hand.outputRoll();
 
             //Handle all re rolls
-            settings = hand.getUserSettings();
+            settings = hand.getReadInFromFile();
             if (settings.get(2) > 1){
                 for (Integer i = 1; i < settings.get(2); i++){
                     hand.getWhichToReRoll();
@@ -39,7 +39,6 @@ public class Player {
             }
             hand.sortDice();
 
-            //Problem with output it seems or calculations?
             upperScorecard.calcScore(hand.getFullHand());
             upperScorecard.setActualScores(0);
             upperScorecard.setActualScores(1);
@@ -47,7 +46,6 @@ public class Player {
             upperScorecard.setActualScores(3);
             upperScorecard.setActualScores(4);
             upperScorecard.setActualScores(5);
-            //THIS NEEDS TO CHANGE FOR NEW VERSION
             upperScorecard.outputAllActualScores();
 
             threeOfAKindScore.calcScore(hand.getFullHand());

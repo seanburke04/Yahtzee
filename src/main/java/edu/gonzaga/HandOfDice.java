@@ -25,19 +25,12 @@ public class HandOfDice {
     Scanner configInput = new Scanner(System.in);
 
     private String userSelectionReRoll;
-    private ArrayList<Integer> userSettings = new ArrayList<Integer>();
     private ArrayList<Integer> fullHand = new ArrayList<Integer>(); // Array for the hand of dice
     private ArrayList<Integer> readInFromFile = new ArrayList<Integer>();
 
     private static final Integer NUM_SIDES_INDEX = 0;
     private static final Integer NUM_DICE_INDEX = 1;
     private static final Integer NUM_ROLLS_INDEX = 2;
-
-    public void HandOfDice(){
-        userSettings.add(0);
-        userSettings.add(0);
-        userSettings.add(0);
-    }
 
     void setFullHand(Integer one, Integer two, Integer three, Integer four, Integer five){
         fullHand.add(one);
@@ -59,7 +52,7 @@ public class HandOfDice {
      *
      * @return userSettings array
      */
-    public ArrayList<Integer> getUserSettings(){return userSettings;}
+    public ArrayList<Integer> getReadInFromFile(){return readInFromFile;}
 
     /**
      * Reads in values from the file and puts the values in an array
@@ -101,24 +94,24 @@ public class HandOfDice {
         // Changes the configuration if the user wants
         if(changeConfig.charAt(0) == 'y'){
             System.out.print("Enter the number of sides on each die ");
-            userSettings.set(NUM_SIDES_INDEX, configInput.nextInt());
+            readInFromFile.set(NUM_SIDES_INDEX, configInput.nextInt());
             System.out.print("\nEnter the number of dice in play ");
-            userSettings.set(NUM_DICE_INDEX, configInput.nextInt());
+            readInFromFile.set(NUM_DICE_INDEX, configInput.nextInt());
             System.out.print("\nEnter the number of rolls per hand ");
-            userSettings.set(NUM_ROLLS_INDEX, configInput.nextInt());
+            readInFromFile.set(NUM_ROLLS_INDEX, configInput.nextInt());
             System.out.print("\n");
         }
-        // Else set default game values
+        // Else set default game values do i need this?
         else{
-            if (userSettings.size() == 3){
-                userSettings.set(NUM_SIDES_INDEX, 6);
-                userSettings.set(NUM_DICE_INDEX, 5);
-                userSettings.set(NUM_ROLLS_INDEX, 3);
+            if (readInFromFile.size() == 3){
+                readInFromFile.set(NUM_SIDES_INDEX, 6);
+                readInFromFile.set(NUM_DICE_INDEX, 5);
+                readInFromFile.set(NUM_ROLLS_INDEX, 3);
             }
             else{
-                userSettings.add(6);
-                userSettings.add(5);
-                userSettings.add(3);
+                readInFromFile.add(6);
+                readInFromFile.add(5);
+                readInFromFile.add(3);
             }
         }
     }
@@ -127,7 +120,7 @@ public class HandOfDice {
      * Rolls a set of dice for a full hand
      */
     public void rollHand(Die singleDie){
-        for (Integer i = 0; i < userSettings.get(1); i++){
+        for (Integer i = 0; i < readInFromFile.get(1); i++){
             fullHand.add(singleDie.getSideUp());
             singleDie.roll();
             fullHand.set(i, singleDie.getSideUp());
@@ -160,13 +153,19 @@ public class HandOfDice {
     public void reRollDice(Die singleDie){
         Integer sideUp;
 
-        for (int i = 0; i < userSelectionReRoll.length(); i++){
-            if (userSelectionReRoll.charAt(i) == 'n'){
-                singleDie.roll();
-                sideUp = singleDie.getSideUp();
-                fullHand.set(i, sideUp);
+        if(userSelectionReRoll.length() == fullHand.size()){
+            for (int i = 0; i < userSelectionReRoll.length(); i++){
+                if (userSelectionReRoll.charAt(i) == 'n'){
+                    singleDie.roll();
+                    sideUp = singleDie.getSideUp();
+                    fullHand.set(i, sideUp);
+                }
             }
         }
+        else{
+            throw new ArrayIndexOutOfBoundsException("Input string too long");
+        }
+
     }
 
     /**

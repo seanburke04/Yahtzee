@@ -5,7 +5,7 @@
  * Source: Most of the Die.java file written by Dr. Crandall
  *
  * @author Sean Burke
- * @version v1.1 2/9/22
+ * @version v1.1 3/7/22
  */
 package edu.gonzaga;
 
@@ -15,26 +15,12 @@ package edu.gonzaga;
 *   a method of that other class.
 */
 
-import java.util.Scanner;
-
 /** Main program class for launching Yahtzee program. */
 public class Yahtzee {
-    public static void main(String[] args) {
-        Scanner getInput = new Scanner(System.in);
-        String playAgain = "y";
+    public static void main(String[] args) throws Exception {
+        Player player1 = new Player();
 
-        while (playAgain.equals("y")){
-            HandOfDice hand = new HandOfDice();
-            Scorecard score = new Scorecard();
-
-            hand.callDiceRollingMethods();
-
-            score.scoreUpper(hand);
-            score.scoreLower(hand);
-            score.outputScore();
-
-            System.out.println("Enter 'y' to play again");
-            playAgain = getInput.nextLine();
-        }
+        player1.playGame();
+        player1.outputEntireScorecard();
     }
 }

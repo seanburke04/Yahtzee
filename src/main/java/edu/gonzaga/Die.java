@@ -10,12 +10,14 @@
 package edu.gonzaga;
 
 /*
-* Class for a Die used in Yahtzee.
-*/
+ * Class for a Die used in Yahtzee.
+ */
 
 import java.util.Random;
 
-/** Class to store the state of a single die. */
+/**
+ * Class to store the state of a single die.
+ */
 public class Die implements Comparable<Die> {
     private Integer sideUp; // Current die 'value' in range 1..numSides
     private Integer numSides; // Sides on the die (should be 1...INF integer)
@@ -59,29 +61,29 @@ public class Die implements Comparable<Die> {
     }
 
     /**
-    * Returns current die value (the side that's up).
-    *
-    * @return Integer Current Die's Side Up
-    */
+     * Returns current die value (the side that's up).
+     *
+     * @return Integer Current Die's Side Up
+     */
     public Integer getSideUp() {
         return this.sideUp;
     }
 
     /**
-    * Returns quantity of sides on the die.
-    *
-    * @return Integer number of sides on the die
-    */
+     * Returns quantity of sides on the die.
+     *
+     * @return Integer number of sides on the die
+     */
     public Integer getNumSides() {
         return this.numSides;
     }
 
     /**
-    * Provides the ability to convert the Die object into a string. representation, both with
-    * .toString(), but also in System.out.println()
-    *
-    * @return String of whatever you want this die to say for itself
-    */
+     * Provides the ability to convert the Die object into a string. representation, both with
+     * .toString(), but also in System.out.println()
+     *
+     * @return String of whatever you want this die to say for itself
+     */
     @Override
     public String toString() {
         String ret = "";
@@ -91,11 +93,11 @@ public class Die implements Comparable<Die> {
     }
 
     /**
-    * Makes two dice comparable using <, ==, >, etc. based on sideUp values.
-    *
-    * @param otherDie The die we're comparing to this one (two objects)
-    * @return int -1, 0, 1 for less than, equal, greater than
-    */
+     * Makes two dice comparable using <, ==, >, etc. based on sideUp values.
+     *
+     * @param otherDie The die we're comparing to this one (two objects)
+     * @return int -1, 0, 1 for less than, equal, greater than
+     */
     @Override
     public int compareTo(Die otherDie) {
         int firstDie = 2;

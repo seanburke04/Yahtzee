@@ -16,6 +16,7 @@ public class ScoreUpper {
     private ArrayList<Boolean> isUsed = new ArrayList<>();
     private ArrayList<Integer> possibleScores = new ArrayList<>();
     private ArrayList<Integer> userSettings = new ArrayList<>();
+    private Boolean bonus = false;
     private Integer numSides;
     private Integer DEFAULT_SCORE = 0;
     private Boolean DEFAULT_USE = false;
@@ -68,12 +69,19 @@ public class ScoreUpper {
     }
 
     /**
+     * Getter for if bonus is true
+     * @return bonus
+     */
+    public Boolean getBonus(){return bonus;}
+
+    /**
      * Calculates the scores for the upper scorecard
      *
      * @param allDiceInHand hand of dice
      */
     public void calcScore(ArrayList<Integer> allDiceInHand) {
         Integer count = 0;
+        Integer total = 0;
 
         resetPossibleScores();
 
@@ -86,6 +94,12 @@ public class ScoreUpper {
             possibleScores.set(allDiceInHand.get(j) - 1, count * allDiceInHand.get(j));
 
             count = 0;
+        }
+        for(Integer i = 0; i < actualScores.size(); i++){
+            total += actualScores.get(i);
+        }
+        if(total >= 63){
+            bonus = true;
         }
     }
 

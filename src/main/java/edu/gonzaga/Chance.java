@@ -30,6 +30,7 @@ public class Chance extends Scorecard{
      */
     @Override
     public void calcScore(ArrayList<Integer> allDiceInHand){
+        this.possibleScore = 0;
         for (Integer i = 0; i < allDiceInHand.size(); i++){
             this.possibleScore += allDiceInHand.get(i);
         }

@@ -33,6 +33,14 @@ public class Player {
     YahtzeeScore yahtzeeScorecard = new YahtzeeScore();
     Chance chanceScore = new Chance();
 
+    public void playGame() throws Exception {
+        gameConfig();
+
+        for(Integer i = 0; i < (upperScorecard.getPossibleScores().size() + 7); i++){
+            singleTurn();
+        }
+    }
+
     /**
      * Calls all methods required for a single turn in a yahtzee game
      * @throws Exception invalid input
@@ -41,9 +49,7 @@ public class Player {
         String scoreToKeep;
         Boolean upperScorecard;
 
-        if(seeScorecard()){
-            outputEntireScorecard();
-        }
+        outputEntireScorecard();
 
         initialRoll();
 
@@ -59,12 +65,8 @@ public class Player {
 
         scoreToKeep = getWhichScoreToKeep();
 
-        if (upperScorecard){
-            verifyUpperScorecard(scoreToKeep);
-        }
-        else{
-            verifyLowerScorecard(scoreToKeep);
-        }
+        verifyUpperScorecard(scoreToKeep);
+        verifyLowerScorecard(scoreToKeep);
     }
 
     /**
@@ -184,7 +186,7 @@ public class Player {
     /**
      * Outputs the entire scorecard
      */
-    private void outputEntireScorecard(){
+    public void outputEntireScorecard(){
         upperScorecard.outputAllActualScores();
         threeOfAKindScore.outputActualScore();
         fourOfAKindScore.outputActualScore();
@@ -193,6 +195,10 @@ public class Player {
         largeStraightScore.outputActualScore();
         yahtzeeScorecard.outputActualScore();
         chanceScore.outputActualScore();
+
+        if(upperScorecard.getBonus()){
+            System.out.println("Score: 35 on the bonus line");
+        }
     }
 
     /**
@@ -222,10 +228,17 @@ public class Player {
      */
     private void verifyUpperScorecard(String chosenUpperScore){
         ArrayList<Boolean> used = new ArrayList<>();
+        Integer whichScore;
         used = upperScorecard.getIsUsed();
-        Integer whichScore = Integer.parseInt(chosenUpperScore);
 
-        if(!used.get(whichScore - 1)){
+        try{
+            whichScore = Integer.parseInt(chosenUpperScore);
+        } catch (NumberFormatException e){
+            whichScore = -1;
+        }
+
+
+        if(whichScore != -1){
             upperScorecard.setIsUsed(whichScore - 1);
             upperScorecard.isChosen(whichScore - 1);
         }

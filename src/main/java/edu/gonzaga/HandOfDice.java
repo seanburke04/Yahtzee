@@ -33,6 +33,7 @@ public class HandOfDice {
     private static final Integer NUM_ROLLS_INDEX = 2;
 
     void setFullHand(Integer one, Integer two, Integer three, Integer four, Integer five){
+        fullHand.clear();
         fullHand.add(one);
         fullHand.add(two);
         fullHand.add(three);
@@ -107,6 +108,8 @@ public class HandOfDice {
      * Rolls a set of dice for a full hand
      */
     public void rollHand(Die singleDie){
+        fullHand.clear();
+
         for (Integer i = 0; i < readInFromFile.get(1); i++){
             fullHand.add(singleDie.getSideUp());
             singleDie.roll();

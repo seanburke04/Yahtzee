@@ -54,6 +54,12 @@ public class ScoreUpper {
         }
     }
 
+    private void resetPossibleScores(){
+        for(Integer i = 0; i < possibleScores.size(); i++){
+            possibleScores.set(i, 0);
+        }
+    }
+
     /**
      * Calculates the scores for the upper scorecard
      *
@@ -61,6 +67,8 @@ public class ScoreUpper {
      */
     public void calcScore(ArrayList<Integer> allDiceInHand) {
         Integer count = 0;
+
+        resetPossibleScores();
 
         for (Integer j = 0; j < allDiceInHand.size(); j++) {
             for (Integer k = 0; k < allDiceInHand.size(); k++) {

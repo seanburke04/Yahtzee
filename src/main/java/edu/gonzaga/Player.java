@@ -6,6 +6,9 @@ import java.util.Scanner;
 public class Player {
     Die oneDice = new Die();
     Scanner getInput = new Scanner(System.in);
+    Scanner getScoreSelection = new Scanner(System.in);
+    Scanner seeScoreSelection = new Scanner(System.in);
+    Scanner whichCardSelection = new Scanner(System.in);
     ArrayList<Integer> settings = new ArrayList<>();
     String playAgain = "y";
 
@@ -168,13 +171,13 @@ public class Player {
         System.out.println("Enter the number for the upper scores or one of the following codes");
         System.out.println("Three of a kind = TOK\nFour of a kind = FOK\nFull House = FH\nSmall Straight = SS");
         System.out.println("Large Straight = LS\nYahtzee = YTZ\nChance = CH");
-        return getInput.nextLine();
+        return getScoreSelection.nextLine();
     }
 
     private Boolean seeScorecard(){
         String seeScore;
         System.out.println("Enter \"S\" to see Scorecard or press any button to continue");
-        seeScore = getInput.nextLine();
+        seeScore = seeScoreSelection.nextLine();
 
         if(seeScore == "S"){
             return true;
@@ -221,7 +224,7 @@ public class Player {
         String choice;
 
         System.out.println("Enter \"U\" to choose an upper score or \"L\" for a lower score");
-        choice = getInput.nextLine();
+        choice = whichCardSelection.nextLine();
 
 
         // Returns true if the user wants to use the upper scorecard

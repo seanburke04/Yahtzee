@@ -63,8 +63,9 @@ public class Player {
         }
     }
 
-    private void singleTurn(){
+    public void singleTurn() throws Exception {
         String scoreToKeep;
+        Boolean upperScorecard;
 
         if(seeScorecard()){
             outputEntireScorecard();
@@ -80,11 +81,19 @@ public class Player {
 
         printPossibleScores();
 
+        upperScorecard = whichCard();
+
         scoreToKeep = getWhichScoreToKeep();
 
+        if (upperScorecard){
+            verifyUpperScorecard(scoreToKeep);
+        }
+        else{
+            verifyLowerScorecard(scoreToKeep);
+        }
     }
 
-    private void gameConfig(){
+    public void gameConfig(){
         hand.readInConfig();
         hand.userSelectedSettings();
     }
@@ -149,7 +158,7 @@ public class Player {
         if(!yahtzeeScorecard.getIsUsed()){
             yahtzeeScorecard.outputPossibleScore();
         }
-        if(chanceScore.getIsUsed()){
+        if(!chanceScore.getIsUsed()){
             chanceScore.outputPossibleScore();
         }
     }
@@ -214,22 +223,19 @@ public class Player {
         System.out.println("Enter \"U\" to choose an upper score or \"L\" for a lower score");
         choice = getInput.nextLine();
 
+
         // Returns true if the user wants to use the upper scorecard
         if(choice == "U"){
             return true;
         }
         // Returns false if the user wants to use the lower scorecard
-        else if(choice == "L"){
+        else {
             return false;
-        }
-        // Throws exception for invalid input
-        else{
-            throw new Exception("Invalid input");
         }
     }
 
     // Do I need to return anything
-    private Boolean verifyUpperScorecard(String chosenUpperScore){
+    private void verifyUpperScorecard(String chosenUpperScore){
         ArrayList<Boolean> used = new ArrayList<>();
         used = upperScorecard.getIsUsed();
         Integer whichScore = Integer.parseInt(chosenUpperScore);
@@ -237,94 +243,57 @@ public class Player {
         if(!used.get(whichScore - 1)){
             upperScorecard.setIsUsed(whichScore - 1);
             upperScorecard.isChosen(whichScore - 1);
-            return true;
-        }
-        else{
-            return false;
         }
     }
 
     // Do I need to return anything
     // NOT DONE
     //This is only for a string maybe ask if they are choosing from upper or lower scorecard?
-    private Boolean verifyLowerScorecard(String chosenLowerScore){
-        Boolean selected = false;
-
+    private void verifyLowerScorecard(String chosenLowerScore){
         //NEED TO CHECK IF ISUSED  IS ALREADY SET
         switch(chosenLowerScore){
             case "TOK":
                 if (!threeOfAKindScore.getIsUsed()){
-                    selected = true;
                     threeOfAKindScore.setIsUsed(true);
                     threeOfAKindScore.isChosen();
-                }
-                else{
-                    selected = false;
                 }
                 break;
             case "FOK":
                 if (!fourOfAKindScore.getIsUsed()){
-                    selected = true;
                     fourOfAKindScore.setIsUsed(true);
                     threeOfAKindScore.isChosen();
-                }
-                else{
-                    selected = false;
                 }
                 break;
             case "FH":
                 if (!fullHouseScore.getIsUsed()){
-                    selected = true;
                     fullHouseScore.setIsUsed(true);
                     fullHouseScore.isChosen();
-                }
-                else{
-                    selected = false;
                 }
                 break;
             case "SS":
                 if (!smallStraightScore.getIsUsed()){
-                    selected = true;
                     smallStraightScore.setIsUsed(true);
                     smallStraightScore.isChosen();
-                }
-                else{
-                    selected = false;
                 }
                 break;
             case "LS":
                 if (!largeStraightScore.getIsUsed()){
-                    selected = true;
                     largeStraightScore.setIsUsed(true);
                     largeStraightScore.isChosen();
-                }
-                else{
-                    selected = false;
                 }
                 break;
             case "YTZ":
                 if (!yahtzeeScorecard.getIsUsed()){
-                    selected = true;
                     yahtzeeScorecard.setIsUsed(true);
                     yahtzeeScorecard.isChosen();
-                }
-                else{
-                    selected = false;
                 }
                 break;
             case "CH":
                 if (!chanceScore.getIsUsed()){
-                    selected = true;
                     chanceScore.setIsUsed(true);
                     chanceScore.isChosen();
                 }
-                else{
-                    selected = false;
-                }
                 break;
-            default:
-                selected = false;
         }
-        return selected;
     }
 }

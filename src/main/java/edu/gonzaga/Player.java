@@ -252,7 +252,7 @@ public class Player {
     // Do I need to return anything
     // NOT DONE
     //This is only for a string maybe ask if they are choosing from upper or lower scorecard?
-    private void verifyLowerScorecard(String chosenLowerScore){
+    public void verifyLowerScorecard(String chosenLowerScore){
         //NEED TO CHECK IF ISUSED  IS ALREADY SET
         switch(chosenLowerScore){
             case "TOK":

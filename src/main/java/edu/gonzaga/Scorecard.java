@@ -5,7 +5,7 @@
  * Source: Most of the Die.java file written by Dr. Crandall
  *
  * @author Sean Burke
- * @version v1.1 3/3/22
+ * @version v1.1 3/7/22
  */
 package edu.gonzaga;
 
@@ -19,7 +19,6 @@ public abstract class Scorecard {
     Integer possibleScore;
     Integer actualScore;
     Boolean isUsed;
-    String menuOption;
 
     /**
      * Finds the number of dice that match in a hand

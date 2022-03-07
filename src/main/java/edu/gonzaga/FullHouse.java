@@ -5,7 +5,7 @@
  * Source: Most of the Die.java file written by Dr. Crandall
  *
  * @author Sean Burke
- * @version v1.1 3/3/22
+ * @version v1.1 3/7/22
  */
 package edu.gonzaga;
 
@@ -20,8 +20,6 @@ public class FullHouse extends Scorecard{
         this.possibleScore = 0;
         this.actualScore = 0;
         this.isUsed = false;
-        // this.menuOption =  WHAT SHOULD THIS BE?
-        //ADD MENU OPTION CHECK?
     }
 
     /**

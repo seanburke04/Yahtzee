@@ -1,3 +1,12 @@
+/**
+ * This program rolls and scores the dice for a game of yahtzee
+ * CPSC 224-02, Spring 2022
+ * HW1 Yahtzee Rolling and Scoring
+ * Source: Most of the Die.java file written by Dr. Crandall
+ *
+ * @author Sean Burke
+ * @version v1.1 3/7/22
+ */
 package edu.gonzaga;
 
 import java.util.ArrayList;
@@ -24,48 +33,10 @@ public class Player {
     YahtzeeScore yahtzeeScorecard = new YahtzeeScore();
     Chance chanceScore = new Chance();
 
-    public void playGame(){
-        gameConfig();
-
-        while (playAgain.equals("y")){
-
-
-            // This needs to be fixed this only works for the ones being called, let user choose
-            upperScorecard.setActualScores(0);
-            upperScorecard.setActualScores(1);
-            upperScorecard.setActualScores(2);
-            upperScorecard.setActualScores(3);
-            upperScorecard.setActualScores(4);
-            upperScorecard.setActualScores(5);
-            upperScorecard.outputAllActualScores();
-
-            threeOfAKindScore.isChosen();
-            threeOfAKindScore.outputActualScore();
-
-
-            fourOfAKindScore.isChosen();
-            fourOfAKindScore.outputActualScore();
-
-            fullHouseScore.isChosen();
-            fullHouseScore.outputActualScore();
-
-            smallStraightScore.isChosen();
-            smallStraightScore.outputActualScore();
-
-            largeStraightScore.isChosen();
-            largeStraightScore.outputActualScore();
-
-            yahtzeeScorecard.isChosen();
-            yahtzeeScorecard.outputActualScore();
-
-            chanceScore.isChosen();
-            chanceScore.outputActualScore();
-
-            System.out.println("Enter 'y' to play again");
-            playAgain = getInput.nextLine();
-        }
-    }
-
+    /**
+     * Calls all methods required for a single turn in a yahtzee game
+     * @throws Exception invalid input
+     */
     public void singleTurn() throws Exception {
         String scoreToKeep;
         Boolean upperScorecard;
@@ -96,16 +67,25 @@ public class Player {
         }
     }
 
+    /**
+     * Configures game settings
+     */
     public void gameConfig(){
         hand.readInConfig();
         hand.userSelectedSettings();
     }
 
+    /**
+     * Controls the initial roll
+     */
     private void initialRoll(){
         hand.rollHand(oneDice);
         hand.outputRoll();
     }
 
+    /**
+     * controls all re rolls for the hand
+     */
     private void allReRolls(){
         settings = hand.getReadInFromFile();
         if (settings.get(2) > 1){
@@ -117,6 +97,9 @@ public class Player {
         }
     }
 
+    /**
+     * calculates scores for all score lines
+     */
     private void calculateScores(){
         upperScorecard.calcScore(hand.getFullHand());
         threeOfAKindScore.calcScore(hand.getFullHand());
@@ -128,6 +111,9 @@ public class Player {
         chanceScore.calcScore(hand.getFullHand());
     }
 
+    /**
+     * prints all possible scores to the console
+     */
     private void printPossibleScores(){
         ArrayList<Boolean> used = new ArrayList<>();
 
@@ -166,6 +152,10 @@ public class Player {
         }
     }
 
+    /**
+     * Get which score the user wants to keep
+     * @return whichScoreToKeep
+     */
     private String getWhichScoreToKeep(){
         System.out.println("\nWhich score would you like to keep?");
         System.out.println("Enter the number for the upper scores or one of the following codes");
@@ -174,6 +164,10 @@ public class Player {
         return getScoreSelection.nextLine();
     }
 
+    /**
+     * Allows the user to see the whole scorecard
+     * @return bool that returns whether or not the user wants to see the scorecard
+     */
     private Boolean seeScorecard(){
         String seeScore;
         System.out.println("Enter \"S\" to see Scorecard or press any button to continue");
@@ -187,6 +181,9 @@ public class Player {
         }
     }
 
+    /**
+     * Outputs the entire scorecard
+     */
     private void outputEntireScorecard(){
         upperScorecard.outputAllActualScores();
         threeOfAKindScore.outputActualScore();
@@ -198,29 +195,11 @@ public class Player {
         chanceScore.outputActualScore();
     }
 
-    /*
-    private void verifyInput(String chosenScoreToKeep) throws Exception {
-        Integer convertedString; //this throws an exception when it is actually a string
-
-        // Upper scorecard is a special case that needs to be handled in a particular way
-        // Check to see is selection is isUsed else throw exception (in else case all inputs invalid)
-        convertedString = Integer.valueOf(chosenScoreToKeep);
-
-        if (convertedString > 0 && convertedString < upperScorecard.getPossibleScores().size()){
-            // check if it isUsed
-        }
-        else if (isLowerSelection(chosenScoreToKeep)){
-            //check if it isUsed
-        }
-        else{
-            throw new Exception("Invalid input");
-        }
-        // call methods to assign actual score and mark isUsed as true
-    }
-
+    /**
+     * Gets whether the user wants to select a score from the upper or lower scorecard
+     * @return true for upper, false for lower
      */
-
-    private Boolean whichCard() throws Exception {
+    private Boolean whichCard() {
         String choice;
 
         System.out.println("Enter \"U\" to choose an upper score or \"L\" for a lower score");
@@ -237,7 +216,10 @@ public class Player {
         }
     }
 
-    // Do I need to return anything
+    /**
+     * Verifies that the selected score can be used
+     * @param chosenUpperScore which score line has been chosen
+     */
     private void verifyUpperScorecard(String chosenUpperScore){
         ArrayList<Boolean> used = new ArrayList<>();
         used = upperScorecard.getIsUsed();
@@ -249,11 +231,11 @@ public class Player {
         }
     }
 
-    // Do I need to return anything
-    // NOT DONE
-    //This is only for a string maybe ask if they are choosing from upper or lower scorecard?
+    /**
+     * Verifies that the selected score can be used
+     * @param chosenLowerScore which score line has been chosen
+     */
     public void verifyLowerScorecard(String chosenLowerScore){
-        //NEED TO CHECK IF ISUSED  IS ALREADY SET
         switch(chosenLowerScore){
             case "TOK":
                 if (!threeOfAKindScore.getIsUsed()){

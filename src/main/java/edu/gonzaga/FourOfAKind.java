@@ -20,8 +20,6 @@ public class FourOfAKind extends Scorecard {
         this.possibleScore = 0;
         this.actualScore = 0;
         this.isUsed = false;
-        // this.menuOption =  WHAT SHOULD THIS BE?
-        //ADD MENU OPTION CHECK?
     }
 
     /**

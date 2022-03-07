@@ -5,7 +5,7 @@
  * Source: Most of the Die.java file written by Dr. Crandall
  *
  * @author Sean Burke
- * @version v1.1 3/3/22
+ * @version v1.1 3/7/22
  */
 package edu.gonzaga;
 
@@ -29,6 +29,10 @@ public class ScoreUpper {
         isUsed.add(DEFAULT_USE);
     }
 
+    /**
+     * Setter for actualScores
+     * @param index
+     */
     public void setActualScores(Integer index){
         actualScores.set(index, possibleScores.get(index));
     }
@@ -54,6 +58,9 @@ public class ScoreUpper {
         }
     }
 
+    /**
+     * resets the possible scores ArrayList, there were some issues with multiple turns stacking in the array
+     */
     private void resetPossibleScores(){
         for(Integer i = 0; i < possibleScores.size(); i++){
             possibleScores.set(i, 0);
@@ -131,16 +138,26 @@ public class ScoreUpper {
         System.out.println("Score " + actualScores.get(whichToPrint) + " on the " + (whichToPrint + 1) + " line");
     }
 
+    /**
+     * outputs all of the actual scores
+     */
     public void outputAllActualScores(){
         for (Integer i = 0; i < actualScores.size(); i++){
             System.out.println("Score " + actualScores.get(i) + " on the " + (i + 1) + " line");
         }
     }
 
+    /**
+     * outputs a particular possible score
+     * @param whichToPrint
+     */
     public void outputPossibleScoreParticular(Integer whichToPrint) {
         System.out.println("Score " + possibleScores.get(whichToPrint) + " on the " + (whichToPrint + 1) + " line");
     }
 
+    /**
+     * outputs all possible scores
+     */
     public void outputAllPossibleScores(){
         for (Integer i = 0; i < possibleScores.size(); i++){
             System.out.println("Score " + possibleScores.get(i) + " on the " + (i + 1) + " line");

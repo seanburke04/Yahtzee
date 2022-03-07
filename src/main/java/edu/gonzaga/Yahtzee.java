@@ -5,7 +5,7 @@
  * Source: Most of the Die.java file written by Dr. Crandall
  *
  * @author Sean Burke
- * @version v1.1 3/3/22
+ * @version v1.1 3/7/22
  */
 package edu.gonzaga;
 
@@ -24,6 +24,7 @@ public class Yahtzee {
         player1.gameConfig();
         player1.singleTurn();
         player1.singleTurn();
+        //maybe just always output score
 
     }
 }

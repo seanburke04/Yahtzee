@@ -12,7 +12,7 @@ public class Window {
     private ImageIcon yahtzeeIcon = new ImageIcon(iconPath);
 
     //Frame
-    private JFrame frame = new JFrame("Yahtzee");
+    private JFrame frame = new JFrame("Yahtzee!");
 
     //Menu
     JMenuBar menuBarWidget = new JMenuBar();
@@ -23,8 +23,9 @@ public class Window {
 
     public void makeWindow(){
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setBounds(520, 200, 500, 500);
+        frame.setBounds(500, 200, 600, 400);
 
+        //Probably don't need menu bar
         menuBarWidget.add(menuFile);
         menuBarWidget.add(menuHelp);
 

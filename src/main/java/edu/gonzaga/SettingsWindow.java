@@ -17,6 +17,7 @@ public class SettingsWindow {
         setDefaultSettings();
         addToPanel();
         yesFunction();
+        noFunction();
     }
 
     public JPanel getPanel(){return yesNoButtons;}
@@ -52,12 +53,22 @@ public class SettingsWindow {
     Adds functionality to the yes button
     Added here to make sure this works
     Kept as placeholder until I add actual functionality
+    Possible issue with removing components from frame as this does not have access
      */
     private void yesFunction(){
         yes.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 defaultSettings.setText("Pressed yes");
+            }
+        });
+    }
+
+    private void noFunction(){
+        no.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                defaultSettings.setText("Pressed No");
             }
         });
     }

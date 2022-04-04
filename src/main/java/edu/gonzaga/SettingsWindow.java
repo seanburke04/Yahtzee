@@ -1,6 +1,8 @@
 package edu.gonzaga;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class SettingsWindow {
@@ -14,6 +16,7 @@ public class SettingsWindow {
         initializeSettings();
         setDefaultSettings();
         addToPanel();
+        yesFunction();
     }
 
     public JPanel getPanel(){return yesNoButtons;}
@@ -43,5 +46,19 @@ public class SettingsWindow {
     private void addToPanel(){
         yesNoButtons.add(yes);
         yesNoButtons.add(no);
+    }
+
+    /*
+    Adds functionality to the yes button
+    Added here to make sure this works
+    Kept as placeholder until I add actual functionality
+     */
+    private void yesFunction(){
+        yes.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                defaultSettings.setText("Pressed yes");
+            }
+        });
     }
 }

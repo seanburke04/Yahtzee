@@ -18,9 +18,18 @@ package edu.gonzaga;
 /** Main program class for launching Yahtzee program. */
 public class Yahtzee {
     public static void main(String[] args) throws Exception {
+        Window mainWindow = new Window();
+
+        mainWindow.makeWindow();
+        mainWindow.makeVisible(true);
+
+
+        /*
         Player player1 = new Player();
 
         player1.playGame();
         player1.outputEntireScorecard();
+
+         */
     }
 }

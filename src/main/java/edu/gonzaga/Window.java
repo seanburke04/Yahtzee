@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class Window {
+    private Boolean startGame;
+
     //Icon
     private String workingDirectory = System.getProperty("user.dir");
     private String iconPath = workingDirectory + "/src/media/Logos/dicecup.jpg";
@@ -33,4 +35,6 @@ public class Window {
     public void makeVisible(Boolean visible){
         frame.setVisible(visible);
     }
+
+    public void setStart(Boolean start){ start = startGame; }
 }

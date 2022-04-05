@@ -11,6 +11,7 @@ public class SettingsWindow {
     private JTextArea defaultSettings = new JTextArea();
     private ArrayList<Integer> settings = new ArrayList<>();
     private JPanel yesNoButtons = new JPanel();
+    private Window initiateGameWindow = new Window();
 
     public void windowPrep(){
         initializeSettings();
@@ -37,6 +38,7 @@ public class SettingsWindow {
     }
 
     private void setDefaultSettings(){
+        defaultSettings.setEditable(false);
         defaultSettings.setText("Default Yahtzee settings:\n");
         defaultSettings.append("Number of dice: 5\n");
         defaultSettings.append("Number of sides: 6\n");
@@ -54,12 +56,15 @@ public class SettingsWindow {
     Added here to make sure this works
     Kept as placeholder until I add actual functionality
     Possible issue with removing components from frame as this does not have access
+    Both of the following functions need to be moved to the window class for proper management
+    Or could return a boolean to the window class and it updates itself based on that
      */
     private void yesFunction(){
         yes.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 defaultSettings.setText("Pressed yes");
+                initiateGameWindow.setStart(true);
             }
         });
     }

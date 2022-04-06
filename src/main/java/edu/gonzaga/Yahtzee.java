@@ -20,7 +20,7 @@ public class Yahtzee {
     public static void main(String[] args) throws Exception {
         Window mainWindow = new Window();
 
-        mainWindow.makeWindow();
+        mainWindow.runWindow();
         mainWindow.makeVisible(true);
 
 

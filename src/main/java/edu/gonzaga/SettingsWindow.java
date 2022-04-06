@@ -85,6 +85,8 @@ public class SettingsWindow {
         rightPanel.add(confirm);
     }
 
+    //Look at last thing in pocket to see how to remove components
+    //Put confirm button at bottom of the screen after doing this
     public void yesNoButtonFunctionality(){
         yesButton.addActionListener(new ActionListener() {
             @Override

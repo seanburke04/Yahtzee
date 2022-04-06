@@ -18,6 +18,7 @@ public class Window {
     public void runWindow(){
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setBounds(500, 200, 600, 400);
+        frame.getContentPane().setBackground(Color.WHITE);
 
         frame.setIconImage(yahtzeeIcon.getImage());
         addComponents();
@@ -28,7 +29,7 @@ public class Window {
 
     private void addComponents(){
         frame.add(BorderLayout.WEST, settingsMenu.getGenericTextArea());
-        frame.add(BorderLayout.EAST, settingsMenu.getRightPanel());
+        frame.add(BorderLayout.CENTER, settingsMenu.getRightPanel());
         frame.add(BorderLayout.SOUTH, settingsMenu.getButtonPanel());
     }
 

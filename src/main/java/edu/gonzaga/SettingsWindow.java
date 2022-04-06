@@ -1,7 +1,7 @@
 package edu.gonzaga;
 
 import javax.swing.*;
-import java.awt.*;
+import java.util.Timer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -82,17 +82,15 @@ public class SettingsWindow {
         rightPanel.add(numDicePanel);
         rightPanel.add(numSidesPanel);
         rightPanel.add(numRollsPanel);
-        rightPanel.add(confirm);
     }
 
-    //Look at last thing in pocket to see how to remove components
-    //Put confirm button at bottom of the screen after doing this
     public void yesNoButtonFunctionality(){
         yesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                genericTextArea.setText(" Pressed Yes");
+                genericTextArea.setText(" Playing with default settings");
             }
+
         });
 
         noButton.addActionListener(new ActionListener() {
@@ -103,7 +101,11 @@ public class SettingsWindow {
                 genericTextArea.append(" Number of sides: 6\n");
                 genericTextArea.append(" Total number of rolls: 3\n\n");
                 addToRightPanel();
-                buttonPanel.setVisible(false);
+                buttonPanel.remove(yesButton);
+                buttonPanel.remove(noButton);
+                buttonPanel.revalidate();
+                buttonPanel.repaint();
+                buttonPanel.add(confirm);
             }
         });
 

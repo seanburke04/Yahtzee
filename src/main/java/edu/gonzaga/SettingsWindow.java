@@ -14,6 +14,9 @@ public class SettingsWindow {
     private JComboBox numSides = new JComboBox();
     private JComboBox numRolls = new JComboBox();
     private JPanel rightPanel = new JPanel();
+    private JPanel numDicePanel = new JPanel();
+    private JPanel numSidesPanel = new JPanel();
+    private JPanel numRollsPanel = new JPanel();
     private JTextArea numDiceText = new JTextArea("Number of Dice: ");
     private JTextArea numSidesText = new JTextArea("Number of Sides: ");
     private JTextArea numRollsText = new JTextArea("Number of Rolls: ");
@@ -55,23 +58,29 @@ public class SettingsWindow {
         }
     }
 
-    private void addToRightPanel(){
+    private void setupSubPanels(){
         setupComboBoxes();
 
-        //Needs to be cleaned up
-        rightPanel.setLayout(new GridLayout(3,2));
-
         numDiceText.setEditable(false);
-        rightPanel.add(numDiceText);
-        rightPanel.add(numDice);
+        numDicePanel.add(numDiceText);
+        numDicePanel.add(numDice);
 
         numSidesText.setEditable(false);
-        rightPanel.add(numSidesText);
-        rightPanel.add(numSides);
+        numSidesPanel.add(numSidesText);
+        numSidesPanel.add(numSides);
 
         numRollsText.setEditable(false);
-        rightPanel.add(numRollsText);
-        rightPanel.add(numRolls);
+        numRollsPanel.add(numRollsText);
+        numRollsPanel.add(numRolls);
+    }
+
+    private void addToRightPanel(){
+        setupSubPanels();
+        rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
+
+        rightPanel.add(numDicePanel);
+        rightPanel.add(numSidesPanel);
+        rightPanel.add(numRollsPanel);
     }
 
     public void yesNoButtonFunctionality(){

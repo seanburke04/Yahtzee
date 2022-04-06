@@ -20,6 +20,7 @@ public class SettingsWindow {
     private JTextArea numDiceText = new JTextArea("Number of Dice: ");
     private JTextArea numSidesText = new JTextArea("Number of Sides: ");
     private JTextArea numRollsText = new JTextArea("Number of Rolls: ");
+    private JButton confirm = new JButton("Confirm");
 
     public JTextArea getGenericTextArea(){return genericTextArea;}
 
@@ -81,6 +82,7 @@ public class SettingsWindow {
         rightPanel.add(numDicePanel);
         rightPanel.add(numSidesPanel);
         rightPanel.add(numRollsPanel);
+        rightPanel.add(confirm);
     }
 
     public void yesNoButtonFunctionality(){
@@ -100,6 +102,14 @@ public class SettingsWindow {
                 genericTextArea.append(" Total number of rolls: 3\n\n");
                 addToRightPanel();
                 buttonPanel.setVisible(false);
+            }
+        });
+
+        confirm.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                genericTextArea.setText("Selection confirmed");
+                rightPanel.setVisible(false);
             }
         });
     }

@@ -14,6 +14,13 @@ public class Window {
     private JPanel buttonPanel = new JPanel();
     private JButton yesButton = new JButton("Yes");
     private JButton noButton = new JButton("No");
+    private JComboBox numDice = new JComboBox();
+    private JComboBox numSides = new JComboBox();
+    private JComboBox numRolls = new JComboBox();
+    private JPanel rightPanel = new JPanel();
+    private JTextArea numDiceText = new JTextArea("Number of Dice: ");
+    private JTextArea numSidesText = new JTextArea("Number of Sides: ");
+    private JTextArea numRollsText = new JTextArea("Number of Rolls: ");
 
     public void runWindow(){
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -23,6 +30,7 @@ public class Window {
         addComponents();
         displayDefaultSettings();
         addToButtonPanel();
+        yesNoButtonFunctionality();
     }
 
     public void setGenericTextArea(String text) {
@@ -40,13 +48,67 @@ public class Window {
 
     private void addComponents(){
         frame.add(BorderLayout.WEST, genericTextArea);
-        //frame.add(BorderLayout.EAST, //DicePanel);
+        frame.add(BorderLayout.EAST, rightPanel);
         frame.add(BorderLayout.SOUTH, buttonPanel);
     }
 
     private void addToButtonPanel(){
         buttonPanel.add(yesButton);
         buttonPanel.add(noButton);
+    }
+
+    private void setupComboBoxes(){
+        //Num dice options
+        numDice.addItem(5);
+        numDice.addItem(6);
+        numDice.addItem(7);
+
+        //Num sides options
+        numSides.addItem(6);
+        numSides.addItem(8);
+        numSides.addItem(12);
+
+        //Num rolls options
+        for(int i = 1; i < 11; i++){
+            numRolls.addItem(i);
+        }
+    }
+
+    private void addToRightPanel(){
+        setupComboBoxes();
+
+        numDiceText.setEditable(false);
+        rightPanel.add(numDiceText);
+        rightPanel.add(numDice);
+
+        numSidesText.setEditable(false);
+        rightPanel.add(numSidesText);
+        rightPanel.add(numSides);
+
+        numRollsText.setEditable(false);
+        rightPanel.add(numRollsText);
+        rightPanel.add(numRolls);
+    }
+
+    private void yesNoButtonFunctionality(){
+        yesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                genericTextArea.setText(" Pressed Yes");
+            }
+        });
+
+        noButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                genericTextArea.setText(" Default Yahtzee settings:\n");
+                genericTextArea.append(" Number of dice: 5\n");
+                genericTextArea.append(" Number of sides: 6\n");
+                genericTextArea.append(" Total number of rolls: 3\n\n");
+                addToRightPanel();
+                buttonPanel.setVisible(false);
+            }
+        });
     }
 
     public void makeVisible(Boolean visible){

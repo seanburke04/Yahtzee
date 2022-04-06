@@ -22,6 +22,8 @@ public class Window {
     private JTextArea numSidesText = new JTextArea("Number of Sides: ");
     private JTextArea numRollsText = new JTextArea("Number of Rolls: ");
 
+    //Add panels inside the panel and adjust layout so it fits on screen properly
+
     public void runWindow(){
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setBounds(500, 200, 600, 400);
@@ -76,6 +78,9 @@ public class Window {
 
     private void addToRightPanel(){
         setupComboBoxes();
+
+        //Needs to be cleaned up
+        rightPanel.setLayout(new GridLayout(3,2));
 
         numDiceText.setEditable(false);
         rightPanel.add(numDiceText);

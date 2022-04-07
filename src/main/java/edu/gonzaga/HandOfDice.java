@@ -13,11 +13,9 @@ package edu.gonzaga;
 * Class to handle each hand of dice
 */
 
-import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.*;
-import java.io.File;
 
 public class HandOfDice {
 
@@ -26,7 +24,7 @@ public class HandOfDice {
 
     private String userSelectionReRoll;
     private ArrayList<Integer> fullHand = new ArrayList<Integer>(); // Array for the hand of dice
-    private ArrayList<Integer> readInFromFile = new ArrayList<Integer>();
+    private ArrayList<Integer> userSettings = new ArrayList<Integer>(3);
 
     private static final Integer NUM_SIDES_INDEX = 0;
     private static final Integer NUM_DICE_INDEX = 1;
@@ -53,56 +51,9 @@ public class HandOfDice {
      *
      * @return userSettings array
      */
-    public ArrayList<Integer> getReadInFromFile(){return readInFromFile;}
+    public ArrayList<Integer> getUserSettings(){return userSettings;}
 
-    /**
-     * Reads in values from the file and puts the values in an array
-     */
-    public void readInConfig(){
-        String currentDirectory = System.getProperty("user.dir");
-        java.nio.file.Path filePath = java.nio.file.Paths.get(currentDirectory, "yahtzeeConfig.txt");
-
-        try{
-            Scanner readFile = new Scanner(new File(filePath.toString()));
-
-            while (readFile.hasNextLine()){
-                readInFromFile.add(readFile.nextInt());
-            }
-        }
-        catch(FileNotFoundException ex){
-            ex.printStackTrace();
-        }
-    }
-
-    /**
-     * Lets user decide how many dice to play with, how many sides each dice
-     * has and the number of rolls they get
-     */
-    public void userSelectedSettings(){
-        String changeConfig;
-
-        // Report read in settings to the user
-        System.out.print("You are playing with " + readInFromFile.get(1));
-        System.out.println(" " + readInFromFile.get(0) + "-sided dice");
-        System.out.print("You get " + readInFromFile.get(2));
-        System.out.println(" rolls per hand");
-
-        // Asks the user if they want to change the configuration
-        System.out.print("\nEnter 'y' if you would like to change ");
-        System.out.print("the configuration ");
-        changeConfig = configInput.nextLine();
-
-        // Changes the configuration if the user wants
-        if(changeConfig.charAt(0) == 'y'){
-            System.out.print("Enter the number of sides on each die ");
-            readInFromFile.set(NUM_SIDES_INDEX, configInput.nextInt());
-            System.out.print("\nEnter the number of dice in play ");
-            readInFromFile.set(NUM_DICE_INDEX, configInput.nextInt());
-            System.out.print("\nEnter the number of rolls per hand ");
-            readInFromFile.set(NUM_ROLLS_INDEX, configInput.nextInt());
-            System.out.print("\n");
-        }
-    }
+    public void setUserSettings(ArrayList<Integer> settings){userSettings = settings;}
 
     /**
      * Rolls a set of dice for a full hand
@@ -110,7 +61,7 @@ public class HandOfDice {
     public void rollHand(Die singleDie){
         fullHand.clear();
 
-        for (Integer i = 0; i < readInFromFile.get(1); i++){
+        for (Integer i = 0; i < userSettings.get(1); i++){
             fullHand.add(singleDie.getSideUp());
             singleDie.roll();
             fullHand.set(i, singleDie.getSideUp());

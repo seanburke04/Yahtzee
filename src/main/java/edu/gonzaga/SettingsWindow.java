@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.ArrayList;
 
 public class SettingsWindow {
     private JTextArea settingsTextArea = new JTextArea();
@@ -14,7 +15,7 @@ public class SettingsWindow {
     private JComboBox numDice = new JComboBox();
     private JComboBox numSides = new JComboBox();
     private JComboBox numRolls = new JComboBox();
-    private JPanel rightPanel = new JPanel();
+    private JPanel centerPanel = new JPanel();
     private JPanel numDicePanel = new JPanel();
     private JPanel numSidesPanel = new JPanel();
     private JPanel numRollsPanel = new JPanel();
@@ -22,18 +23,37 @@ public class SettingsWindow {
     private JLabel numSidesText = new JLabel("Number of Sides: ");
     private JLabel numRollsText = new JLabel("Number of Rolls: ");
     private JButton confirm = new JButton("Confirm");
+    private ArrayList<Integer> userSettings = new ArrayList<>(3);
     private Boolean finished = false;
-    private Settings userSettings = new Settings();
+
+    public SettingsWindow(){
+        // Num sides
+        userSettings.add(6);
+
+        // Num Dice
+        userSettings.add(5);
+
+        // Num Rolls
+        userSettings.add(3);
+    }
+
+    public ArrayList<Integer> getUserSettings(){return userSettings;}
 
     public JTextArea getSettingsTextArea(){return settingsTextArea;}
 
     public Boolean getFinished(){return finished;}
 
-    public JPanel getRightPanel(){return rightPanel;}
+    public JPanel getCenterPanel(){return centerPanel;}
 
     public JPanel getButtonPanel(){return buttonPanel;}
 
-    public void displayDefaultSettings(){
+    public void callSetupMethods(){
+        displayDefaultSettings();
+        addToButtonPanel();
+        yesNoButtonFunctionality();
+    }
+
+    private void displayDefaultSettings(){
         settingsTextArea.setEditable(false);
         settingsTextArea.setText(" Default Yahtzee settings:\n");
         settingsTextArea.append(" Number of dice: 5\n");
@@ -42,7 +62,7 @@ public class SettingsWindow {
         settingsTextArea.append(" Would you like to play with the default settings?");
     }
 
-    public void addToButtonPanel(){
+    private void addToButtonPanel(){
         buttonPanel.add(yesButton);
         buttonPanel.add(noButton);
     }
@@ -69,25 +89,23 @@ public class SettingsWindow {
         numDice.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                userSettings.setNumDice((Integer) numDice.getSelectedItem());
+                userSettings.set(1,(Integer) numDice.getSelectedItem());
             }
         });
 
         numSides.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                userSettings.setNumSides((Integer) numSides.getSelectedItem());
+                userSettings.set(0,(Integer) numSides.getSelectedItem());
             }
         });
 
         numRolls.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                userSettings.setNumRolls((Integer) numRolls.getSelectedItem());
+                userSettings.set(2,(Integer) numRolls.getSelectedItem());
             }
         });
-
-        //add the rest
     }
 
     private void setupSubPanels(){
@@ -105,14 +123,14 @@ public class SettingsWindow {
 
     private void addToRightPanel(){
         setupSubPanels();
-        rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
+        centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
 
-        rightPanel.add(numDicePanel);
-        rightPanel.add(numSidesPanel);
-        rightPanel.add(numRollsPanel);
+        centerPanel.add(numDicePanel);
+        centerPanel.add(numSidesPanel);
+        centerPanel.add(numRollsPanel);
     }
 
-    public void yesNoButtonFunctionality(){
+    private void yesNoButtonFunctionality(){
         yesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -141,7 +159,7 @@ public class SettingsWindow {
             @Override
             public void actionPerformed(ActionEvent e) {
                 settingsTextArea.setText("Selection confirmed");
-                rightPanel.setVisible(false);
+                centerPanel.setVisible(false);
                 finished = true;
             }
         });

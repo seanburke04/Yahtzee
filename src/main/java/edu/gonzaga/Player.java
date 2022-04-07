@@ -14,12 +14,10 @@ import java.util.Scanner;
 
 public class Player {
     Die oneDice = new Die();
-    Scanner getInput = new Scanner(System.in);
     Scanner getScoreSelection = new Scanner(System.in);
     Scanner seeScoreSelection = new Scanner(System.in);
     Scanner whichCardSelection = new Scanner(System.in);
     ArrayList<Integer> settings = new ArrayList<>();
-    String playAgain = "y";
 
     // Dice control class
     HandOfDice hand = new HandOfDice();
@@ -33,7 +31,22 @@ public class Player {
     YahtzeeScore yahtzeeScorecard = new YahtzeeScore();
     Chance chanceScore = new Chance();
 
+    Window mainWindow = new Window();
+    SettingsWindow settingsMenu = new SettingsWindow();
+
+    private void passToWindow(){
+        settingsMenu.callSetupMethods();
+        mainWindow.getSettingsComponents(settingsMenu.getSettingsTextArea(), settingsMenu.getCenterPanel(), settingsMenu.getButtonPanel());
+    }
+
+
     public void playGame() throws Exception {
+        mainWindow.runWindow();
+        passToWindow();
+        mainWindow.addSettingsComponents();
+        mainWindow.makeVisible(true);
+        hand.setUserSettings(settingsMenu.getUserSettings());
+
         gameConfig();
 
         for(Integer i = 0; i < (upperScorecard.getPossibleScores().size() + 7); i++){
@@ -73,8 +86,7 @@ public class Player {
      * Configures game settings
      */
     public void gameConfig(){
-        hand.readInConfig();
-        hand.userSelectedSettings();
+        //hand.userSelectedSettings();
     }
 
     /**
@@ -89,7 +101,7 @@ public class Player {
      * controls all re rolls for the hand
      */
     private void allReRolls(){
-        settings = hand.getReadInFromFile();
+        settings = hand.getUserSettings();
         if (settings.get(2) > 1){
             for (Integer i = 1; i < settings.get(2); i++){
                 hand.getWhichToReRoll();

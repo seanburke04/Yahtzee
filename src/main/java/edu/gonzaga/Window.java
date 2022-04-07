@@ -2,6 +2,7 @@ package edu.gonzaga;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Window {
     private String workingDirectory = System.getProperty("user.dir");
@@ -19,20 +20,15 @@ public class Window {
         frame.getContentPane().setBackground(Color.WHITE);
 
         frame.setIconImage(yahtzeeIcon.getImage());
-        getSettingsComponents();
-        addSettingsComponents();
-        settingsMenu.displayDefaultSettings();
-        settingsMenu.addToButtonPanel();
-        settingsMenu.yesNoButtonFunctionality();
     }
 
-    private void getSettingsComponents(){
-        genericTextArea = settingsMenu.getSettingsTextArea();
-        centerPanel = settingsMenu.getRightPanel();
-        bottomPanel = settingsMenu.getButtonPanel();
+    public void getSettingsComponents(JTextArea textArea, JPanel mainPanel, JPanel secondPanel){
+        genericTextArea = textArea;
+        centerPanel = mainPanel;
+        bottomPanel = secondPanel;
     }
 
-    private void addSettingsComponents(){
+    public void addSettingsComponents(){
         frame.add(BorderLayout.WEST, genericTextArea);
         frame.add(BorderLayout.CENTER, centerPanel);
         frame.add(BorderLayout.SOUTH, bottomPanel);

@@ -5,6 +5,8 @@ import javax.swing.*;
 public class ScorecardView {
     JPanel buttonPanel = new JPanel();
     JButton showScore = new JButton("Show Scores");
+    //Use JRadioButton instead to select for possible scores?
+    //Maybe possible scores should be a different class?
     JTextArea scorecardText = new JTextArea();
     JTextArea possibleScoresText = new JTextArea();
 
@@ -13,6 +15,8 @@ public class ScorecardView {
     private void addButtonToPanel(){
         buttonPanel.add(showScore);
     }
+
+    private void setScorecardText(String scores){scorecardText.setText(scores);}
 
     //update possible scores after each roll (except maybe last)?
     //Check prof code there may be something about handling locked states
@@ -27,6 +31,8 @@ public class ScorecardView {
     // Need to print possible scores as well
 
     // Fix existing code, still printing to console
+
+    //Don't need observer if you have update scorecard button, maybe use roll button to update scorecard?
 
     //what else?
 }

@@ -34,7 +34,7 @@ public class Player {
     Window mainWindow = new Window();
     SettingsWindow settingsMenu = new SettingsWindow();
 
-    private void passToWindow(){
+    private void passSettingsToWindow(){
         settingsMenu.callSetupMethods();
         mainWindow.getSettingsComponents(settingsMenu.getSettingsTextArea(), settingsMenu.getCenterPanel(), settingsMenu.getButtonPanel());
     }
@@ -42,7 +42,7 @@ public class Player {
 
     public void playGame() throws Exception {
         mainWindow.runWindow();
-        passToWindow();
+        passSettingsToWindow();
         mainWindow.addSettingsComponents();
         mainWindow.makeVisible(true);
         hand.setUserSettings(settingsMenu.getUserSettings());

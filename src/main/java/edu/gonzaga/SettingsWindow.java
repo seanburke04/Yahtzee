@@ -1,12 +1,11 @@
 package edu.gonzaga;
 
 import javax.swing.*;
-import java.util.Timer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class SettingsWindow {
-    private JTextArea genericTextArea = new JTextArea();
+    private JTextArea settingsTextArea = new JTextArea();
     private JPanel buttonPanel = new JPanel();
     private JButton yesButton = new JButton("Yes");
     private JButton noButton = new JButton("No");
@@ -22,19 +21,19 @@ public class SettingsWindow {
     private JTextArea numRollsText = new JTextArea("Number of Rolls: ");
     private JButton confirm = new JButton("Confirm");
 
-    public JTextArea getGenericTextArea(){return genericTextArea;}
+    public JTextArea getSettingsTextArea(){return settingsTextArea;}
 
     public JPanel getRightPanel(){return rightPanel;}
 
     public JPanel getButtonPanel(){return buttonPanel;}
 
     public void displayDefaultSettings(){
-        genericTextArea.setEditable(false);
-        genericTextArea.setText(" Default Yahtzee settings:\n");
-        genericTextArea.append(" Number of dice: 5\n");
-        genericTextArea.append(" Number of sides: 6\n");
-        genericTextArea.append(" Total number of rolls: 3\n\n");
-        genericTextArea.append(" Would you like to play with the default settings?");
+        settingsTextArea.setEditable(false);
+        settingsTextArea.setText(" Default Yahtzee settings:\n");
+        settingsTextArea.append(" Number of dice: 5\n");
+        settingsTextArea.append(" Number of sides: 6\n");
+        settingsTextArea.append(" Total number of rolls: 3\n\n");
+        settingsTextArea.append(" Would you like to play with the default settings?");
     }
 
     public void addToButtonPanel(){
@@ -88,7 +87,7 @@ public class SettingsWindow {
         yesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                genericTextArea.setText(" Playing with default settings");
+                settingsTextArea.setText(" Playing with default settings");
             }
 
         });
@@ -96,10 +95,10 @@ public class SettingsWindow {
         noButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                genericTextArea.setText(" Default Yahtzee settings:\n");
-                genericTextArea.append(" Number of dice: 5\n");
-                genericTextArea.append(" Number of sides: 6\n");
-                genericTextArea.append(" Total number of rolls: 3\n\n");
+                settingsTextArea.setText(" Default Yahtzee settings:\n");
+                settingsTextArea.append(" Number of dice: 5\n");
+                settingsTextArea.append(" Number of sides: 6\n");
+                settingsTextArea.append(" Total number of rolls: 3\n\n");
                 addToRightPanel();
                 buttonPanel.remove(yesButton);
                 buttonPanel.remove(noButton);
@@ -112,7 +111,7 @@ public class SettingsWindow {
         confirm.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                genericTextArea.setText("Selection confirmed");
+                settingsTextArea.setText("Selection confirmed");
                 rightPanel.setVisible(false);
             }
         });

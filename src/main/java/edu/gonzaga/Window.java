@@ -2,8 +2,6 @@ package edu.gonzaga;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class Window {
     private String workingDirectory = System.getProperty("user.dir");
@@ -11,9 +9,6 @@ public class Window {
     private ImageIcon yahtzeeIcon = new ImageIcon(iconPath);
     private JFrame frame = new JFrame("Yahtzee!");
     private SettingsWindow settingsMenu = new SettingsWindow();
-
-
-    //Add panels inside the panel and adjust layout so it fits on screen properly
 
     public void runWindow(){
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -28,7 +23,7 @@ public class Window {
     }
 
     private void addComponents(){
-        frame.add(BorderLayout.WEST, settingsMenu.getGenericTextArea());
+        frame.add(BorderLayout.WEST, settingsMenu.getSettingsTextArea());
         frame.add(BorderLayout.CENTER, settingsMenu.getRightPanel());
         frame.add(BorderLayout.SOUTH, settingsMenu.getButtonPanel());
     }

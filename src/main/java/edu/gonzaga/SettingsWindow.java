@@ -20,8 +20,11 @@ public class SettingsWindow {
     private JTextArea numSidesText = new JTextArea("Number of Sides: ");
     private JTextArea numRollsText = new JTextArea("Number of Rolls: ");
     private JButton confirm = new JButton("Confirm");
+    private Boolean finished = false;
 
     public JTextArea getSettingsTextArea(){return settingsTextArea;}
+
+    public Boolean getFinished(){return finished;}
 
     public JPanel getRightPanel(){return rightPanel;}
 
@@ -113,6 +116,7 @@ public class SettingsWindow {
             public void actionPerformed(ActionEvent e) {
                 settingsTextArea.setText("Selection confirmed");
                 rightPanel.setVisible(false);
+                finished = true;
             }
         });
     }

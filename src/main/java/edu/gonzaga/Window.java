@@ -9,6 +9,9 @@ public class Window {
     private ImageIcon yahtzeeIcon = new ImageIcon(iconPath);
     private JFrame frame = new JFrame("Yahtzee!");
     private SettingsWindow settingsMenu = new SettingsWindow();
+    private JTextArea genericTextArea = new JTextArea();
+    private JPanel centerPanel = new JPanel();
+    private JPanel bottomPanel = new JPanel();
 
     public void runWindow(){
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -16,16 +19,30 @@ public class Window {
         frame.getContentPane().setBackground(Color.WHITE);
 
         frame.setIconImage(yahtzeeIcon.getImage());
-        addComponents();
+        getSettingsComponents();
+        addSettingsComponents();
         settingsMenu.displayDefaultSettings();
         settingsMenu.addToButtonPanel();
         settingsMenu.yesNoButtonFunctionality();
+
+        /*
+        if(settingsMenu.getFinished()){
+            removeSettingsComponents();
+        }
+
+         */
     }
 
-    private void addComponents(){
-        frame.add(BorderLayout.WEST, settingsMenu.getSettingsTextArea());
-        frame.add(BorderLayout.CENTER, settingsMenu.getRightPanel());
-        frame.add(BorderLayout.SOUTH, settingsMenu.getButtonPanel());
+    private void getSettingsComponents(){
+        genericTextArea = settingsMenu.getSettingsTextArea();
+        centerPanel = settingsMenu.getRightPanel();
+        bottomPanel = settingsMenu.getButtonPanel();
+    }
+
+    private void addSettingsComponents(){
+        frame.add(BorderLayout.WEST, genericTextArea);
+        frame.add(BorderLayout.CENTER, centerPanel);
+        frame.add(BorderLayout.SOUTH, bottomPanel);
     }
 
     public void makeVisible(Boolean visible){

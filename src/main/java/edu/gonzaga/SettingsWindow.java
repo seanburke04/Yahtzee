@@ -3,6 +3,8 @@ package edu.gonzaga;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 public class SettingsWindow {
     private JTextArea settingsTextArea = new JTextArea();
@@ -16,11 +18,12 @@ public class SettingsWindow {
     private JPanel numDicePanel = new JPanel();
     private JPanel numSidesPanel = new JPanel();
     private JPanel numRollsPanel = new JPanel();
-    private JTextArea numDiceText = new JTextArea("Number of Dice: ");
-    private JTextArea numSidesText = new JTextArea("Number of Sides: ");
-    private JTextArea numRollsText = new JTextArea("Number of Rolls: ");
+    private JLabel numDiceText = new JLabel("Number of Dice: ");
+    private JLabel numSidesText = new JLabel("Number of Sides: ");
+    private JLabel numRollsText = new JLabel("Number of Rolls: ");
     private JButton confirm = new JButton("Confirm");
     private Boolean finished = false;
+    private Settings userSettings = new Settings();
 
     public JTextArea getSettingsTextArea(){return settingsTextArea;}
 
@@ -59,20 +62,43 @@ public class SettingsWindow {
         for(int i = 1; i < 11; i++){
             numRolls.addItem(i);
         }
+        comboBoxListeners();
+    }
+
+    private void comboBoxListeners(){
+        numDice.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                userSettings.setNumDice((Integer) numDice.getSelectedItem());
+            }
+        });
+
+        numSides.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                userSettings.setNumSides((Integer) numSides.getSelectedItem());
+            }
+        });
+
+        numRolls.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                userSettings.setNumRolls((Integer) numRolls.getSelectedItem());
+            }
+        });
+
+        //add the rest
     }
 
     private void setupSubPanels(){
         setupComboBoxes();
 
-        numDiceText.setEditable(false);
         numDicePanel.add(numDiceText);
         numDicePanel.add(numDice);
 
-        numSidesText.setEditable(false);
         numSidesPanel.add(numSidesText);
         numSidesPanel.add(numSides);
 
-        numRollsText.setEditable(false);
         numRollsPanel.add(numRollsText);
         numRollsPanel.add(numRolls);
     }

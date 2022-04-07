@@ -24,13 +24,6 @@ public class Window {
         settingsMenu.displayDefaultSettings();
         settingsMenu.addToButtonPanel();
         settingsMenu.yesNoButtonFunctionality();
-
-        /*
-        if(settingsMenu.getFinished()){
-            removeSettingsComponents();
-        }
-
-         */
     }
 
     private void getSettingsComponents(){

@@ -26,5 +26,7 @@ public class ScorecardView {
 
     // Need to print possible scores as well
 
+    // Fix existing code, still printing to console
+
     //what else?
 }

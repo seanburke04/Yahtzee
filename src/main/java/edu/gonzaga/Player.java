@@ -9,6 +9,7 @@
  */
 package edu.gonzaga;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -18,6 +19,7 @@ public class Player {
     Scanner seeScoreSelection = new Scanner(System.in);
     Scanner whichCardSelection = new Scanner(System.in);
     ArrayList<Integer> settings = new ArrayList<>();
+    ArrayList<Integer> allScores = new ArrayList<>();
 
     // Dice control class
     HandOfDice hand = new HandOfDice();
@@ -31,11 +33,30 @@ public class Player {
     YahtzeeScore yahtzeeScorecard = new YahtzeeScore();
     Chance chanceScore = new Chance();
 
+    ScorecardView scoreView = new ScorecardView();
+
 
     public void playGame() throws Exception {
         for(Integer i = 0; i < (upperScorecard.getPossibleScores().size() + 7); i++){
             singleTurn();
         }
+    }
+
+    public String getScoreText(){
+        return scoreView.getScorecardText();
+    }
+
+    public void getAllScores(){
+        allScores = upperScorecard.getActualScores();
+        allScores.add(threeOfAKindScore.getActualScore());
+        allScores.add(fourOfAKindScore.getActualScore());
+        allScores.add(fullHouseScore.getActualScore());
+        allScores.add(smallStraightScore.getActualScore());
+        allScores.add(largeStraightScore.getActualScore());
+        allScores.add(yahtzeeScorecard.getActualScore());
+        allScores.add(chanceScore.getActualScore());
+
+        scoreView.getScores(allScores);
     }
 
     public void passUserSettings(ArrayList<Integer> userSettings){
@@ -50,6 +71,9 @@ public class Player {
         String scoreToKeep;
         Boolean upperScorecard;
 
+        getAllScores();
+
+        //Keep for now to make sure they match
         outputEntireScorecard();
 
         initialRoll();

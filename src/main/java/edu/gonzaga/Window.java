@@ -27,6 +27,7 @@ public class Window {
     private JLabel numRollsText = new JLabel("Number of Rolls: ");
     private JButton confirm = new JButton("Confirm");
     private ArrayList<Integer> userSettings = new ArrayList<>(3);
+    private Player player1 = new Player();
 
     public Window(){
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -45,9 +46,12 @@ public class Window {
         userSettings.add(3);
     }
 
+
+
     //All game stuff runs through here
     private void startGame(){
-
+        genericTextArea.setText(player1.getScoreText());
+        frame.setVisible(true);
     }
 
     public void runGameWindow(){

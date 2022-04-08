@@ -15,6 +15,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * This class displays settings and gets settings input from user
+ */
+
 public class SettingsView {
     JLabel numSidesText = new JLabel("Number of Sides: ");
     JLabel numDiceText = new JLabel("Number of Dice: ");
@@ -38,6 +42,9 @@ public class SettingsView {
 
     ArrayList<Integer> userSettings = new ArrayList<>();
 
+    /**
+     * Default constructor for the SettingsView class, initializes default settings and calls other methods
+     */
     SettingsView(){
         userSettings.add(DEFAULT_SIDES);
         userSettings.add(DEFAULT_DICE);
@@ -51,14 +58,32 @@ public class SettingsView {
         addToDisplayDefaultSettingsPanel();
     }
 
+    /**
+     * Getter for userSettings
+     * @return ArrayList<Integer></Integer> userSettings
+     */
     public ArrayList<Integer> getUserSettings(){return userSettings;}
 
+    /**
+     * Getter for the settingsPanel (passed to Window)
+     * @return JPanel settingsPanel
+     */
     public JPanel getSettingsPanel(){return settingsPanel;}
 
+    /**
+     * Getter for the settingsTextArea (passed to Window)
+     * @return JPanel displayDefaultSettingsPanel
+     */
     public JPanel getDisplayDefaultSettingsPanel(){return displayDefaultSettingsPanel;}
 
+    /**
+     * Adds textArea to its respective panel
+     */
     void addToDisplayDefaultSettingsPanel(){displayDefaultSettingsPanel.add(displayDefaultSettings);}
 
+    /**
+     * Sets the text to be displayed by the text area
+     */
     void setDisplayText(){
         displayDefaultSettings.setText("Default Settings:\n");
         displayDefaultSettings.append("Number of Sides: 6\n");
@@ -67,6 +92,9 @@ public class SettingsView {
         displayDefaultSettings.append("Would you like to play with these settings?");
     }
 
+    /**
+     * Adds labels and combo boxes to their respective panels
+     */
     void addToSubPanels(){
         numSidesPanel.add(numSidesText);
         numSidesPanel.add(numSides);
@@ -78,6 +106,9 @@ public class SettingsView {
         numRollsPanel.add(numRolls);
     }
 
+    /**
+     * Adds combo box panels to a single panel to be used by the window
+     */
     void addToSettingsPanel(){
         settingsPanel.setLayout(new BoxLayout(settingsPanel, BoxLayout.Y_AXIS));
         settingsPanel.add(numSidesPanel);
@@ -85,6 +116,9 @@ public class SettingsView {
         settingsPanel.add(numRollsPanel);
     }
 
+    /**
+     * Sets up combo box values
+     */
     void setupComboBoxes(){
         //Num dice options
         numDice.addItem(5);
@@ -100,6 +134,9 @@ public class SettingsView {
         }
     }
 
+    /**
+     * Adds listeners to combo boxes to get input
+     */
     void comboBoxListeners(){
         numDice.addActionListener(new ActionListener() {
             @Override

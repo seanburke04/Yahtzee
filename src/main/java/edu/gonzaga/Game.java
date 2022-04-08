@@ -12,15 +12,27 @@ package edu.gonzaga;
 
 import java.util.ArrayList;
 
+/**
+ * Main driver class for the whole game
+ */
 public class Game {
     Window mainWindow;
 
     ArrayList<Integer> settings = new ArrayList<>();
 
+    /**
+     * Gets the settings set by the user to configure the game
+     */
     void getSettings(){settings = mainWindow.passSettings();}
 
+    /**
+     * Sets up the window for the user to interact with
+     */
     void setupWindow(){mainWindow = new Window();}
 
+    /**
+     * Default constructor, calls other methods only
+     */
     public Game(){
         setupWindow();
         getSettings();

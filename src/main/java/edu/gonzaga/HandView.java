@@ -17,17 +17,23 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.border.Border;
 
+/**
+ * This class controls how the hand is viewed in the GUI
+ */
 public class HandView {
     JPanel myPanel;
     ArrayList<DieView> dieViews;
     JButton rollButton;
     Hand hand;
 
+    /**
+     * Sets the border, layout and size of the panel
+     */
     void setupPanel() {
         myPanel = new JPanel();
 
         // Borders can change the style of widget edges
-        Border blackline = BorderFactory.createLineBorder(Color.black);
+        Border blackLine = BorderFactory.createLineBorder(Color.black);
 
         // FlowLayout is the default left to right kind of layout
         myPanel.setLayout(new FlowLayout());
@@ -36,9 +42,12 @@ public class HandView {
         //myPanel.setLayout(new BoxLayout(myPanel, BoxLayout.PAGE_AXIS));
 
         myPanel.setSize(600, 100);
-        myPanel.setBorder(blackline);
+        myPanel.setBorder(blackLine);
     }
 
+    /**
+     * Sets up the dice view
+     */
     void setupDiceViews() {
         for( int i = 0; i < 5; i++ ) {
             DieView newView = new DieView();
@@ -48,6 +57,9 @@ public class HandView {
         }
     }
 
+    /**
+     * Sets up the re-roll button and its function
+     */
     void setupRollButton() {
         rollButton = new JButton("Roll!");
         rollButton.addActionListener(
@@ -62,6 +74,10 @@ public class HandView {
         myPanel.add(rollButton);
     }
 
+    /**
+     * Constructor that sets up the view for a particular hand
+     * @param newHand
+     */
     HandView(Hand newHand) {
         hand = newHand;
         dieViews = new ArrayList<>();
@@ -72,6 +88,10 @@ public class HandView {
 
     }
 
+    /**
+     * Getter for the panel
+     * @return myPanel
+     */
     public JPanel getPanel() {
         return myPanel;
     }

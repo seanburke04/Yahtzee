@@ -23,11 +23,18 @@ public class DieView extends JButton implements PropertyChangeListener{
     DiceImages images;
     Die dieToView;
 
+    /**
+     * Constructor that calls diceImages to be loaded and sets buttonText
+     * @param buttonText
+     */
     public DieView(String buttonText) {
         super(buttonText);
         images = new DiceImages("src/Media/Dice/");
     }
 
+    /**
+     * Default constructor that sets die button size and loads images to be used
+     */
     public DieView() {
         super("");
         images = new DiceImages("src/Media/Dice/");
@@ -36,33 +43,49 @@ public class DieView extends JButton implements PropertyChangeListener{
         setIcon(images.getDieImage(1));
     }
 
+    /**
+     * Locks the die so it can no longer be rolled
+     */
     public void lock() {
         locked = true;
         updateLockedState();
     }
 
+    /**
+     * Unlocks the die so it can be rolled
+     */
     public void unlock() {
         locked = false;
         updateLockedState();
     }
 
+    /**
+     * Toggles locked state of the die
+     */
     void toggleLocked() {
         locked = !locked;
         updateLockedState();
     }
 
+    /**
+     * Visually changes the die button so the user knows if it is locked
+     */
     void updateLockedState() {
-        Border blackline = BorderFactory.createLineBorder(Color.black);
-        Border redline = BorderFactory.createLineBorder(Color.red);
+        Border blackLine = BorderFactory.createLineBorder(Color.black);
+        Border redLine = BorderFactory.createLineBorder(Color.red);
         if(locked) {
-            setBorder(redline);
+            setBorder(redLine);
             dieToView.lock();
         } else {
-            setBorder(blackline);
+            setBorder(blackLine);
             dieToView.unlock();
         }
     }
 
+    /**
+     * Sets the die being viewed and can toggle its locked state
+     * @param newDieToView
+     */
     void setDieToView(Die newDieToView) {
         dieToView = newDieToView;
         dieToView.addPropertyChangeListener(this::propertyChange);
@@ -77,6 +100,10 @@ public class DieView extends JButton implements PropertyChangeListener{
         );
     }
 
+    /**
+     * Sets what happens when the die is pressed
+     * @param e
+     */
     public void propertyChange(PropertyChangeEvent e) {
         String propertyName = e.getPropertyName();
         if ("dievalue".equals(propertyName)) {

@@ -18,9 +18,16 @@ import javax.swing.*;
 import javax.imageio.*;
 import java.util.ArrayList;
 
+/**
+ * This class loads the dice images to be used
+ */
 public class DiceImages {
     ArrayList<ImageIcon> images;
 
+    /**
+     * Loads dice images to be used later
+     * @param imagesPath
+     */
     void loadImages(String imagesPath) {
         BufferedImage currPicture;
         images.add(null);
@@ -38,11 +45,20 @@ public class DiceImages {
         }
     }
 
+    /**
+     * Constructor that calls loadImages method
+     * @param imagesPath
+     */
     public DiceImages(String imagesPath) {
         images = new ArrayList<>(12);
         loadImages(imagesPath);
     }
 
+    /**
+     * Getter for an individual die image
+     * @param dieValue
+     * @return die image
+     */
     public ImageIcon getDieImage(int dieValue) {
         return images.get(dieValue);
     }

@@ -14,6 +14,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ * This class controls the window for the user to interact with (main GUI driver)
+ */
 public class Window {
     static GraphicsConfiguration gc;
     String workingDirectory = System.getProperty("user.dir");
@@ -26,6 +29,9 @@ public class Window {
 
     SettingsView userSettings;
 
+    /**
+     * Initializes everything for the main frame
+     */
     void setupMainWindow() {
         mainWindow = new JFrame(gc);
         mainWindow.setTitle("Yahtzee!");
@@ -35,28 +41,51 @@ public class Window {
         mainWindow.setIconImage(yahtzeeIcon.getImage());
     }
 
+    /**
+     * Passes settings to the game class from the SettingsView class
+     * @return ArrayList<Integer></Integer> settings
+     */
     public ArrayList<Integer> passSettings(){return userSettings.getUserSettings();}
 
+    /**
+     * Sets the frame to visible
+     */
     void startGUI() {
         mainWindow.setVisible(true);
     }
 
+    /**
+     * Calls hand constructor so hand methods are called within that class
+     */
     void setupHand() {
         hand = new Hand();
     }
 
+    /**
+     * Calls handView constructor so handView methods are called within that class
+     */
     void setupHandView() {
         handView = new HandView(hand);
     }
 
+    /**
+     * Calls SettingsView constructor so SettingsView methods are called within that class
+     */
     void setupUserSettings(){userSettings = new SettingsView();}
 
+    /**
+     * Removes components from the main frame
+     * @param component
+     */
     void removeComponent(Component component){
         mainWindow.remove(component);
         mainWindow.revalidate();
         mainWindow.repaint();
     }
 
+    /**
+     * Default constructor for the Window class, calls other methods only
+     */
     public Window() {
         setupHand();
         setupHandView();

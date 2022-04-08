@@ -34,5 +34,7 @@ public class ScorecardView {
 
     //Don't need observer if you have update scorecard button, maybe use roll button to update scorecard?
 
+    // Make the window class drive everything, put SettingsWindow in Window, so it can manipulate buttons
+
     //what else?
 }

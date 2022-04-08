@@ -31,27 +31,15 @@ public class Player {
     YahtzeeScore yahtzeeScorecard = new YahtzeeScore();
     Chance chanceScore = new Chance();
 
-    Window mainWindow = new Window();
-    SettingsWindow settingsMenu = new SettingsWindow();
-
-    private void passSettingsToWindow(){
-        settingsMenu.callSetupMethods();
-        mainWindow.getSettingsComponents(settingsMenu.getSettingsTextArea(), settingsMenu.getCenterPanel(), settingsMenu.getButtonPanel());
-    }
-
 
     public void playGame() throws Exception {
-        mainWindow.runWindow();
-        passSettingsToWindow();
-        mainWindow.addSettingsComponents();
-        mainWindow.makeVisible(true);
-        hand.setUserSettings(settingsMenu.getUserSettings());
-
-        gameConfig();
-
         for(Integer i = 0; i < (upperScorecard.getPossibleScores().size() + 7); i++){
             singleTurn();
         }
+    }
+
+    public void passUserSettings(ArrayList<Integer> userSettings){
+        hand.setUserSettings(userSettings);
     }
 
     /**
@@ -80,13 +68,6 @@ public class Player {
 
         verifyUpperScorecard(scoreToKeep);
         verifyLowerScorecard(scoreToKeep);
-    }
-
-    /**
-     * Configures game settings
-     */
-    public void gameConfig(){
-        //hand.userSelectedSettings();
     }
 
     /**

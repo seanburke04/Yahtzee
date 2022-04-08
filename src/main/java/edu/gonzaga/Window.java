@@ -13,6 +13,8 @@ public class Window {
     Hand hand;
     HandView handView;
 
+    SettingsView userSettings;
+
     void setupMainWindow() {
         mainWindow = new JFrame(gc);
         mainWindow.setTitle("Yahtzee!");
@@ -34,9 +36,12 @@ public class Window {
         handView = new HandView(hand);
     }
 
+    void setupUserSettings(){userSettings = new SettingsView();}
+
     public Window() {
         setupHand();
         setupHandView();
+        setupUserSettings();
         setupMainWindow();
 
         DieView dv = new DieView();
@@ -45,7 +50,10 @@ public class Window {
         Die die = hand.getDieAt(0);
         die.roll();
 
-        mainWindow.add(handView.getPanel());
+        mainWindow.add(BorderLayout.WEST, userSettings.getDisplayDefaultSettingsPanel());
+        mainWindow.add(BorderLayout.EAST, userSettings.getSettingsPanel());
+
+        //mainWindow.add(BorderLayout.EAST, handView.getPanel());
         //mainWindow.add(scorecardView.getPanel());
         //mainWindow.add(player.get(0).playerView.getPanel());
         //playerView.get(0).getPanel();

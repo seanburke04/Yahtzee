@@ -13,13 +13,13 @@ public class Window {
     Hand hand;
     HandView handView;
 
-    SettingsView userSettings;
+    Game controller;
 
     void setupMainWindow() {
         mainWindow = new JFrame(gc);
         mainWindow.setTitle("Yahtzee!");
         mainWindow.setSize(600, 400);
-        mainWindow.setLocation(200,200);
+        mainWindow.setLocation(500,200);
         mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainWindow.setIconImage(yahtzeeIcon.getImage());
     }
@@ -36,7 +36,7 @@ public class Window {
         handView = new HandView(hand);
     }
 
-    void setupUserSettings(){userSettings = new SettingsView();}
+    void setupController(){controller = new Game();}
 
     void removeComponent(Component component){
         mainWindow.remove(component);
@@ -47,8 +47,9 @@ public class Window {
     public Window() {
         setupHand();
         setupHandView();
-        setupUserSettings();
         setupMainWindow();
+
+        setupController();
 
         DieView dv = new DieView();
         dv.setDieToView(hand.getDieAt(0));
@@ -56,8 +57,8 @@ public class Window {
         Die die = hand.getDieAt(0);
         die.roll();
 
-        mainWindow.add(BorderLayout.WEST, userSettings.getDisplayDefaultSettingsPanel());
-        mainWindow.add(BorderLayout.EAST, userSettings.getSettingsPanel());
+        mainWindow.add(BorderLayout.WEST, controller.passTextPanel());
+        mainWindow.add(BorderLayout.EAST, controller.passComboBoxPanel());
 
         //mainWindow.add(BorderLayout.EAST, handView.getPanel());
         //mainWindow.add(scorecardView.getPanel());

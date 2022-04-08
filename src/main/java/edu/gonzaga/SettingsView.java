@@ -52,7 +52,7 @@ public class SettingsView {
     void setDisplayText(){
         displayDefaultSettings.setText("Default Settings:\n");
         displayDefaultSettings.append("Number of Sides: 6\n");
-        displayDefaultSettings.append("Number of Dice: 5");
+        displayDefaultSettings.append("Number of Dice: 5\n");
         displayDefaultSettings.append("Number of Rolls: 3\n\n");
         displayDefaultSettings.append("Would you like to play with these settings?");
     }

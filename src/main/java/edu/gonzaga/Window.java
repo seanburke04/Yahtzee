@@ -2,6 +2,7 @@ package edu.gonzaga;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Window {
     static GraphicsConfiguration gc;
@@ -13,7 +14,7 @@ public class Window {
     Hand hand;
     HandView handView;
 
-    Game controller;
+    SettingsView userSettings;
 
     void setupMainWindow() {
         mainWindow = new JFrame(gc);
@@ -23,6 +24,8 @@ public class Window {
         mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainWindow.setIconImage(yahtzeeIcon.getImage());
     }
+
+    public ArrayList<Integer> passSettings(){return userSettings.getUserSettings();}
 
     void startGUI() {
         mainWindow.setVisible(true);
@@ -36,7 +39,7 @@ public class Window {
         handView = new HandView(hand);
     }
 
-    void setupController(){controller = new Game();}
+    void setupUserSettings(){userSettings = new SettingsView();}
 
     void removeComponent(Component component){
         mainWindow.remove(component);
@@ -48,8 +51,7 @@ public class Window {
         setupHand();
         setupHandView();
         setupMainWindow();
-
-        setupController();
+        setupUserSettings();
 
         //Why is this here? no effect on current program
         /*
@@ -62,8 +64,8 @@ public class Window {
          */
 
         //For Settings window
-        mainWindow.add(BorderLayout.WEST, controller.passTextPanel());
-        mainWindow.add(BorderLayout.EAST, controller.passComboBoxPanel());
+        mainWindow.add(BorderLayout.WEST, userSettings.getDisplayDefaultSettingsPanel());
+        mainWindow.add(BorderLayout.EAST, userSettings.getSettingsPanel());
 
         //This makes Crandall's code work
         //mainWindow.add(BorderLayout.EAST, handView.getPanel());

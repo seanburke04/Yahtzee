@@ -38,6 +38,12 @@ public class Window {
 
     void setupUserSettings(){userSettings = new SettingsView();}
 
+    void removeComponent(Component component){
+        mainWindow.remove(component);
+        mainWindow.revalidate();
+        mainWindow.repaint();
+    }
+
     public Window() {
         setupHand();
         setupHandView();

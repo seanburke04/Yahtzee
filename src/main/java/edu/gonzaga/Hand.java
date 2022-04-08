@@ -8,7 +8,7 @@ public class Hand implements PropertyChangeListener {
     ArrayList<Die> dice;
     int dieCount = 6;
 
-    //Can change hand size here
+    //Can change hand size here with dieCount
     public Hand() {
         dice = new ArrayList<>();
         for (int i = 0; i < dieCount; i++ ) {

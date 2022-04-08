@@ -3,6 +3,7 @@ package edu.gonzaga;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class SettingsView {
     JLabel numSidesText = new JLabel("Number of Sides: ");
@@ -18,9 +19,20 @@ public class SettingsView {
     JTextArea displayDefaultSettings = new JTextArea();
     JPanel displayDefaultSettingsPanel = new JPanel();
 
-    Settings settings = new Settings();
+    static final Integer NUM_SIDES_INDEX = 0;
+    static final Integer NUM_DICE_INDEX = 1;
+    static final Integer NUM_ROLLS_INDEX = 2;
+    static final Integer DEFAULT_SIDES = 6;
+    static final Integer DEFAULT_DICE = 5;
+    static final Integer DEFAULT_ROLLS = 3;
+
+    ArrayList<Integer> userSettings = new ArrayList<>();
 
     SettingsView(){
+        userSettings.add(DEFAULT_SIDES);
+        userSettings.add(DEFAULT_DICE);
+        userSettings.add(DEFAULT_ROLLS);
+
         setupComboBoxes();
         comboBoxListeners();
         addToSubPanels();
@@ -28,6 +40,8 @@ public class SettingsView {
         setDisplayText();
         addToDisplayDefaultSettingsPanel();
     }
+
+    public ArrayList<Integer> getUserSettings(){return userSettings;}
 
     public JPanel getSettingsPanel(){return settingsPanel;}
 
@@ -80,19 +94,19 @@ public class SettingsView {
         numDice.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                settings.setNumDice((Integer) numDice.getSelectedItem());
+                userSettings.set(NUM_DICE_INDEX,(Integer) numDice.getSelectedItem());
             }
         });
         numSides.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                settings.setNumSides((Integer) numSides.getSelectedItem());
+                userSettings.set(NUM_SIDES_INDEX, (Integer) numSides.getSelectedItem());
             }
         });
         numRolls.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                settings.setNumRolls((Integer) numRolls.getSelectedItem());
+                userSettings.set(NUM_ROLLS_INDEX, (Integer) numRolls.getSelectedItem());
             }
         });
     }

@@ -10,6 +10,9 @@ public class ScorecardView {
     JTextArea scorecardText = new JTextArea();
     JTextArea possibleScoresText = new JTextArea();
 
+    //Need to change all instances of output scores for every class, can then put them all here
+    //to change the scorecardText, maybe put this class instance in player class so
+    //that Window can access it easier? make sure it's public
     //public void getScores()
 
     private void addButtonToPanel(){
@@ -33,8 +36,6 @@ public class ScorecardView {
     // Fix existing code, still printing to console
 
     //Don't need observer if you have update scorecard button, maybe use roll button to update scorecard?
-
-    // Make the window class drive everything, put SettingsWindow in Window, so it can manipulate buttons
 
     //what else?
 }

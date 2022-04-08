@@ -45,6 +45,11 @@ public class Window {
         userSettings.add(3);
     }
 
+    //All game stuff runs through here
+    private void startGame(){
+
+    }
+
     public void runGameWindow(){
         callSetupMethods();
         addSettingsComponents();
@@ -145,6 +150,7 @@ public class Window {
             @Override
             public void actionPerformed(ActionEvent e) {
                 genericTextArea.setText(" Playing with default settings");
+                startGame();
             }
         });
 
@@ -169,6 +175,7 @@ public class Window {
             public void actionPerformed(ActionEvent e) {
                 genericTextArea.setText("Selection confirmed");
                 centerPanel.setVisible(false);
+                startGame();
             }
         });
     }

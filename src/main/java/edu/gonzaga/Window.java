@@ -51,16 +51,23 @@ public class Window {
 
         setupController();
 
+        //Why is this here? no effect on current program
+        /*
         DieView dv = new DieView();
         dv.setDieToView(hand.getDieAt(0));
 
         Die die = hand.getDieAt(0);
         die.roll();
 
+         */
+
+        //For Settings window
         mainWindow.add(BorderLayout.WEST, controller.passTextPanel());
         mainWindow.add(BorderLayout.EAST, controller.passComboBoxPanel());
 
+        //This makes Crandall's code work
         //mainWindow.add(BorderLayout.EAST, handView.getPanel());
+
         //mainWindow.add(scorecardView.getPanel());
         //mainWindow.add(player.get(0).playerView.getPanel());
         //playerView.get(0).getPanel();

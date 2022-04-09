@@ -1,7 +1,5 @@
 package edu.gonzaga;
 
-package edu.gonzaga;
-
 /**
  * Class to handle scoring
  */

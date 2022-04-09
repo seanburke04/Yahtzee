@@ -170,6 +170,7 @@ public class Window {
      * Sets the text to be displayed by the text area
      */
     void setDisplayText(){
+        displayDefaultSettings.setEditable(false);
         displayDefaultSettings.setText("Default Settings:\n");
         displayDefaultSettings.append("Number of Sides: 6\n");
         displayDefaultSettings.append("Number of Dice: 5\n");

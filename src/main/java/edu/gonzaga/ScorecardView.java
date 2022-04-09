@@ -30,4 +30,6 @@ public class ScorecardView {
         displayScorecard.append("Score 0 on the Yahtzee line\n");
         displayScorecard.append("Score 0 on the Chance line \n");
     }
+
+    //Have each class make a textfield with the score, and then get it here, add to panel, and put on window
 }

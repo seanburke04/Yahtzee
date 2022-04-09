@@ -200,9 +200,9 @@ public class Window {
         confirm.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                buttonPanel.setVisible(false);
-                displayDefaultSettingsPanel.setVisible(false);
-                settingsPanel.setVisible(false);
+                removeComponent(buttonPanel);
+                removeComponent(displayDefaultSettingsPanel);
+                removeComponent(settingsPanel);
             }
         });
     }

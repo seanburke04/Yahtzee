@@ -31,11 +31,4 @@ public class Game {
     public ArrayList<Integer> getSettings() {
         return settings;
     }
-
-    /**
-     * Default constructor, calls other methods only
-     */
-    public Game(){
-
-    }
 }

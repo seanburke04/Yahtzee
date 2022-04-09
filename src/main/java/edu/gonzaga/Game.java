@@ -32,6 +32,7 @@ public class Game {
         return settings;
     }
 
+    //need to get die values from hand, also figure out which class has them
     void startGame(){
 
     }

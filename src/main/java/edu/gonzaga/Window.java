@@ -81,6 +81,9 @@ public class Window {
         hand = new Hand();
     }
 
+    /**
+     * Calls Game constructor so game methods are called in that class
+     */
     void setupGame(){game = new Game();}
 
     /**
@@ -194,8 +197,14 @@ public class Window {
      */
     void addToDisplayDefaultSettingsPanel(){displayDefaultSettingsPanel.add(displayDefaultSettings);}
 
+    /**
+     * Adds confirm button to its respective panel
+     */
     void addToButtonPanel(){buttonPanel.add(confirm);}
 
+    /**
+     * Starts the game when the confirm button is pressed
+     */
     void buttonFunctionality(){
         confirm.addActionListener(new ActionListener() {
             @Override
@@ -209,6 +218,9 @@ public class Window {
         });
     }
 
+    /**
+     * Adds components to the frame when the game starts
+     */
     void addGameComponents(){
         mainWindow.add(BorderLayout.EAST, handView.getPanel());
         //Change this to scorecard

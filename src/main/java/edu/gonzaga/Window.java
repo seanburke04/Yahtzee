@@ -203,8 +203,17 @@ public class Window {
                 removeComponent(buttonPanel);
                 removeComponent(displayDefaultSettingsPanel);
                 removeComponent(settingsPanel);
+                game.startGame();
+                addGameComponents();
             }
         });
+    }
+
+    void addGameComponents(){
+        mainWindow.add(BorderLayout.EAST, handView.getPanel());
+        //Change this to scorecard
+        mainWindow.add(BorderLayout.WEST, displayDefaultSettingsPanel);
+        mainWindow.pack();
     }
 
     /**

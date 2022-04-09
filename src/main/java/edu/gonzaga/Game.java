@@ -31,4 +31,8 @@ public class Game {
     public ArrayList<Integer> getSettings() {
         return settings;
     }
+
+    void startGame(){
+
+    }
 }

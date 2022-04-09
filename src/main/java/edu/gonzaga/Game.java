@@ -16,25 +16,26 @@ import java.util.ArrayList;
  * Main driver class for the whole game
  */
 public class Game {
-    Window mainWindow;
-
     ArrayList<Integer> settings = new ArrayList<>();
 
     /**
-     * Gets the settings set by the user to configure the game
+     * Setter for the settings array
+     * @param userSettings
      */
-    void getSettings(){settings = mainWindow.passSettings();}
+    public void setSettings(ArrayList<Integer> userSettings){settings = userSettings;}
 
     /**
-     * Sets up the window for the user to interact with
+     * Getter for the settings array
+     * @return settings
      */
-    void setupWindow(){mainWindow = new Window();}
+    public ArrayList<Integer> getSettings() {
+        return settings;
+    }
 
     /**
      * Default constructor, calls other methods only
      */
     public Game(){
-        setupWindow();
-        getSettings();
+
     }
 }

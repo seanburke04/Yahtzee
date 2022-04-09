@@ -50,6 +50,8 @@ public class Window {
 
     ArrayList<Integer> userSettings = new ArrayList<>();
 
+    Game game;
+
     Hand hand;
     HandView handView;
 
@@ -66,12 +68,6 @@ public class Window {
     }
 
     /**
-     * Passes settings to the game class from the SettingsView class
-     * @return ArrayList<Integer></Integer> settings
-     */
-    public ArrayList<Integer> passSettings(){return userSettings;}
-
-    /**
      * Sets the frame to visible
      */
     void startGUI() {
@@ -85,6 +81,8 @@ public class Window {
         hand = new Hand();
     }
 
+    void setupGame(){game = new Game();}
+
     /**
      * Calls handView constructor so handView methods are called within that class
      */
@@ -93,7 +91,7 @@ public class Window {
     }
 
     /**
-     * Calls SettingsView constructor so SettingsView methods are called within that class
+     * Prepares everything for the window
      */
     void setupUserSettings(){
         userSettings.add(DEFAULT_SIDES);
@@ -118,18 +116,21 @@ public class Window {
             @Override
             public void actionPerformed(ActionEvent e) {
                 userSettings.set(NUM_DICE_INDEX,(Integer) numDice.getSelectedItem());
+                game.setSettings(userSettings);
             }
         });
         numSides.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 userSettings.set(NUM_SIDES_INDEX, (Integer) numSides.getSelectedItem());
+                game.setSettings(userSettings);
             }
         });
         numRolls.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 userSettings.set(NUM_ROLLS_INDEX, (Integer) numRolls.getSelectedItem());
+                game.setSettings(userSettings);
             }
         });
     }
@@ -223,6 +224,7 @@ public class Window {
         setupHand();
         setupHandView();
         setupMainWindow();
+        setupGame();
         setupUserSettings();
 
         //Why is this here? no effect on current program

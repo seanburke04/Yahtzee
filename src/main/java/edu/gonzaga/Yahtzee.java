@@ -19,6 +19,6 @@ package edu.gonzaga;
 /** Main program class for launching Yahtzee program. */
 public class Yahtzee {
     public static void main(String[] args) throws Exception {
-        Game yahtzee = new Game();
+        Window mainWindow = new Window();
     }
 }

@@ -1,5 +1,6 @@
 package edu.gonzaga;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class FourOfAKind extends Scorecard {
@@ -11,6 +12,8 @@ public class FourOfAKind extends Scorecard {
         this.possibleScore = 0;
         this.actualScore = 0;
         this.isUsed = false;
+        this.scoreLine.setText("Score 0 on the Four of a Kind Line");
+        this.scoreLine.setEditable(false);
     }
 
     /**
@@ -51,6 +54,12 @@ public class FourOfAKind extends Scorecard {
      * @return actualScore
      */
     public Integer getActualScore(){return this.actualScore;}
+
+    @Override
+    public JTextField makeScoreView() {
+        this.scoreLine.setText("Score " + this.actualScore + " on the Four of a Kind line\n");
+        return this.scoreLine;
+    }
 
     /**
      * Outputs the calculated possible score

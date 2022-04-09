@@ -1,5 +1,6 @@
 package edu.gonzaga;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class ScoreUpper {
@@ -11,6 +12,7 @@ public class ScoreUpper {
     private Integer numSides;
     private Integer DEFAULT_SCORE = 0;
     private Boolean DEFAULT_USE = false;
+    private ArrayList<JTextField> scoreLines = new ArrayList<>();
 
     /**
      * Default constructor
@@ -19,6 +21,20 @@ public class ScoreUpper {
         actualScores.add(DEFAULT_SCORE);
         possibleScores.add(DEFAULT_SCORE);
         isUsed.add(DEFAULT_USE);
+    }
+
+    public ScoreUpper(Integer numSides){
+        JTextField tempText = new JTextField();
+
+        tempText.setEditable(false);
+        actualScores.add(DEFAULT_SCORE);
+        possibleScores.add(DEFAULT_SCORE);
+        isUsed.add(DEFAULT_USE);
+
+        for(int i = 0; i < numSides; i++){
+            tempText.setText("Score 0 on the " + (i + 1) + " line\n");
+            scoreLines.add(tempText);
+        }
     }
 
     /**
@@ -132,6 +148,13 @@ public class ScoreUpper {
      */
     public ArrayList<Integer> getActualScores() {
         return actualScores;
+    }
+
+    public ArrayList<JTextField> makeScoreView(){
+        for(int i = 0; i < actualScores.size(); i++){
+            scoreLines.get(i).setText("Score " + actualScores.get(i) + " on the " + (i + 1) + " line");
+        }
+        return scoreLines;
     }
 
     /**

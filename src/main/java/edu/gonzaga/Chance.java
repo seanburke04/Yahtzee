@@ -1,5 +1,6 @@
 package edu.gonzaga;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class Chance extends Scorecard{
@@ -11,8 +12,8 @@ public class Chance extends Scorecard{
         this.possibleScore = 0;
         this.actualScore = 0;
         this.isUsed = false;
-        // this.menuOption =  WHAT SHOULD THIS BE?
-        //ADD MENU OPTION CHECK?
+        this.scoreLine.setText("Score 0 on the Chance line\n");
+        this.scoreLine.setEditable(false);
     }
 
     /**
@@ -50,6 +51,12 @@ public class Chance extends Scorecard{
      * @return actualScore
      */
     public Integer getActualScore(){return this.actualScore;}
+
+    @Override
+    public JTextField makeScoreView() {
+        this.scoreLine.setText("Score " + this.actualScore + " on the Chance line\n");
+        return this.scoreLine;
+    }
 
     /**
      * Outputs the calculated possible score

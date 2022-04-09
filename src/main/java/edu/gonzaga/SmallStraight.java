@@ -1,5 +1,6 @@
 package edu.gonzaga;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class SmallStraight extends Scorecard{
@@ -11,6 +12,8 @@ public class SmallStraight extends Scorecard{
         this.possibleScore = 0;
         this.actualScore = 0;
         this.isUsed = false;
+        this.scoreLine.setText("Score 0 on the Small Straight line\n");
+        this.scoreLine.setEditable(false);
     }
 
     /**
@@ -52,6 +55,12 @@ public class SmallStraight extends Scorecard{
      * @return actualScore
      */
     public Integer getActualScore(){return this.actualScore;}
+
+    @Override
+    public JTextField makeScoreView() {
+        this.scoreLine.setText("Score " + this.actualScore + " on the Small Straight line\n");
+        return this.scoreLine;
+    }
 
     /**
      * Outputs the calculated possible score

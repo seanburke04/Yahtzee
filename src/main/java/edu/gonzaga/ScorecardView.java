@@ -8,10 +8,16 @@ public class ScorecardView {
     JPanel scorecardPanel = new JPanel();
     ArrayList<Integer> scores = new ArrayList<>();
 
+    /*
+    Fix this to accommodate the text fields
+    Also maybe to the same thing for the possible scores
+    Also add java doc comments for all the methods associated with this
+     */
+
     ScorecardView(){initializeText();}
 
     ScorecardView(Integer numDice){
-        for(int i = 0; i <= numDice; i++){
+        for(int i = 0; i < (numDice + 7); i++){
             scores.add(0);
         }
         initializeText();

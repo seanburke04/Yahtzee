@@ -3,6 +3,7 @@ package edu.gonzaga;
 /**
  * Class to handle scoring
  */
+import javax.swing.*;
 import java.util.ArrayList;
 
 public abstract class Scorecard {
@@ -10,6 +11,7 @@ public abstract class Scorecard {
     Integer possibleScore;
     Integer actualScore;
     Boolean isUsed;
+    JTextField scoreLine;
 
     /**
      * Finds the number of dice that match in a hand
@@ -93,6 +95,12 @@ public abstract class Scorecard {
     public void isChosen(){
         actualScore = possibleScore;
     }
+
+    /**
+     * Makes a text field to be handed to the scorecard view for output to the GUI
+     * @return scoreLine
+     */
+    public abstract JTextField makeScoreView();
 
     /**
      * Abstract function to calculate scores

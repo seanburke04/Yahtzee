@@ -1,5 +1,6 @@
 package edu.gonzaga;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 /** Class to score ThreeOfAKind. */
@@ -12,6 +13,8 @@ public class ThreeOfAKind extends Scorecard{
         this.possibleScore = 0;
         this.actualScore = 0;
         this.isUsed = false;
+        this.scoreLine.setText("Score 0 on the Three of a Kind line\n");
+        this.scoreLine.setEditable(false);
     }
 
     /**
@@ -55,6 +58,12 @@ public class ThreeOfAKind extends Scorecard{
      * @return actualScore
      */
     public Integer getActualScore(){return this.actualScore;}
+
+    @Override
+    public JTextField makeScoreView() {
+        this.scoreLine.setText("Score " + this.actualScore + " on the Three of a Kind line\n");
+        return this.scoreLine;
+    }
 
     /**
      * Outputs the calculated possible score

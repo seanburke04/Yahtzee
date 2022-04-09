@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 public class ScorecardView {
-    JTextArea displayScorecard = new JTextArea();
+    JTextField scorecardTitle = new JTextField("Scorecard:");
     JPanel scorecardPanel = new JPanel();
     ArrayList<Integer> scores = new ArrayList<>();
 
@@ -13,29 +13,33 @@ public class ScorecardView {
     Also maybe to the same thing for the possible scores
     Also add java doc comments for all the methods associated with this
      */
-
-    ScorecardView(){initializeText();}
-
-    ScorecardView(Integer numDice){
-        for(int i = 0; i < (numDice + 7); i++){
-            scores.add(0);
-        }
-        initializeText();
+    public ScorecardView(){
+        scorecardPanel.setLayout(new BoxLayout(scorecardPanel, BoxLayout.Y_AXIS));
+        scorecardTitle.setEditable(false);
+        scorecardPanel.add(scorecardTitle);
     }
 
-    void initializeText(){
-        displayScorecard.setText("Scorecard:\n");
-        for(int i = 0; i < (scores.size() - 7); i++){
-            displayScorecard.append("Score 0 on the " + (i + 1) + " line\n");
+    public void addScoreUpper(ArrayList<JTextField> scoreUpperLines){
+        for(int i = 0; i < scoreUpperLines.size(); i++){
+            scorecardPanel.add(scoreUpperLines.get(i));
         }
-        displayScorecard.append("Score 0 on the Three of a Kind Line\n");
-        displayScorecard.append("Score 0 on the Four of a Kind line\n");
-        displayScorecard.append("Score 0 on the Full House line\n");
-        displayScorecard.append("Score 0 on the Small Straight line\n");
-        displayScorecard.append("Score 0 on the Large Straight line\n");
-        displayScorecard.append("Score 0 on the Yahtzee line\n");
-        displayScorecard.append("Score 0 on the Chance line \n");
     }
 
-    //Have each class make a textfield with the score, and then get it here, add to panel, and put on window
+    public void addThreeOfAKindScore(JTextField TOKScore){scorecardPanel.add(TOKScore);}
+
+    public void addFourOfAKindScore(JTextField FOKScore){scorecardPanel.add(FOKScore);}
+
+    public void addFullHouseScore(JTextField FHScore){scorecardPanel.add(FHScore);}
+
+    public void addSmallStraightScore(JTextField SSScore){scorecardPanel.add(SSScore);}
+
+    public void addLargeStraightScore(JTextField LSScore){scorecardPanel.add(LSScore);}
+
+    public void addYahtzeeScore(JTextField YScore){scorecardPanel.add(YScore);}
+
+    public void addChanceScore(JTextField CScore){scorecardPanel.add(CScore);}
+
+
+
+    //Have each class make a text field with the score, and then get it here, add to panel, and put on window
 }

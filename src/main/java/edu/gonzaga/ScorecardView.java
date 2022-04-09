@@ -39,6 +39,8 @@ public class ScorecardView {
 
     public void addChanceScore(JTextField CScore){scorecardPanel.add(CScore);}
 
+    public JPanel getScorecardPanel(){return scorecardPanel;}
+
 
 
     //Have each class make a text field with the score, and then get it here, add to panel, and put on window

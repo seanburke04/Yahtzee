@@ -21,6 +21,7 @@ import javax.swing.border.Border;
  * This class controls how the hand is viewed in the GUI
  */
 public class HandView {
+    Integer count = 0;
     JPanel myPanel;
     ArrayList<DieView> dieViews;
     ArrayList<Integer> settings;
@@ -69,6 +70,11 @@ public class HandView {
                     public void actionPerformed(ActionEvent e) {
                         System.out.println("Button pressed to roll");
                         hand.roll();
+                        count++;
+                        //Obviously change this but this controls the number of rolls
+                        if(count == settings.get(2)){
+                            rollButton.setVisible(false);
+                        }
                     }
                 }
         );

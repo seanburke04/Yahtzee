@@ -13,8 +13,6 @@ package edu.gonzaga;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 
 /**
@@ -38,14 +36,30 @@ public class Game {
     Chance chanceScoreLine;
 
     ArrayList<Integer> settings = new ArrayList<>();
+    ArrayList<Integer> dieValues = new ArrayList<>();
 
     private void endTurnFunctionality(){
         endTurn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                dieValues.clear();
+                for(int i = 0; i < settings.get(1); i++){
+                    dieValues.add(handView.dieViews.get(i).getDieValues());
+                    calcScores();
+                }
             }
         });
+    }
+
+    private void calcScores(){
+        upperScoreLines.calcScore(dieValues);
+        threeOfAKindScoreLine.calcScore(dieValues);
+        fourOfAKindScoreLine.calcScore(dieValues);
+        fullHouseScoreLine.calcScore(dieValues);
+        smallStraightScoreLine.calcScore(dieValues);
+        largeStraightScoreLine.calcScore(dieValues);
+        yahtzeeScoreLine.calcScore(dieValues);
+        chanceScoreLine.calcScore(dieValues);
     }
 
     private void addToPanel(){
@@ -105,6 +119,7 @@ public class Game {
         setupHand();
         setupHandView();
         addToPanel();
+        endTurnFunctionality();
     }
 
     private void singleTurn(){}

@@ -80,9 +80,6 @@ public class HandView {
                         System.out.println("Button pressed to roll");
                         hand.roll();
                         count++;
-                        for(int i = 0; i < settings.get(1); i++){
-                            System.out.println(dieViews.get(i).getDieValues());
-                        }
                         //Obviously change this but this controls the number of rolls
                         if(count == settings.get(2)){
                             rollButton.setVisible(false);

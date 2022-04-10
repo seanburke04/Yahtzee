@@ -69,7 +69,11 @@ public class Window {
                 }
                 game.calcScores();
                 game.makeScorecard().setVisible(false);
+                game.getHandView().getPanel().setVisible(false);
                 mainWindow.add(BorderLayout.WEST, game.makePossibleScorecard());
+                game.setupScoreSelect();
+                game.scoreSelectFunctionality();
+                mainWindow.add(BorderLayout.EAST, game.addToScoreSelectPanel());
                 mainWindow.pack();
             }
         });

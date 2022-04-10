@@ -11,6 +11,8 @@
 package edu.gonzaga;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 /**
@@ -32,6 +34,82 @@ public class Game {
 
     ArrayList<Integer> settings = new ArrayList<>();
     ArrayList<Integer> dieValues = new ArrayList<>();
+
+    JLabel scoreSelectLabel = new JLabel("Select which score to keep: ");
+    JPanel scoreSelectPanel = new JPanel();
+    JComboBox scoreSelect = new JComboBox();
+
+    void setupScoreSelect(){
+        for(int i = 1; i < settings.get(0); i++){
+            scoreSelect.addItem(i);
+        }
+        scoreSelect.addItem("Three of a Kind");
+        scoreSelect.addItem("Four of a Kind");
+        scoreSelect.addItem("Full House");
+        scoreSelect.addItem("Small Straight");
+        scoreSelect.addItem("Large Straight");
+        scoreSelect.addItem("Yahtzee");
+        scoreSelect.addItem("Chance");
+    }
+
+    void scoreSelectFunctionality(){
+        scoreSelect.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for(int i = 0; i < settings.get(0); i++){
+                    if(scoreSelect.getSelectedItem() == String.valueOf(i)){
+                        if(upperScoreLines.getIsUsed().get(i) == false){
+                            upperScoreLines.setIsUsed(i);
+                            upperScoreLines.isChosen(i);
+                        }
+                        else{
+                            System.out.println("That is already chosen");
+                            System.exit(1);
+                        }
+                    }
+                }
+                if(scoreSelect.getSelectedItem() == "Three of a Kind"){
+                    threeOfAKindScoreLine.setIsUsed(true);
+                    threeOfAKindScoreLine.isChosen();
+                }
+                else if(scoreSelect.getSelectedItem() == "Four of a Kind"){
+                    fourOfAKindScoreLine.setIsUsed(true);
+                    fourOfAKindScoreLine.isChosen();
+                }
+                else if(scoreSelect.getSelectedItem() == "Full House"){
+                    fullHouseScoreLine.setIsUsed(true);
+                    fullHouseScoreLine.isChosen();
+                }
+                else if(scoreSelect.getSelectedItem() == "Small Straight"){
+                    smallStraightScoreLine.setIsUsed(true);
+                    smallStraightScoreLine.isChosen();
+                }
+                else if(scoreSelect.getSelectedItem() == "Large Straight"){
+                    largeStraightScoreLine.setIsUsed(true);
+                    largeStraightScoreLine.isChosen();
+                }
+                else if(scoreSelect.getSelectedItem() == "Yahtzee"){
+                    yahtzeeScoreLine.setIsUsed(true);
+                    yahtzeeScoreLine.isChosen();
+                }
+                else if(scoreSelect.getSelectedItem() == "Chance"){
+                    chanceScoreLine.setIsUsed(true);
+                    chanceScoreLine.isChosen();
+                }
+                else{
+                    System.out.println("That is already chosen");
+                    System.exit(1);
+                }
+                scoreSelectPanel.setVisible(false);
+            }
+        });
+    }
+
+    JPanel addToScoreSelectPanel(){
+        scoreSelectPanel.add(scoreSelectLabel);
+        scoreSelectPanel.add(scoreSelect);
+        return scoreSelectPanel;
+    }
 
     void calcScores(){
         upperScoreLines.calcScore(dieValues);

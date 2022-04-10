@@ -12,7 +12,20 @@ public class ScoreUpper {
     private Integer numSides;
     private Integer DEFAULT_SCORE = 0;
     private Boolean DEFAULT_USE = false;
-    private ArrayList<JTextField> scoreLines = new ArrayList<>();
+
+    private JTextField oneLine = new JTextField("Score 0 on the one line\n");
+    private JTextField twoLine = new JTextField("Score 0 on the two line\n");
+    private JTextField threeLine = new JTextField("Score 0 on the three line\n");
+    private JTextField fourLine = new JTextField("Score 0 on the four line\n");
+    private JTextField fiveLine = new JTextField("Score 0 on the five line\n");
+    private JTextField sixLine = new JTextField("Score 0 on the six line\n");
+    private JTextField sevenLine = new JTextField("Score 0 on the seven line\n");
+    private JTextField eightLine = new JTextField("Score 0 on the eight line\n");
+    private JTextField nineLine = new JTextField("Score 0 on the nine line\n");
+    private JTextField tenLine = new JTextField("Score 0 on the ten line\n");
+    private JTextField elevenLine = new JTextField("Score 0 on the eleven line\n");
+    private JTextField twelveLine = new JTextField("Score 0 on the twelve line\n");
+    private ArrayList<JTextField> upperLines = new ArrayList<>(12);
 
     /**
      * Default constructor
@@ -23,17 +36,42 @@ public class ScoreUpper {
         isUsed.add(DEFAULT_USE);
     }
 
-    public ScoreUpper(Integer numSides){
-        JTextField tempText = new JTextField();
-
-        tempText.setEditable(false);
+    public ScoreUpper(Integer scoreSize){
         actualScores.add(DEFAULT_SCORE);
         possibleScores.add(DEFAULT_SCORE);
         isUsed.add(DEFAULT_USE);
 
-        for(int i = 0; i < numSides; i++){
-            tempText.setText("Score 0 on the " + (i + 1) + " line\n");
-            scoreLines.add(tempText);
+        if(scoreSize == 6){
+            upperLines.add(oneLine);
+            upperLines.add(twoLine);
+            upperLines.add(threeLine);
+            upperLines.add(fourLine);
+            upperLines.add(fiveLine);
+            upperLines.add(sixLine);
+        }
+        else if(scoreSize == 8){
+            upperLines.add(oneLine);
+            upperLines.add(twoLine);
+            upperLines.add(threeLine);
+            upperLines.add(fourLine);
+            upperLines.add(fiveLine);
+            upperLines.add(sixLine);
+            upperLines.add(sevenLine);
+            upperLines.add(eightLine);
+        }
+        else{
+            upperLines.add(oneLine);
+            upperLines.add(twoLine);
+            upperLines.add(threeLine);
+            upperLines.add(fourLine);
+            upperLines.add(fiveLine);
+            upperLines.add(sixLine);
+            upperLines.add(sevenLine);
+            upperLines.add(eightLine);
+            upperLines.add(nineLine);
+            upperLines.add(tenLine);
+            upperLines.add(elevenLine);
+            upperLines.add(twelveLine);
         }
     }
 
@@ -152,9 +190,9 @@ public class ScoreUpper {
 
     public ArrayList<JTextField> makeScoreView(){
         for(int i = 0; i < actualScores.size(); i++){
-            scoreLines.get(i).setText("Score " + actualScores.get(i) + " on the " + (i + 1) + " line");
+            upperLines.get(i).setText("Score " + actualScores.get(i) + " on the " + (i + 1) + " line");
         }
-        return scoreLines;
+        return upperLines;
     }
 
     /**

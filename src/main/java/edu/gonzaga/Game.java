@@ -56,11 +56,12 @@ public class Game {
         scoreSelect.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for(int i = 0; i < settings.get(0); i++){
-                    if(scoreSelect.getSelectedItem() == String.valueOf(i)){
-                        if(upperScoreLines.getIsUsed().get(i) == false){
-                            upperScoreLines.setIsUsed(i);
-                            upperScoreLines.isChosen(i);
+                //if(scoreSelect.getSelectedItem().equals(1))
+                for(int i = 0; i < upperScoreLines.getIsUsed().size(); i++){
+                    if(scoreSelect.getSelectedItem().equals(i)){
+                        if(upperScoreLines.getIsUsed().get(i - 1) == false){
+                            upperScoreLines.setIsUsed(i - 1);
+                            upperScoreLines.isChosen(i - 1);
                         }
                         else{
                             System.out.println("That is already chosen");
@@ -68,6 +69,7 @@ public class Game {
                         }
                     }
                 }
+
                 if(scoreSelect.getSelectedItem() == "Three of a Kind"){
                     if(threeOfAKindScoreLine.getIsUsed()){
                         System.out.println("That is already chosen");

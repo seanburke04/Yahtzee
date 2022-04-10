@@ -23,6 +23,7 @@ import java.util.ArrayList;
  */
 public class DiceImages {
     ArrayList<ImageIcon> images;
+    ArrayList<Integer> settings = new ArrayList<>(3);
 
     /**
      * Loads dice images to be used later
@@ -30,10 +31,16 @@ public class DiceImages {
      */
     void loadImages(String imagesPath) {
         BufferedImage currPicture;
+        String filename;
         images.add(null);
-        for( int i = 1; i < 7; i++) {
+        for( int i = 1; i < 13; i++) {
             try {
-                String filename = imagesPath + "/D6-0" + i + ".png";
+                if(i < 10){
+                    filename = imagesPath + "/D6-0" + i + ".png";
+                }
+                else{
+                    filename = imagesPath + "/D6-" + i + ".png";
+                }
                 // System.out.println(filename);
                 currPicture = ImageIO.read(new File(filename));
                 Image dimg = currPicture.getScaledInstance(40, 40, Image.SCALE_SMOOTH);

@@ -21,16 +21,19 @@ import java.beans.PropertyChangeEvent;
 public class Hand implements PropertyChangeListener {
     ArrayList<Die> dice;
     int dieCount = 5;
+    ArrayList<Integer> settings = new ArrayList<>(3);
 
     //Can change hand size here with dieCount
 
     /**
-     * Default constructor, sets up hand with the proper number of dice
+     * Constructor, sets up hand with the proper number of dice
+     * @param userSettings
      */
-    public Hand() {
+    public Hand(ArrayList<Integer> userSettings) {
+        settings = userSettings;
         dice = new ArrayList<>();
         for (int i = 0; i < dieCount; i++ ) {
-            Die currDie = new Die();
+            Die currDie = new Die(settings.get(0));
             dice.add(currDie);
             currDie.addPropertyChangeListener(this::propertyChange);
         }

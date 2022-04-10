@@ -78,7 +78,7 @@ public class Window {
      * Calls hand constructor so hand methods are called within that class
      */
     void setupHand() {
-        hand = new Hand();
+        hand = new Hand(userSettings);
     }
 
     /**
@@ -214,6 +214,8 @@ public class Window {
                 removeComponent(displayDefaultSettingsPanel);
                 removeComponent(settingsPanel);
                 game.setSettings(userSettings);
+                setupHand();
+                setupHandView();
                 game.startGame();
                 addGameComponents();
             }
@@ -244,13 +246,11 @@ public class Window {
      * Default constructor for the Window class, calls other methods only
      */
     public Window() {
-        setupHand();
-        setupHandView();
         setupMainWindow();
         setupGame();
         setupUserSettings();
 
-        //Why is this here? no effect on current program
+        //This manually rolls one dice
         /*
         DieView dv = new DieView();
         dv.setDieToView(hand.getDieAt(0));

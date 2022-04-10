@@ -22,6 +22,11 @@ public class Die {
     int value = 0;
     boolean locked = false;
     private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
+    private Integer numSides;
+
+    Die(Integer userNumSides){
+        numSides = userNumSides;
+    }
 
     /**
      * Adds a listener to the die for updating
@@ -55,7 +60,7 @@ public class Die {
     public void roll() {
         if(!locked) {
             Random rand = new Random(); //instance of random class
-            int upperbound = 6;
+            int upperbound = numSides;
             this.setValue(rand.nextInt(upperbound) + 1);
         }
     }

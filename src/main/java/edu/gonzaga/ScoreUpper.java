@@ -189,6 +189,7 @@ public class ScoreUpper {
      */
     public ArrayList<JTextField> makeScoreView(){
         for(int i = 0; i < actualScores.size(); i++){
+            upperLines.get(i).setEditable(false);
             upperLines.get(i).setText("Score " + actualScores.get(i) + " on the " + (i + 1) + " line");
         }
         return upperLines;

@@ -43,6 +43,9 @@ public class Window {
 
     JButton endTurn = new JButton("End Turn");
     JPanel bottomPanel = new JPanel();
+    JButton endTurn2 = new JButton("End Turn");
+
+    JButton nextTurn = new JButton("Next Turn");
 
     static final Integer NUM_SIDES_INDEX = 0;
     static final Integer NUM_DICE_INDEX = 1;
@@ -55,11 +58,49 @@ public class Window {
 
     Game game;
 
+    JButton getNextTurn(){
+        nextTurnFunctionality();
+        return nextTurn;
+    }
+
+    private void nextTurnFunctionality(){
+        nextTurn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                game.displayScorecard.getPossibleScorecardPanel().setVisible(false);
+                game.makeScorecard();
+                game.displayScorecard.getScorecardPanel().setVisible(true);
+                nextTurn.setVisible(false);
+                game.getHandView().getPanel().setVisible(true);
+                game.handView.count = 0;
+                game.handView.rollButton.setVisible(true);
+                bottomPanel.add(endTurn2);
+                endTurn2.setVisible(true);
+            }
+        });
+    }
+
     private void addToPanel(){
         bottomPanel.add(endTurn);
     }
 
-    //add next turn button to move on
+    private void endTurn2Functionality(){
+        endTurn2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                game.dieValues.clear();
+                for(int i = 0; i < userSettings.get(1); i++){
+                    game.dieValues.add(game.handView.dieViews.get(i).getDieValues());
+                }
+                endTurn2.setVisible(false);
+                getNextTurn().setVisible(true);
+                game.getHandView().getPanel().setVisible(false);
+                game.makePossibleScorecard().setVisible(true);
+                game.getScoreSelectPanel().setVisible(true);
+                mainWindow.pack();
+            }
+        });
+    }
 
     private void endTurnFunctionality(){
         endTurn.addActionListener(new ActionListener() {
@@ -69,13 +110,16 @@ public class Window {
                 for(int i = 0; i < userSettings.get(1); i++){
                     game.dieValues.add(game.handView.dieViews.get(i).getDieValues());
                 }
+                endTurn.setVisible(false);
+                bottomPanel.add(getNextTurn());
                 game.calcScores();
                 game.makeScorecard().setVisible(false);
                 game.getHandView().getPanel().setVisible(false);
                 mainWindow.add(BorderLayout.WEST, game.makePossibleScorecard());
                 game.setupScoreSelect();
                 game.scoreSelectFunctionality();
-                mainWindow.add(BorderLayout.EAST, game.addToScoreSelectPanel());
+                game.addToScoreSelectPanel();
+                mainWindow.add(BorderLayout.EAST, game.getScoreSelectPanel());
                 mainWindow.pack();
             }
         });
@@ -87,7 +131,7 @@ public class Window {
     void setupMainWindow() {
         mainWindow = new JFrame(gc);
         mainWindow.setTitle("Yahtzee!");
-        mainWindow.setSize(600, 400);
+        mainWindow.setSize(600, 600);
         mainWindow.setLocation(500,200);
         mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainWindow.setIconImage(yahtzeeIcon.getImage());
@@ -230,7 +274,9 @@ public class Window {
                 addGameComponents();
                 addToPanel();
                 endTurnFunctionality();
+                endTurn2Functionality();
                 mainWindow.add(BorderLayout.SOUTH, bottomPanel);
+                mainWindow.pack();
             }
         });
     }

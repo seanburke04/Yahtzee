@@ -143,11 +143,12 @@ public class Game {
         });
     }
 
-    JPanel addToScoreSelectPanel(){
+    void addToScoreSelectPanel(){
         scoreSelectPanel.add(scoreSelectLabel);
         scoreSelectPanel.add(scoreSelect);
-        return scoreSelectPanel;
     }
+
+    JPanel getScoreSelectPanel(){return scoreSelectPanel;}
 
     void calcScores(){
         upperScoreLines.calcScore(dieValues);

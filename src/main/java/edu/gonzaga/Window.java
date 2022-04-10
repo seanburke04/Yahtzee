@@ -52,9 +52,6 @@ public class Window {
 
     Game game;
 
-    Hand hand;
-    HandView handView;
-
     /**
      * Initializes everything for the main frame
      */
@@ -75,23 +72,9 @@ public class Window {
     }
 
     /**
-     * Calls hand constructor so hand methods are called within that class
-     */
-    void setupHand() {
-        hand = new Hand(userSettings);
-    }
-
-    /**
      * Calls Game constructor so game methods are called in that class
      */
     void setupGame(){game = new Game();}
-
-    /**
-     * Calls handView constructor so handView methods are called within that class
-     */
-    void setupHandView() {
-        handView = new HandView(hand, userSettings);
-    }
 
     /**
      * Prepares everything for the window
@@ -214,8 +197,6 @@ public class Window {
                 removeComponent(displayDefaultSettingsPanel);
                 removeComponent(settingsPanel);
                 game.setSettings(userSettings);
-                setupHand();
-                setupHandView();
                 game.startGame();
                 addGameComponents();
             }
@@ -226,7 +207,7 @@ public class Window {
      * Adds components to the frame when the game starts
      */
     void addGameComponents(){
-        mainWindow.add(BorderLayout.EAST, handView.getPanel());
+        mainWindow.add(BorderLayout.EAST, game.getHandView().getPanel());
         //Change this to scorecard
         mainWindow.add(BorderLayout.WEST, game.makeScorecard());
         mainWindow.pack();

@@ -17,6 +17,9 @@ import java.util.ArrayList;
  * Main driver class for the whole game
  */
 public class Game {
+    Hand hand;
+    HandView handView;
+
     ScorecardView displayScorecard;
     ScoreUpper upperScoreLines;
     ThreeOfAKind threeOfAKindScoreLine;
@@ -28,6 +31,22 @@ public class Game {
     Chance chanceScoreLine;
 
     ArrayList<Integer> settings = new ArrayList<>();
+
+    HandView getHandView(){return handView;}
+
+    /**
+     * Calls hand constructor so hand methods are called within that class
+     */
+    void setupHand() {
+        hand = new Hand(settings);
+    }
+
+    /**
+     * Calls handView constructor so handView methods are called within that class
+     */
+    void setupHandView() {
+        handView = new HandView(hand, settings);
+    }
 
     /**
      * Setter for the settings array
@@ -61,6 +80,8 @@ public class Game {
     //need to get die values from hand, also figure out which class has them
     void startGame(){
         initializeScorecard();
+        setupHand();
+        setupHandView();
     }
 
     private void singleTurn(){}

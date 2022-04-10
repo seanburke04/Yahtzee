@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 /** Class to score ThreeOfAKind. */
 public class ThreeOfAKind extends Scorecard{
+    JTextField scoreLine = new JTextField();
     /**
      * Default constructor
      */
@@ -13,8 +14,9 @@ public class ThreeOfAKind extends Scorecard{
         this.possibleScore = 0;
         this.actualScore = 0;
         this.isUsed = false;
-        this.scoreLine.setText("Score 0 on the Three of a Kind line\n");
-        this.scoreLine.setEditable(false);
+
+        scoreLine.setText("Score 0 on the Three of a Kind line\n");
+        scoreLine.setEditable(false);
     }
 
     /**
@@ -61,8 +63,8 @@ public class ThreeOfAKind extends Scorecard{
 
     @Override
     public JTextField makeScoreView() {
-        this.scoreLine.setText("Score " + this.actualScore + " on the Three of a Kind line\n");
-        return this.scoreLine;
+        scoreLine.setText("Score " + this.actualScore + " on the Three of a Kind line\n");
+        return scoreLine;
     }
 
     /**

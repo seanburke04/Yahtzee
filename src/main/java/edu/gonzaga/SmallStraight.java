@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 public class SmallStraight extends Scorecard{
+    JTextField scoreLine = new JTextField();
     /**
      * Default constructor
      */
@@ -12,8 +13,8 @@ public class SmallStraight extends Scorecard{
         this.possibleScore = 0;
         this.actualScore = 0;
         this.isUsed = false;
-        this.scoreLine.setText("Score 0 on the Small Straight line\n");
-        this.scoreLine.setEditable(false);
+        scoreLine.setText("Score 0 on the Small Straight line\n");
+        scoreLine.setEditable(false);
     }
 
     /**
@@ -58,8 +59,8 @@ public class SmallStraight extends Scorecard{
 
     @Override
     public JTextField makeScoreView() {
-        this.scoreLine.setText("Score " + this.actualScore + " on the Small Straight line\n");
-        return this.scoreLine;
+        scoreLine.setText("Score " + this.actualScore + " on the Small Straight line\n");
+        return scoreLine;
     }
 
     /**

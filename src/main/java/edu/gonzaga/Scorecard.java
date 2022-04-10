@@ -11,7 +11,6 @@ public abstract class Scorecard {
     Integer possibleScore;
     Integer actualScore;
     Boolean isUsed;
-    JTextField scoreLine;
 
     /**
      * Finds the number of dice that match in a hand

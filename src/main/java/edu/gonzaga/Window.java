@@ -213,6 +213,7 @@ public class Window {
                 removeComponent(buttonPanel);
                 removeComponent(displayDefaultSettingsPanel);
                 removeComponent(settingsPanel);
+                game.setSettings(userSettings);
                 game.startGame();
                 addGameComponents();
             }
@@ -225,7 +226,7 @@ public class Window {
     void addGameComponents(){
         mainWindow.add(BorderLayout.EAST, handView.getPanel());
         //Change this to scorecard
-        mainWindow.add(BorderLayout.WEST, displayDefaultSettingsPanel);
+        mainWindow.add(BorderLayout.WEST, game.makeScorecard());
         mainWindow.pack();
     }
 

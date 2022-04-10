@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 public class Chance extends Scorecard{
+    JTextField scoreLine = new JTextField();
     /**
      * Default constructor
      */
@@ -12,8 +13,8 @@ public class Chance extends Scorecard{
         this.possibleScore = 0;
         this.actualScore = 0;
         this.isUsed = false;
-        this.scoreLine.setText("Score 0 on the Chance line\n");
-        this.scoreLine.setEditable(false);
+        scoreLine.setText("Score 0 on the Chance line\n");
+        scoreLine.setEditable(false);
     }
 
     /**
@@ -54,8 +55,8 @@ public class Chance extends Scorecard{
 
     @Override
     public JTextField makeScoreView() {
-        this.scoreLine.setText("Score " + this.actualScore + " on the Chance line\n");
-        return this.scoreLine;
+        scoreLine.setText("Score " + this.actualScore + " on the Chance line\n");
+        return scoreLine;
     }
 
     /**

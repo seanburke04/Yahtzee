@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 public class FullHouse extends Scorecard{
+    JTextField scoreLine = new JTextField();
     /**
      * Default constructor
      */
@@ -12,8 +13,8 @@ public class FullHouse extends Scorecard{
         this.possibleScore = 0;
         this.actualScore = 0;
         this.isUsed = false;
-        this.scoreLine.setText("Score 0 on the Full House line\n");
-        this.scoreLine.setEditable(false);
+        scoreLine.setText("Score 0 on the Full House line\n");
+        scoreLine.setEditable(false);
     }
 
     /**
@@ -56,8 +57,8 @@ public class FullHouse extends Scorecard{
 
     @Override
     public JTextField makeScoreView() {
-        this.scoreLine.setText("Score " + this.actualScore + " on the Full House line\n");
-        return this.scoreLine;
+        scoreLine.setText("Score " + this.actualScore + " on the Full House line\n");
+        return scoreLine;
     }
 
     /**

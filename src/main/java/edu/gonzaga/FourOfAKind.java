@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 public class FourOfAKind extends Scorecard {
+    JTextField scoreLine = new JTextField();
     /**
      * Default constructor
      */
@@ -12,8 +13,8 @@ public class FourOfAKind extends Scorecard {
         this.possibleScore = 0;
         this.actualScore = 0;
         this.isUsed = false;
-        this.scoreLine.setText("Score 0 on the Four of a Kind Line");
-        this.scoreLine.setEditable(false);
+        scoreLine.setText("Score 0 on the Four of a Kind Line");
+        scoreLine.setEditable(false);
     }
 
     /**
@@ -57,8 +58,8 @@ public class FourOfAKind extends Scorecard {
 
     @Override
     public JTextField makeScoreView() {
-        this.scoreLine.setText("Score " + this.actualScore + " on the Four of a Kind line\n");
-        return this.scoreLine;
+        scoreLine.setText("Score " + this.actualScore + " on the Four of a Kind line\n");
+        return scoreLine;
     }
 
     /**

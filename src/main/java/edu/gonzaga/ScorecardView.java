@@ -6,7 +6,6 @@ import java.util.ArrayList;
 public class ScorecardView {
     JTextField scorecardTitle = new JTextField("Scorecard:");
     JPanel scorecardPanel = new JPanel();
-    ArrayList<Integer> scores = new ArrayList<>();
 
     /*
     Fix this to accommodate the text fields

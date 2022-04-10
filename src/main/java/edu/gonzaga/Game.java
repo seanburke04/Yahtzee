@@ -11,8 +11,6 @@
 package edu.gonzaga;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 /**
@@ -21,9 +19,6 @@ import java.util.ArrayList;
 public class Game {
     Hand hand;
     HandView handView;
-
-    JButton endTurn = new JButton("End Turn");
-    JPanel bottomPanel = new JPanel();
 
     ScorecardView displayScorecard;
     ScoreUpper upperScoreLines;
@@ -38,20 +33,7 @@ public class Game {
     ArrayList<Integer> settings = new ArrayList<>();
     ArrayList<Integer> dieValues = new ArrayList<>();
 
-    private void endTurnFunctionality(){
-        endTurn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dieValues.clear();
-                for(int i = 0; i < settings.get(1); i++){
-                    dieValues.add(handView.dieViews.get(i).getDieValues());
-                    calcScores();
-                }
-            }
-        });
-    }
-
-    private void calcScores(){
+    void calcScores(){
         upperScoreLines.calcScore(dieValues);
         threeOfAKindScoreLine.calcScore(dieValues);
         fourOfAKindScoreLine.calcScore(dieValues);
@@ -61,12 +43,6 @@ public class Game {
         yahtzeeScoreLine.calcScore(dieValues);
         chanceScoreLine.calcScore(dieValues);
     }
-
-    private void addToPanel(){
-        bottomPanel.add(endTurn);
-    }
-
-    JPanel getBottomPanel(){return bottomPanel;}
 
     HandView getHandView(){return handView;}
 
@@ -118,11 +94,22 @@ public class Game {
         initializeScorecard();
         setupHand();
         setupHandView();
-        addToPanel();
-        endTurnFunctionality();
     }
 
     private void singleTurn(){}
+
+    JPanel makePossibleScorecard(){
+        displayScorecard.addPossibleScoreUpper(upperScoreLines.makePossibleScoreView());
+        displayScorecard.possibleThreeOfAKindScore(threeOfAKindScoreLine.makePossibleScoreView());
+        displayScorecard.possibleFourOfAKindScore(fourOfAKindScoreLine.makePossibleScoreView());
+        displayScorecard.possibleFullHouseScore(fullHouseScoreLine.makePossibleScoreView());
+        displayScorecard.possibleSmallStraightScore(smallStraightScoreLine.makePossibleScoreView());
+        displayScorecard.possibleLargeStraightScore(largeStraightScoreLine.makePossibleScoreView());
+        displayScorecard.possibleYahtzeeScore(yahtzeeScoreLine.makePossibleScoreView());
+        displayScorecard.possibleChanceScore(chanceScoreLine.makePossibleScoreView());
+
+        return displayScorecard.getPossibleScorecardPanel();
+    }
 
     /**
      * Adds all score lines to a panel and passes it to the Window

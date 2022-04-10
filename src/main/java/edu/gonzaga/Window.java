@@ -41,6 +41,9 @@ public class Window {
     JButton confirm = new JButton("Confirm");
     JPanel buttonPanel = new JPanel();
 
+    JButton endTurn = new JButton("End Turn");
+    JPanel bottomPanel = new JPanel();
+
     static final Integer NUM_SIDES_INDEX = 0;
     static final Integer NUM_DICE_INDEX = 1;
     static final Integer NUM_ROLLS_INDEX = 2;
@@ -51,6 +54,26 @@ public class Window {
     ArrayList<Integer> userSettings = new ArrayList<>();
 
     Game game;
+
+    private void addToPanel(){
+        bottomPanel.add(endTurn);
+    }
+
+    private void endTurnFunctionality(){
+        endTurn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                game.dieValues.clear();
+                for(int i = 0; i < userSettings.get(1); i++){
+                    game.dieValues.add(game.handView.dieViews.get(i).getDieValues());
+                }
+                game.calcScores();
+                game.makeScorecard().setVisible(false);
+                mainWindow.add(BorderLayout.WEST, game.makePossibleScorecard());
+                mainWindow.pack();
+            }
+        });
+    }
 
     /**
      * Initializes everything for the main frame
@@ -199,7 +222,9 @@ public class Window {
                 game.setSettings(userSettings);
                 game.startGame();
                 addGameComponents();
-                mainWindow.add(BorderLayout.SOUTH, game.getBottomPanel());
+                addToPanel();
+                endTurnFunctionality();
+                mainWindow.add(BorderLayout.SOUTH, bottomPanel);
             }
         });
     }

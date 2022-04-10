@@ -57,6 +57,12 @@ public class LargeStraight extends Scorecard{
      */
     public Integer getActualScore(){return this.actualScore;}
 
+    @Override
+    public JTextField makePossibleScoreView() {
+        scoreLine.setText("Possible score " + this.possibleScore + " on the Large Straight line\n");
+        return scoreLine;
+    }
+
     /**
      * Changes the text for this scoreLine
      * @return scoreLine

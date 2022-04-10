@@ -96,6 +96,12 @@ public abstract class Scorecard {
     }
 
     /**
+     * Makes a text field of the potential score for output to the GUI
+     * @return scoreLine
+     */
+    public abstract JTextField makePossibleScoreView();
+
+    /**
      * Makes a text field to be handed to the scorecard view for output to the GUI
      * @return scoreLine
      */

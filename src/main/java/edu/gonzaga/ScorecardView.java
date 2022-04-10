@@ -5,7 +5,9 @@ import java.util.ArrayList;
 
 public class ScorecardView {
     JTextField scorecardTitle = new JTextField("Scorecard:");
+    JTextField possibleScorecardTitle = new JTextField("Possible scores:");
     JPanel scorecardPanel = new JPanel();
+    JPanel possibleScorecardPanel = new JPanel();
 
     /*
     Also maybe to the same thing for the possible scores
@@ -18,7 +20,45 @@ public class ScorecardView {
         scorecardPanel.setLayout(new BoxLayout(scorecardPanel, BoxLayout.Y_AXIS));
         scorecardTitle.setEditable(false);
         scorecardPanel.add(scorecardTitle);
+        possibleScorecardPanel.setLayout(new BoxLayout(possibleScorecardPanel, BoxLayout.Y_AXIS));
+        possibleScorecardTitle.setEditable(false);
+        possibleScorecardPanel.add(possibleScorecardTitle);
     }
+
+    void addPossibleScoreUpper(ArrayList<JTextField> possibleUpperLines){
+        for(int i = 0; i < possibleUpperLines.size(); i++){
+            possibleScorecardPanel.add(possibleUpperLines.get(i));
+        }
+    }
+
+    void possibleThreeOfAKindScore(JTextField TOKPossible){
+        possibleScorecardPanel.add(TOKPossible);
+    }
+    void possibleFourOfAKindScore(JTextField FOKPossible){
+        possibleScorecardPanel.add(FOKPossible);
+    }
+
+    void possibleFullHouseScore(JTextField FHPossible){
+        possibleScorecardPanel.add(FHPossible);
+    }
+
+    void possibleSmallStraightScore(JTextField SSPossible){
+        possibleScorecardPanel.add(SSPossible);
+    }
+
+    void possibleLargeStraightScore(JTextField LSPossible){
+        possibleScorecardPanel.add(LSPossible);
+    }
+
+    void possibleYahtzeeScore(JTextField YPossible){
+        possibleScorecardPanel.add(YPossible);
+    }
+
+    void possibleChanceScore(JTextField CPossible){
+        possibleScorecardPanel.add(CPossible);
+    }
+
+    JPanel getPossibleScorecardPanel(){return possibleScorecardPanel;}
 
     /**
      * Adds the upper scorecard JTextFields to the scorecard panel

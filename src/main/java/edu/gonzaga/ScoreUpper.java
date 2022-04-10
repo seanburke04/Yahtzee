@@ -183,6 +183,14 @@ public class ScoreUpper {
         return actualScores;
     }
 
+    public ArrayList<JTextField> makePossibleScoreView(){
+        for(int i = 0; i < possibleScores.size(); i++){
+            upperLines.get(i).setEditable(false);
+            upperLines.get(i).setText("Possible score " + possibleScores.get(i) + " on the " + (i + 1) + " line\n");
+        }
+        return upperLines;
+    }
+
     /**
      * Changes the text for all upper score lines
      * @return upperLines

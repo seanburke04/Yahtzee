@@ -61,6 +61,12 @@ public class ThreeOfAKind extends Scorecard{
      */
     public Integer getActualScore(){return this.actualScore;}
 
+    @Override
+    public JTextField makePossibleScoreView() {
+        scoreLine.setText("Possible score " + this.possibleScore + " on the Three of a Kind line\n");
+        return scoreLine;
+    }
+
     /**
      * Changes the text for this scoreLine
      * @return scoreLine

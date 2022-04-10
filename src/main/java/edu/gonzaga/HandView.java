@@ -23,6 +23,7 @@ import javax.swing.border.Border;
 public class HandView {
     JPanel myPanel;
     ArrayList<DieView> dieViews;
+    ArrayList<Integer> settings;
     JButton rollButton;
     Hand hand;
 
@@ -49,7 +50,7 @@ public class HandView {
      * Sets up the dice view
      */
     void setupDiceViews() {
-        for( int i = 0; i < 5; i++ ) {
+        for( int i = 0; i < settings.get(1); i++ ) {
             DieView newView = new DieView();
             newView.setDieToView(hand.getDieAt(i));
             dieViews.add(newView);
@@ -78,7 +79,8 @@ public class HandView {
      * Constructor that sets up the view for a particular hand
      * @param newHand
      */
-    HandView(Hand newHand) {
+    HandView(Hand newHand, ArrayList<Integer> userSettings) {
+        settings = userSettings;
         hand = newHand;
         dieViews = new ArrayList<>();
 

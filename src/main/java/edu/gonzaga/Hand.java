@@ -20,8 +20,7 @@ import java.beans.PropertyChangeEvent;
 
 public class Hand implements PropertyChangeListener {
     ArrayList<Die> dice;
-    int dieCount = 5;
-    ArrayList<Integer> settings = new ArrayList<>(3);
+    ArrayList<Integer> settings;
 
     //Can change hand size here with dieCount
 
@@ -32,7 +31,7 @@ public class Hand implements PropertyChangeListener {
     public Hand(ArrayList<Integer> userSettings) {
         settings = userSettings;
         dice = new ArrayList<>();
-        for (int i = 0; i < dieCount; i++ ) {
+        for (int i = 0; i < settings.get(1); i++ ) {
             Die currDie = new Die(settings.get(0));
             dice.add(currDie);
             currDie.addPropertyChangeListener(this::propertyChange);

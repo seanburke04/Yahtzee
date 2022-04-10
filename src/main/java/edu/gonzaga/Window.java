@@ -90,7 +90,7 @@ public class Window {
      * Calls handView constructor so handView methods are called within that class
      */
     void setupHandView() {
-        handView = new HandView(hand);
+        handView = new HandView(hand, userSettings);
     }
 
     /**

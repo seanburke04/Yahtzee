@@ -44,7 +44,7 @@ public class Game {
     }
 
     private void initializeScorecard(){
-        upperScoreLines = new ScoreUpper(settings.get(0));
+        upperScoreLines = new ScoreUpper(settings);
         displayScorecard = new ScorecardView();
         threeOfAKindScoreLine = new ThreeOfAKind();
         fourOfAKindScoreLine = new FourOfAKind();

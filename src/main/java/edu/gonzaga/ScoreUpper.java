@@ -36,45 +36,6 @@ public class ScoreUpper {
         isUsed.add(DEFAULT_USE);
     }
 
-    public ScoreUpper(Integer scoreSize){
-        actualScores.add(DEFAULT_SCORE);
-        possibleScores.add(DEFAULT_SCORE);
-        isUsed.add(DEFAULT_USE);
-
-        if(scoreSize == 6){
-            upperLines.add(oneLine);
-            upperLines.add(twoLine);
-            upperLines.add(threeLine);
-            upperLines.add(fourLine);
-            upperLines.add(fiveLine);
-            upperLines.add(sixLine);
-        }
-        else if(scoreSize == 8){
-            upperLines.add(oneLine);
-            upperLines.add(twoLine);
-            upperLines.add(threeLine);
-            upperLines.add(fourLine);
-            upperLines.add(fiveLine);
-            upperLines.add(sixLine);
-            upperLines.add(sevenLine);
-            upperLines.add(eightLine);
-        }
-        else{
-            upperLines.add(oneLine);
-            upperLines.add(twoLine);
-            upperLines.add(threeLine);
-            upperLines.add(fourLine);
-            upperLines.add(fiveLine);
-            upperLines.add(sixLine);
-            upperLines.add(sevenLine);
-            upperLines.add(eightLine);
-            upperLines.add(nineLine);
-            upperLines.add(tenLine);
-            upperLines.add(elevenLine);
-            upperLines.add(twelveLine);
-        }
-    }
-
     /**
      * Setter for actualScores
      * @param index
@@ -101,6 +62,39 @@ public class ScoreUpper {
             actualScores.add(DEFAULT_SCORE);
             possibleScores.add(DEFAULT_SCORE);
             isUsed.add(DEFAULT_USE);
+        }
+
+        if(numSides == 6){
+            upperLines.add(oneLine);
+            upperLines.add(twoLine);
+            upperLines.add(threeLine);
+            upperLines.add(fourLine);
+            upperLines.add(fiveLine);
+            upperLines.add(sixLine);
+        }
+        else if(numSides == 8){
+            upperLines.add(oneLine);
+            upperLines.add(twoLine);
+            upperLines.add(threeLine);
+            upperLines.add(fourLine);
+            upperLines.add(fiveLine);
+            upperLines.add(sixLine);
+            upperLines.add(sevenLine);
+            upperLines.add(eightLine);
+        }
+        else{
+            upperLines.add(oneLine);
+            upperLines.add(twoLine);
+            upperLines.add(threeLine);
+            upperLines.add(fourLine);
+            upperLines.add(fiveLine);
+            upperLines.add(sixLine);
+            upperLines.add(sevenLine);
+            upperLines.add(eightLine);
+            upperLines.add(nineLine);
+            upperLines.add(tenLine);
+            upperLines.add(elevenLine);
+            upperLines.add(twelveLine);
         }
     }
 

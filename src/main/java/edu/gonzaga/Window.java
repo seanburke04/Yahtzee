@@ -40,6 +40,8 @@ public class Window {
     JPanel displayDefaultSettingsPanel = new JPanel();
     JButton confirm = new JButton("Confirm");
     JPanel buttonPanel = new JPanel();
+    JLabel gameOver = new JLabel("Game Over!");
+    JPanel gameOverPanel = new JPanel();
 
     JButton endTurn = new JButton("End Turn");
     JPanel bottomPanel = new JPanel();
@@ -76,8 +78,53 @@ public class Window {
                 game.handView.rollButton.setVisible(true);
                 bottomPanel.add(endTurn2);
                 endTurn2.setVisible(true);
+                //checkAllIsUsed();
             }
         });
+    }
+
+    private void checkAllIsUsed(){
+        Boolean allUsed = true;
+        ArrayList<Boolean> upperScoreUse = game.upperScoreLines.getIsUsed();
+        for(int i = 0; i < userSettings.get(0); i++){
+            if(upperScoreUse.get(i) == false){
+                allUsed = upperScoreUse.get(i);
+            }
+        }
+        if(game.threeOfAKindScoreLine.getIsUsed() == false){
+            allUsed = false;
+        }
+        if(game.fourOfAKindScoreLine.getIsUsed() == false){
+            allUsed = false;
+        }
+        if(game.fullHouseScoreLine.getIsUsed() == false){
+            allUsed = false;
+        }
+        if(game.smallStraightScoreLine.getIsUsed() == false){
+            allUsed = false;
+        }
+        if(game.largeStraightScoreLine.getIsUsed() == false){
+            allUsed = false;
+        }
+        if(game.yahtzeeScoreLine.getIsUsed() == false){
+            allUsed = false;
+        }
+        if(game.chanceScoreLine.getIsUsed() == false){
+            allUsed = false;
+        }
+        if(allUsed == true){
+            endScreen();
+        }
+    }
+
+    private void endScreen(){
+        gameOverPanel.add(gameOver);
+        mainWindow.add(BorderLayout.NORTH, gameOverPanel);
+        game.displayScorecard.getScorecardPanel().setVisible(false);
+        game.getHandView().getPanel().setVisible(false);
+        game.handView.rollButton.setVisible(false);
+        endTurn.setVisible(false);
+        endTurn2.setVisible(false);
     }
 
     private void addToPanel(){
@@ -94,6 +141,7 @@ public class Window {
                 }
                 endTurn2.setVisible(false);
                 getNextTurn().setVisible(true);
+                game.displayScorecard.getScorecardPanel().setVisible(false);
                 game.getHandView().getPanel().setVisible(false);
                 game.makePossibleScorecard().setVisible(true);
                 game.getScoreSelectPanel().setVisible(true);
@@ -113,7 +161,7 @@ public class Window {
                 endTurn.setVisible(false);
                 bottomPanel.add(getNextTurn());
                 game.calcScores();
-                game.makeScorecard().setVisible(false);
+                game.displayScorecard.getScorecardPanel().setVisible(false);
                 game.getHandView().getPanel().setVisible(false);
                 mainWindow.add(BorderLayout.WEST, game.makePossibleScorecard());
                 game.setupScoreSelect();

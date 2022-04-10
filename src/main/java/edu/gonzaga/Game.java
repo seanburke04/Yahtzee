@@ -11,6 +11,10 @@
 package edu.gonzaga;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 
 /**
@@ -19,6 +23,9 @@ import java.util.ArrayList;
 public class Game {
     Hand hand;
     HandView handView;
+
+    JButton endTurn = new JButton("End Turn");
+    JPanel bottomPanel = new JPanel();
 
     ScorecardView displayScorecard;
     ScoreUpper upperScoreLines;
@@ -31,6 +38,21 @@ public class Game {
     Chance chanceScoreLine;
 
     ArrayList<Integer> settings = new ArrayList<>();
+
+    private void endTurnFunctionality(){
+        endTurn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+    }
+
+    private void addToPanel(){
+        bottomPanel.add(endTurn);
+    }
+
+    JPanel getBottomPanel(){return bottomPanel;}
 
     HandView getHandView(){return handView;}
 
@@ -82,6 +104,7 @@ public class Game {
         initializeScorecard();
         setupHand();
         setupHandView();
+        addToPanel();
     }
 
     private void singleTurn(){}

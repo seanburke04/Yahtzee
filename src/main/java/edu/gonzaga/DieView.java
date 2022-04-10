@@ -22,6 +22,7 @@ public class DieView extends JButton implements PropertyChangeListener{
     boolean locked = false;
     DiceImages images;
     Die dieToView;
+    Integer dieValues;
 
     /**
      * Constructor that calls diceImages to be loaded and sets buttonText
@@ -100,6 +101,8 @@ public class DieView extends JButton implements PropertyChangeListener{
         );
     }
 
+    public Integer getDieValues(){return dieValues;}
+
     /**
      * Sets what happens when the die is pressed
      * @param e
@@ -108,8 +111,10 @@ public class DieView extends JButton implements PropertyChangeListener{
         String propertyName = e.getPropertyName();
         if ("dievalue".equals(propertyName)) {
             System.out.println(("DieView sees value changed to: " + e.getNewValue()));
+            dieValues = (Integer) e.getNewValue();
             setIcon(images.getDieImage((int) e.getNewValue()));
         }
     }
+
 
 }

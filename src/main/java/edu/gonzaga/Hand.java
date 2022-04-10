@@ -22,8 +22,6 @@ public class Hand implements PropertyChangeListener {
     ArrayList<Die> dice;
     ArrayList<Integer> settings;
 
-    //Can change hand size here with dieCount
-
     /**
      * Constructor, sets up hand with the proper number of dice
      * @param userSettings

@@ -199,6 +199,7 @@ public class Window {
                 game.setSettings(userSettings);
                 game.startGame();
                 addGameComponents();
+                mainWindow.add(BorderLayout.SOUTH, game.getBottomPanel());
             }
         });
     }
@@ -208,7 +209,6 @@ public class Window {
      */
     void addGameComponents(){
         mainWindow.add(BorderLayout.EAST, game.getHandView().getPanel());
-        //Change this to scorecard
         mainWindow.add(BorderLayout.WEST, game.makeScorecard());
         mainWindow.pack();
     }

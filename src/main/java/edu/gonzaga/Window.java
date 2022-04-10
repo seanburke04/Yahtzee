@@ -59,6 +59,8 @@ public class Window {
         bottomPanel.add(endTurn);
     }
 
+    //add next turn button to move on
+
     private void endTurnFunctionality(){
         endTurn.addActionListener(new ActionListener() {
             @Override

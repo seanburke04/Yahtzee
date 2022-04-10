@@ -40,7 +40,7 @@ public class Game {
     JComboBox scoreSelect = new JComboBox();
 
     void setupScoreSelect(){
-        for(int i = 1; i < settings.get(0); i++){
+        for(int i = 1; i < (settings.get(0) + 1); i++){
             scoreSelect.addItem(i);
         }
         scoreSelect.addItem("Three of a Kind");
@@ -69,36 +69,74 @@ public class Game {
                     }
                 }
                 if(scoreSelect.getSelectedItem() == "Three of a Kind"){
-                    threeOfAKindScoreLine.setIsUsed(true);
-                    threeOfAKindScoreLine.isChosen();
+                    if(threeOfAKindScoreLine.getIsUsed()){
+                        System.out.println("That is already chosen");
+                        System.exit(1);
+                    }
+                    else{
+                        threeOfAKindScoreLine.setIsUsed(true);
+                        threeOfAKindScoreLine.isChosen();
+                    }
                 }
                 else if(scoreSelect.getSelectedItem() == "Four of a Kind"){
-                    fourOfAKindScoreLine.setIsUsed(true);
-                    fourOfAKindScoreLine.isChosen();
+                    if(fourOfAKindScoreLine.getIsUsed()){
+                        System.out.println("That is already chosen");
+                        System.exit(1);
+                    }
+                    else{
+                        fourOfAKindScoreLine.setIsUsed(true);
+                        fourOfAKindScoreLine.isChosen();
+                    }
                 }
                 else if(scoreSelect.getSelectedItem() == "Full House"){
-                    fullHouseScoreLine.setIsUsed(true);
-                    fullHouseScoreLine.isChosen();
+                    if(fullHouseScoreLine.getIsUsed()){
+                        System.out.println("That is already chosen");
+                        System.exit(1);
+                    }
+                    else{
+                        fullHouseScoreLine.setIsUsed(true);
+                        fullHouseScoreLine.isChosen();
+                    }
                 }
                 else if(scoreSelect.getSelectedItem() == "Small Straight"){
-                    smallStraightScoreLine.setIsUsed(true);
-                    smallStraightScoreLine.isChosen();
+                    if(smallStraightScoreLine.getIsUsed()){
+                        System.out.println("That is already chosen");
+                        System.exit(1);
+                    }
+                    else{
+                        smallStraightScoreLine.setIsUsed(true);
+                        smallStraightScoreLine.isChosen();
+                    }
                 }
                 else if(scoreSelect.getSelectedItem() == "Large Straight"){
-                    largeStraightScoreLine.setIsUsed(true);
-                    largeStraightScoreLine.isChosen();
+                    if(largeStraightScoreLine.getIsUsed()){
+                        System.out.println("That is already chosen");
+                        System.exit(1);
+                    }
+                    else{
+                        largeStraightScoreLine.setIsUsed(true);
+                        largeStraightScoreLine.isChosen();
+                    }
                 }
                 else if(scoreSelect.getSelectedItem() == "Yahtzee"){
-                    yahtzeeScoreLine.setIsUsed(true);
-                    yahtzeeScoreLine.isChosen();
+                    if(yahtzeeScoreLine.getIsUsed()){
+                        System.out.println("That is already chosen");
+                        System.exit(1);
+                    }
+                    else{
+                        yahtzeeScoreLine.setIsUsed(true);
+                        yahtzeeScoreLine.isChosen();
+                    }
                 }
                 else if(scoreSelect.getSelectedItem() == "Chance"){
-                    chanceScoreLine.setIsUsed(true);
-                    chanceScoreLine.isChosen();
-                }
-                else{
-                    System.out.println("That is already chosen");
-                    System.exit(1);
+                    if(chanceScoreLine.getIsUsed()){
+                        System.out.println("That is already chosen");
+                        System.exit(1);
+                    }
+                    else{
+                        chanceScoreLine.setIsUsed(true);
+                        chanceScoreLine.isChosen();
+                    }
                 }
                 scoreSelectPanel.setVisible(false);
             }

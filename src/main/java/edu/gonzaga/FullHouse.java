@@ -55,6 +55,10 @@ public class FullHouse extends Scorecard{
      */
     public Integer getActualScore(){return this.actualScore;}
 
+    /**
+     * Changes the text for this scoreLine
+     * @return scoreLine
+     */
     @Override
     public JTextField makeScoreView() {
         scoreLine.setText("Score " + this.actualScore + " on the Full House line\n");

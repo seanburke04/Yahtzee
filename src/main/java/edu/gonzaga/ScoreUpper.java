@@ -64,6 +64,7 @@ public class ScoreUpper {
             isUsed.add(DEFAULT_USE);
         }
 
+        //Initializes upper scorecard text fields
         if(numSides == 6){
             upperLines.add(oneLine);
             upperLines.add(twoLine);
@@ -182,6 +183,10 @@ public class ScoreUpper {
         return actualScores;
     }
 
+    /**
+     * Changes the text for all upper score lines
+     * @return upperLines
+     */
     public ArrayList<JTextField> makeScoreView(){
         for(int i = 0; i < actualScores.size(); i++){
             upperLines.get(i).setText("Score " + actualScores.get(i) + " on the " + (i + 1) + " line");

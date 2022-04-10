@@ -43,6 +43,9 @@ public class Game {
         return settings;
     }
 
+    /**
+     * Sets up all the scorecard classes
+     */
     private void initializeScorecard(){
         upperScoreLines = new ScoreUpper(settings);
         displayScorecard = new ScorecardView();
@@ -62,6 +65,10 @@ public class Game {
 
     private void singleTurn(){}
 
+    /**
+     * Adds all score lines to a panel and passes it to the Window
+     * @return displayScorecard
+     */
     JPanel makeScorecard(){
         displayScorecard.addScoreUpper(upperScoreLines.makeScoreView());
         displayScorecard.addThreeOfAKindScore(threeOfAKindScoreLine.makeScoreView());

@@ -57,6 +57,10 @@ public class SmallStraight extends Scorecard{
      */
     public Integer getActualScore(){return this.actualScore;}
 
+    /**
+     * Changes the text for this score line
+     * @return scoreLine
+     */
     @Override
     public JTextField makeScoreView() {
         scoreLine.setText("Score " + this.actualScore + " on the Small Straight line\n");

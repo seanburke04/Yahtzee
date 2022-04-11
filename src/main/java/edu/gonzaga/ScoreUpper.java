@@ -1,14 +1,17 @@
 /**
- * This program rolls and scores the dice for a game of yahtzee
+ * This program plays through a whole game of Yahtzee through a GUI
  * CPSC 224-02, Spring 2022
- * HW1 Yahtzee Rolling and Scoring
- * Source: Most of the Die.java file written by Dr. Crandall
+ * HW4 Yahtzee GUI
+ * Source: Most of the Die.java, DiceImages.java, DieView.java, Hand.java, HandView.java, Window.java
+ * files written by Dr. Crandall
  *
  * @author Sean Burke
- * @version v1.1 3/7/22
+ * @version v1.4 4/10/22
  */
+
 package edu.gonzaga;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class ScoreUpper {
@@ -20,6 +23,20 @@ public class ScoreUpper {
     private Integer numSides;
     private Integer DEFAULT_SCORE = 0;
     private Boolean DEFAULT_USE = false;
+
+    private JTextField oneLine = new JTextField("Score 0 on the one line\n");
+    private JTextField twoLine = new JTextField("Score 0 on the two line\n");
+    private JTextField threeLine = new JTextField("Score 0 on the three line\n");
+    private JTextField fourLine = new JTextField("Score 0 on the four line\n");
+    private JTextField fiveLine = new JTextField("Score 0 on the five line\n");
+    private JTextField sixLine = new JTextField("Score 0 on the six line\n");
+    private JTextField sevenLine = new JTextField("Score 0 on the seven line\n");
+    private JTextField eightLine = new JTextField("Score 0 on the eight line\n");
+    private JTextField nineLine = new JTextField("Score 0 on the nine line\n");
+    private JTextField tenLine = new JTextField("Score 0 on the ten line\n");
+    private JTextField elevenLine = new JTextField("Score 0 on the eleven line\n");
+    private JTextField twelveLine = new JTextField("Score 0 on the twelve line\n");
+    private ArrayList<JTextField> upperLines = new ArrayList<>(12);
 
     /**
      * Default constructor
@@ -56,6 +73,40 @@ public class ScoreUpper {
             actualScores.add(DEFAULT_SCORE);
             possibleScores.add(DEFAULT_SCORE);
             isUsed.add(DEFAULT_USE);
+        }
+
+        //Initializes upper scorecard text fields
+        if(numSides == 6){
+            upperLines.add(oneLine);
+            upperLines.add(twoLine);
+            upperLines.add(threeLine);
+            upperLines.add(fourLine);
+            upperLines.add(fiveLine);
+            upperLines.add(sixLine);
+        }
+        else if(numSides == 8){
+            upperLines.add(oneLine);
+            upperLines.add(twoLine);
+            upperLines.add(threeLine);
+            upperLines.add(fourLine);
+            upperLines.add(fiveLine);
+            upperLines.add(sixLine);
+            upperLines.add(sevenLine);
+            upperLines.add(eightLine);
+        }
+        else{
+            upperLines.add(oneLine);
+            upperLines.add(twoLine);
+            upperLines.add(threeLine);
+            upperLines.add(fourLine);
+            upperLines.add(fiveLine);
+            upperLines.add(sixLine);
+            upperLines.add(sevenLine);
+            upperLines.add(eightLine);
+            upperLines.add(nineLine);
+            upperLines.add(tenLine);
+            upperLines.add(elevenLine);
+            upperLines.add(twelveLine);
         }
     }
 
@@ -112,6 +163,10 @@ public class ScoreUpper {
         isUsed.set(whichIsUsed, true);
     }
 
+    /**
+     * Sets the possible score to the actual score
+     * @param whichIsChosen
+     */
     public void isChosen(Integer whichIsChosen){
         actualScores.set(whichIsChosen, possibleScores.get(whichIsChosen));
     }
@@ -141,6 +196,30 @@ public class ScoreUpper {
      */
     public ArrayList<Integer> getActualScores() {
         return actualScores;
+    }
+
+    /**
+     * Changes the text for the possible scores for output to the GUI
+     * @return upperLines
+     */
+    public ArrayList<JTextField> makePossibleScoreView(){
+        for(int i = 0; i < possibleScores.size(); i++){
+            upperLines.get(i).setEditable(false);
+            upperLines.get(i).setText("Possible score " + possibleScores.get(i) + " on the " + (i + 1) + " line\n");
+        }
+        return upperLines;
+    }
+
+    /**
+     * Changes the text for all upper score lines
+     * @return upperLines
+     */
+    public ArrayList<JTextField> makeScoreView(){
+        for(int i = 0; i < actualScores.size(); i++){
+            upperLines.get(i).setEditable(false);
+            upperLines.get(i).setText("Score " + actualScores.get(i) + " on the " + (i + 1) + " line");
+        }
+        return upperLines;
     }
 
     /**

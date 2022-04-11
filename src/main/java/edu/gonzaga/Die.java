@@ -1,106 +1,98 @@
 /**
- * This program rolls and scores the dice for a game of yahtzee
+ * This program plays through a whole game of Yahtzee through a GUI
  * CPSC 224-02, Spring 2022
- * HW1 Yahtzee Rolling and Scoring
- * Source: Most of the Die.java file written by Dr. Crandall
+ * HW4 Yahtzee GUI
+ * Source: Most of the Die.java, DiceImages.java, DieView.java, Hand.java, HandView.java, Window.java
+ * files written by Dr. Crandall
  *
  * @author Sean Burke
- * @version v1.1 3/3/22
+ * @version v1.4 4/10/22
  */
+
 package edu.gonzaga;
 
-/*
- * Class for a Die used in Yahtzee.
- */
-
 import java.util.Random;
+import java.beans.PropertyChangeSupport;
+import java.beans.PropertyChangeListener;
 
 /**
- * Class to store the state of a single die.
+ * This class controls a single die
  */
-public class Die implements Comparable<Die> {
-    private Integer sideUp; // Current die 'value' in range 1..numSides
-    private Integer numSides; // Sides on the die (should be 1...INF integer)
-    private static final Integer DEFAULT_NUM_SIDES = 6;
-    private static final Integer DEFAULT_SIDE_UP = 1;
+
+public class Die {
+    int value = 0;
+    boolean locked = false;
+    private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
+    private Integer numSides;
 
     /**
-     * Default constructor
+     * Constructor that sets the number of sides
+     * @param userNumSides
      */
-    public Die() {
-        this.numSides = DEFAULT_NUM_SIDES;
-        this.sideUp = DEFAULT_SIDE_UP;
+    Die(Integer userNumSides){
+        numSides = userNumSides;
     }
 
     /**
-     * Overridden constructor
-     *
-     * @param numSides number of sides on the dice
+     * Adds a listener to the die for updating
+     * @param listener
      */
-    public Die(Integer numSides) {
-        this.numSides = numSides;
-        this.sideUp = DEFAULT_SIDE_UP;
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+        this.pcs.addPropertyChangeListener(listener);
     }
 
     /**
-     * Overridden constructor
-     *
-     * @param numSides,startingSide number of sides on the dice, side starts up
+     * Removes listener from die when it is no longer needed
+     * @param listener
      */
-    public Die(Integer numSides, Integer startingSide) {
-        this.numSides = numSides;
-        this.sideUp = startingSide;
+    public void removePropertyChangeListener(PropertyChangeListener listener) {
+        this.pcs.removePropertyChangeListener(listener);
     }
 
     /**
-     * Rolls the die once, getting new random value.
+     * Locks the die so it cannot be changed
+     */
+    public void lock() { locked = true; }
+
+    /**
+     * Unlocks the die so it can be changed
+     */
+    public void unlock() { locked = false; }
+
+    /**
+     * Rolls the die if it is not locked
      */
     public void roll() {
-        Random rand = new Random();
-        this.sideUp = rand.nextInt(this.numSides) + 1;
+        if(!locked) {
+            Random rand = new Random(); //instance of random class
+            int upperbound = numSides;
+            this.setValue(rand.nextInt(upperbound) + 1);
+        }
     }
 
     /**
-     * Returns current die value (the side that's up).
-     *
-     * @return Integer Current Die's Side Up
+     * Sets the value of the die and fires the listener
+     * @param newValue
      */
-    public Integer getSideUp() {
-        return this.sideUp;
+    void setValue(int newValue) {
+        int oldValue = this.value;
+        this.value = newValue;
+        this.pcs.firePropertyChange("dievalue", oldValue, newValue);
     }
 
     /**
-     * Returns quantity of sides on the die.
-     *
-     * @return Integer number of sides on the die
+     * Getter for dice value
+     * @return value
      */
-    public Integer getNumSides() {
-        return this.numSides;
+    public int getValue() {
+        return value;
     }
 
     /**
-     * Provides the ability to convert the Die object into a string. representation, both with
-     * .toString(), but also in System.out.println()
-     *
-     * @return String of whatever you want this die to say for itself
+     * Converts the die value to a string
+     * @return value
      */
-    @Override
     public String toString() {
-        String ret = "";
-        // ret += "Die: " + this.sideUp.toString() + " of " + this.numSides.toString() + " sides";
-        ret += this.sideUp.toString();
-        return ret;
-    }
-
-    /**
-     * Makes two dice comparable using <, ==, >, etc. based on sideUp values.
-     *
-     * @param otherDie The die we're comparing to this one (two objects)
-     * @return int -1, 0, 1 for less than, equal, greater than
-     */
-    @Override
-    public int compareTo(Die otherDie) {
-        int firstDie = 2;
-        return this.sideUp.compareTo(otherDie.sideUp);
+        return "Die value: " + value;
     }
 }

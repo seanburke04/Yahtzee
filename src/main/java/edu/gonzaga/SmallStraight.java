@@ -1,17 +1,20 @@
 /**
- * This program rolls and scores the dice for a game of yahtzee
+ * This program plays through a whole game of Yahtzee through a GUI
  * CPSC 224-02, Spring 2022
- * HW1 Yahtzee Rolling and Scoring
- * Source: Most of the Die.java file written by Dr. Crandall
+ * HW4 Yahtzee GUI
+ * Source: Most of the Die.java, DiceImages.java, DieView.java, Hand.java, HandView.java, Window.java
+ * files written by Dr. Crandall
  *
  * @author Sean Burke
- * @version v1.1 3/7/22
+ * @version v1.4 4/10/22
  */
 package edu.gonzaga;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class SmallStraight extends Scorecard{
+    JTextField scoreLine = new JTextField();
     /**
      * Default constructor
      */
@@ -20,6 +23,8 @@ public class SmallStraight extends Scorecard{
         this.possibleScore = 0;
         this.actualScore = 0;
         this.isUsed = false;
+        scoreLine.setText("Score 0 on the Small Straight line\n");
+        scoreLine.setEditable(false);
     }
 
     /**
@@ -61,6 +66,26 @@ public class SmallStraight extends Scorecard{
      * @return actualScore
      */
     public Integer getActualScore(){return this.actualScore;}
+
+    /**
+     * Changes text for the possible score for output to the GUI
+     * @return scoreLine
+     */
+    @Override
+    public JTextField makePossibleScoreView() {
+        scoreLine.setText("Possible score " + this.possibleScore + " on the Small Straight line\n");
+        return scoreLine;
+    }
+
+    /**
+     * Changes the text for this score line
+     * @return scoreLine
+     */
+    @Override
+    public JTextField makeScoreView() {
+        scoreLine.setText("Score " + this.actualScore + " on the Small Straight line\n");
+        return scoreLine;
+    }
 
     /**
      * Outputs the calculated possible score

@@ -1,11 +1,12 @@
 /**
- * This program rolls and scores the dice for a game of yahtzee
+ * This program plays through a whole game of Yahtzee through a GUI
  * CPSC 224-02, Spring 2022
- * HW1 Yahtzee Rolling and Scoring
- * Source: Most of the Die.java file written by Dr. Crandall
+ * HW4 Yahtzee GUI
+ * Source: Most of the Die.java, DiceImages.java, DieView.java, Hand.java, HandView.java, Window.java
+ * files written by Dr. Crandall
  *
  * @author Sean Burke
- * @version v1.1 3/7/22
+ * @version v1.4 4/10/22
  */
 package edu.gonzaga;
 
@@ -18,9 +19,6 @@ package edu.gonzaga;
 /** Main program class for launching Yahtzee program. */
 public class Yahtzee {
     public static void main(String[] args) throws Exception {
-        Player player1 = new Player();
-
-        player1.playGame();
-        player1.outputEntireScorecard();
+        Window mainWindow = new Window();
     }
 }

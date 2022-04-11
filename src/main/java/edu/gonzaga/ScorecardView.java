@@ -1,3 +1,14 @@
+/**
+ * This program plays through a whole game of Yahtzee through a GUI
+ * CPSC 224-02, Spring 2022
+ * HW4 Yahtzee GUI
+ * Source: Most of the Die.java, DiceImages.java, DieView.java, Hand.java, HandView.java, Window.java
+ * files written by Dr. Crandall
+ *
+ * @author Sean Burke
+ * @version v1.4 4/10/22
+ */
+
 package edu.gonzaga;
 
 import javax.swing.*;
@@ -8,10 +19,6 @@ public class ScorecardView {
     JTextField possibleScorecardTitle = new JTextField("Possible scores:");
     JPanel scorecardPanel = new JPanel();
     JPanel possibleScorecardPanel = new JPanel();
-
-    /*
-    Also maybe to the same thing for the possible scores
-     */
 
     /**
      * Default constructor, initializes scorecard basics
@@ -25,39 +32,76 @@ public class ScorecardView {
         possibleScorecardPanel.add(possibleScorecardTitle);
     }
 
+    /**
+     * Adds possible scores for the upper lines to the possible score panel
+     * @param possibleUpperLines
+     */
     void addPossibleScoreUpper(ArrayList<JTextField> possibleUpperLines){
         for(int i = 0; i < possibleUpperLines.size(); i++){
             possibleScorecardPanel.add(possibleUpperLines.get(i));
         }
     }
 
+    /**
+     * Adds possible score for three of a kind to the possible score panel
+     * @param TOKPossible
+     */
     void possibleThreeOfAKindScore(JTextField TOKPossible){
         possibleScorecardPanel.add(TOKPossible);
     }
+
+    /**
+     * Adds possible score for four of a kind to the possible score panel
+     * @param FOKPossible
+     */
     void possibleFourOfAKindScore(JTextField FOKPossible){
         possibleScorecardPanel.add(FOKPossible);
     }
 
+    /**
+     * Adds possible score for the full house line to the possible score panel
+     * @param FHPossible
+     */
     void possibleFullHouseScore(JTextField FHPossible){
         possibleScorecardPanel.add(FHPossible);
     }
 
+    /**
+     * Adds possible score for the small straight line to the possible score panel
+     * @param SSPossible
+     */
     void possibleSmallStraightScore(JTextField SSPossible){
         possibleScorecardPanel.add(SSPossible);
     }
 
+    /**
+     * Adds possible score for the large straight line to the possible score panel
+     * @param LSPossible
+     */
     void possibleLargeStraightScore(JTextField LSPossible){
         possibleScorecardPanel.add(LSPossible);
     }
 
+    /**
+     * Adds possible score for the yahtzee line to the possible score panel
+     * @param YPossible
+     */
     void possibleYahtzeeScore(JTextField YPossible){
         possibleScorecardPanel.add(YPossible);
     }
 
+    /**
+     * Adds possible score for the chance line to the possible score panel
+     * @param CPossible
+     */
     void possibleChanceScore(JTextField CPossible){
         possibleScorecardPanel.add(CPossible);
     }
 
+    /**
+     * Getter for the possible score panel
+     * @return possibleScorePanel
+     */
     JPanel getPossibleScorecardPanel(){return possibleScorecardPanel;}
 
     /**

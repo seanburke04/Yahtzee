@@ -6,8 +6,9 @@
  * files written by Dr. Crandall
  *
  * @author Sean Burke
- * @version v1.4 4/8/22
+ * @version v1.4 4/10/22
  */
+
 package edu.gonzaga;
 
 import java.util.Random;
@@ -24,6 +25,10 @@ public class Die {
     private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
     private Integer numSides;
 
+    /**
+     * Constructor that sets the number of sides
+     * @param userNumSides
+     */
     Die(Integer userNumSides){
         numSides = userNumSides;
     }

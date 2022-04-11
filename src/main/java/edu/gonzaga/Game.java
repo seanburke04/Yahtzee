@@ -6,7 +6,7 @@
  * files written by Dr. Crandall
  *
  * @author Sean Burke
- * @version v1.4 4/8/22
+ * @version v1.4 4/10/22
  */
 package edu.gonzaga;
 
@@ -39,6 +39,9 @@ public class Game {
     JPanel scoreSelectPanel = new JPanel();
     JComboBox scoreSelect = new JComboBox();
 
+    /**
+     * Adds items to the score select combo box so scores can be selected
+     */
     void setupScoreSelect(){
         for(int i = 1; i < (settings.get(0) + 1); i++){
             scoreSelect.addItem(i);
@@ -52,6 +55,9 @@ public class Game {
         scoreSelect.addItem("Chance");
     }
 
+    /**
+     * Sets the actual score and marks a score line as used when it is picked
+     */
     void scoreSelectFunctionality(){
         scoreSelect.addActionListener(new ActionListener() {
             @Override
@@ -145,13 +151,23 @@ public class Game {
         });
     }
 
+    /**
+     * Adds the label and score selector to a panel for display
+     */
     void addToScoreSelectPanel(){
         scoreSelectPanel.add(scoreSelectLabel);
         scoreSelectPanel.add(scoreSelect);
     }
 
+    /**
+     * Getter for score select panel
+     * @return scoreSelectPanel
+     */
     JPanel getScoreSelectPanel(){return scoreSelectPanel;}
 
+    /**
+     * Calls all methods to calculate all scores
+     */
     void calcScores(){
         upperScoreLines.calcScore(dieValues);
         threeOfAKindScoreLine.calcScore(dieValues);
@@ -163,6 +179,10 @@ public class Game {
         chanceScoreLine.calcScore(dieValues);
     }
 
+    /**
+     * Getter for handView
+     * @return handView
+     */
     HandView getHandView(){return handView;}
 
     /**
@@ -208,15 +228,19 @@ public class Game {
         chanceScoreLine = new Chance();
     }
 
-    //need to get die values from hand, also figure out which class has them
+    /**
+     * Sets up beginning of the game after settings are set
+     */
     void startGame(){
         initializeScorecard();
         setupHand();
         setupHandView();
     }
 
-    private void singleTurn(){}
-
+    /**
+     * Makes the entire scorecard panel
+     * @return scorecardPanel
+     */
     JPanel makePossibleScorecard(){
         displayScorecard.addPossibleScoreUpper(upperScoreLines.makePossibleScoreView());
         displayScorecard.possibleThreeOfAKindScore(threeOfAKindScoreLine.makePossibleScoreView());

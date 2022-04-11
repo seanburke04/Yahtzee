@@ -6,7 +6,7 @@
  * files written by Dr. Crandall
  *
  * @author Sean Burke
- * @version v1.4 4/8/22
+ * @version v1.4 4/10/22
  */
 package edu.gonzaga;
 
@@ -62,11 +62,18 @@ public class Window {
 
     Game game;
 
+    /**
+     * Getter for the next turn button
+     * @return nextTurn
+     */
     JButton getNextTurn(){
         nextTurnFunctionality();
         return nextTurn;
     }
 
+    /**
+     * Makes elements for rolling visible and hides the score selection elements
+     */
     private void nextTurnFunctionality(){
         nextTurn.addActionListener(new ActionListener() {
             @Override
@@ -86,6 +93,9 @@ public class Window {
         });
     }
 
+    /**
+     * Sets what happens when the game ends
+     */
     private void endScreen(){
         gameOverPanel.add(gameOver);
         mainWindow.add(BorderLayout.NORTH, gameOverPanel);
@@ -100,10 +110,17 @@ public class Window {
         quit.setVisible(false);
     }
 
+    /**
+     * Adds the end turn button to the bottom panel
+     */
     private void addToPanel(){
         bottomPanel.add(endTurn);
     }
 
+    /**
+     * Sets the what the second end turn button does
+     * Hides some elements and makes others visible
+     */
     private void endTurn2Functionality(){
         endTurn2.addActionListener(new ActionListener() {
             @Override
@@ -124,6 +141,9 @@ public class Window {
         });
     }
 
+    /**
+     * Calls the end screen function when the quit button is pressed
+     */
     private void quitFunctionality(){
         quit.addActionListener(new ActionListener() {
             @Override
@@ -133,6 +153,10 @@ public class Window {
         });
     }
 
+    /**
+     * Sets what the first end turn button does
+     * Initializes the possible scorecard, makes some elements visible, others invisible
+     */
     private void endTurnFunctionality(){
         endTurn.addActionListener(new ActionListener() {
             @Override
@@ -341,28 +365,10 @@ public class Window {
         setupGame();
         setupUserSettings();
 
-        //This manually rolls one dice
-        /*
-        DieView dv = new DieView();
-        dv.setDieToView(hand.getDieAt(0));
-
-        Die die = hand.getDieAt(0);
-        die.roll();
-
-         */
-
         //For Settings window
         mainWindow.add(BorderLayout.WEST, displayDefaultSettingsPanel);
         mainWindow.add(BorderLayout.EAST, settingsPanel);
         mainWindow.add(BorderLayout.SOUTH, buttonPanel);
-
-        //This makes Crandall's code work
-        //mainWindow.add(BorderLayout.EAST, handView.getPanel());
-
-        //mainWindow.add(scorecardView.getPanel());
-        //mainWindow.add(player.get(0).playerView.getPanel());
-        //playerView.get(0).getPanel();
-        //mainWindow.add(player.get(1).playerView.getPanel());
 
         startGUI();
     }

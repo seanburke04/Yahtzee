@@ -1,3 +1,13 @@
+/**
+ * This program plays through a whole game of Yahtzee through a GUI
+ * CPSC 224-02, Spring 2022
+ * HW4 Yahtzee GUI
+ * Source: Most of the Die.java, DiceImages.java, DieView.java, Hand.java, HandView.java, Window.java
+ * files written by Dr. Crandall
+ *
+ * @author Sean Burke
+ * @version v1.4 4/10/22
+ */
 package edu.gonzaga;
 
 import javax.swing.*;
@@ -61,6 +71,10 @@ public class ThreeOfAKind extends Scorecard{
      */
     public Integer getActualScore(){return this.actualScore;}
 
+    /**
+     * Changes the text for the possible score for output to the GUI
+     * @return scoreLine
+     */
     @Override
     public JTextField makePossibleScoreView() {
         scoreLine.setText("Possible score " + this.possibleScore + " on the Three of a Kind line\n");

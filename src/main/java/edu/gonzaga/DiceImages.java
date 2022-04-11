@@ -6,8 +6,9 @@
  * files written by Dr. Crandall
  *
  * @author Sean Burke
- * @version v1.4 4/8/22
+ * @version v1.4 4/10/22
  */
+
 package edu.gonzaga;
 
 import java.awt.*;
@@ -23,7 +24,6 @@ import java.util.ArrayList;
  */
 public class DiceImages {
     ArrayList<ImageIcon> images;
-    ArrayList<Integer> settings = new ArrayList<>(3);
 
     /**
      * Loads dice images to be used later

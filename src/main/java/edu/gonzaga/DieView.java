@@ -6,8 +6,9 @@
  * files written by Dr. Crandall
  *
  * @author Sean Burke
- * @version v1.4 4/8/22
+ * @version v1.4 4/10/22
  */
+
 package edu.gonzaga;
 
 import javax.swing.*;
@@ -101,6 +102,10 @@ public class DieView extends JButton implements PropertyChangeListener{
         );
     }
 
+    /**
+     * Getter for die values
+     * @return dieValues
+     */
     public Integer getDieValues(){return dieValues;}
 
     /**
@@ -115,6 +120,4 @@ public class DieView extends JButton implements PropertyChangeListener{
             setIcon(images.getDieImage((int) e.getNewValue()));
         }
     }
-
-
 }

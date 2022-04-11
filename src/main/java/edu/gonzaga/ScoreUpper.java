@@ -1,3 +1,14 @@
+/**
+ * This program plays through a whole game of Yahtzee through a GUI
+ * CPSC 224-02, Spring 2022
+ * HW4 Yahtzee GUI
+ * Source: Most of the Die.java, DiceImages.java, DieView.java, Hand.java, HandView.java, Window.java
+ * files written by Dr. Crandall
+ *
+ * @author Sean Burke
+ * @version v1.4 4/10/22
+ */
+
 package edu.gonzaga;
 
 import javax.swing.*;
@@ -152,6 +163,10 @@ public class ScoreUpper {
         isUsed.set(whichIsUsed, true);
     }
 
+    /**
+     * Sets the possible score to the actual score
+     * @param whichIsChosen
+     */
     public void isChosen(Integer whichIsChosen){
         actualScores.set(whichIsChosen, possibleScores.get(whichIsChosen));
     }
@@ -183,6 +198,10 @@ public class ScoreUpper {
         return actualScores;
     }
 
+    /**
+     * Changes the text for the possible scores for output to the GUI
+     * @return upperLines
+     */
     public ArrayList<JTextField> makePossibleScoreView(){
         for(int i = 0; i < possibleScores.size(); i++){
             upperLines.get(i).setEditable(false);

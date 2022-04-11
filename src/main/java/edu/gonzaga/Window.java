@@ -49,6 +49,8 @@ public class Window {
 
     JButton nextTurn = new JButton("Next Turn");
 
+    JButton quit = new JButton("End Game");
+
     static final Integer NUM_SIDES_INDEX = 0;
     static final Integer NUM_DICE_INDEX = 1;
     static final Integer NUM_ROLLS_INDEX = 2;
@@ -69,6 +71,7 @@ public class Window {
         nextTurn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                mainWindow.setSize(700, 400);
                 game.displayScorecard.getPossibleScorecardPanel().setVisible(false);
                 game.makeScorecard();
                 game.displayScorecard.getScorecardPanel().setVisible(true);
@@ -78,53 +81,23 @@ public class Window {
                 game.handView.rollButton.setVisible(true);
                 bottomPanel.add(endTurn2);
                 endTurn2.setVisible(true);
-                //checkAllIsUsed();
+                quit.setVisible(false);
             }
         });
-    }
-
-    private void checkAllIsUsed(){
-        Boolean allUsed = true;
-        ArrayList<Boolean> upperScoreUse = game.upperScoreLines.getIsUsed();
-        for(int i = 0; i < userSettings.get(0); i++){
-            if(upperScoreUse.get(i) == false){
-                allUsed = upperScoreUse.get(i);
-            }
-        }
-        if(game.threeOfAKindScoreLine.getIsUsed() == false){
-            allUsed = false;
-        }
-        if(game.fourOfAKindScoreLine.getIsUsed() == false){
-            allUsed = false;
-        }
-        if(game.fullHouseScoreLine.getIsUsed() == false){
-            allUsed = false;
-        }
-        if(game.smallStraightScoreLine.getIsUsed() == false){
-            allUsed = false;
-        }
-        if(game.largeStraightScoreLine.getIsUsed() == false){
-            allUsed = false;
-        }
-        if(game.yahtzeeScoreLine.getIsUsed() == false){
-            allUsed = false;
-        }
-        if(game.chanceScoreLine.getIsUsed() == false){
-            allUsed = false;
-        }
-        if(allUsed == true){
-            endScreen();
-        }
     }
 
     private void endScreen(){
         gameOverPanel.add(gameOver);
         mainWindow.add(BorderLayout.NORTH, gameOverPanel);
-        game.displayScorecard.getScorecardPanel().setVisible(false);
+        game.makeScorecard();
+        game.displayScorecard.getPossibleScorecardPanel().setVisible(false);
+        game.displayScorecard.getScorecardPanel().setVisible(true);
         game.getHandView().getPanel().setVisible(false);
         game.handView.rollButton.setVisible(false);
         endTurn.setVisible(false);
         endTurn2.setVisible(false);
+        nextTurn.setVisible(false);
+        quit.setVisible(false);
     }
 
     private void addToPanel(){
@@ -145,7 +118,17 @@ public class Window {
                 game.getHandView().getPanel().setVisible(false);
                 game.makePossibleScorecard().setVisible(true);
                 game.getScoreSelectPanel().setVisible(true);
+                quit.setVisible(true);
                 mainWindow.pack();
+            }
+        });
+    }
+
+    private void quitFunctionality(){
+        quit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                endScreen();
             }
         });
     }
@@ -168,6 +151,8 @@ public class Window {
                 game.scoreSelectFunctionality();
                 game.addToScoreSelectPanel();
                 mainWindow.add(BorderLayout.EAST, game.getScoreSelectPanel());
+                bottomPanel.add(quit);
+                quitFunctionality();
                 mainWindow.pack();
             }
         });
@@ -179,7 +164,7 @@ public class Window {
     void setupMainWindow() {
         mainWindow = new JFrame(gc);
         mainWindow.setTitle("Yahtzee!");
-        mainWindow.setSize(600, 600);
+        mainWindow.setSize(600, 400);
         mainWindow.setLocation(500,200);
         mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainWindow.setIconImage(yahtzeeIcon.getImage());

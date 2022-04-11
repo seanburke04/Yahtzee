@@ -69,7 +69,7 @@ public class Die {
      * Sets the value of the die and fires the listener
      * @param newValue
      */
-    private void setValue(int newValue) {
+    void setValue(int newValue) {
         int oldValue = this.value;
         this.value = newValue;
         this.pcs.firePropertyChange("dievalue", oldValue, newValue);
